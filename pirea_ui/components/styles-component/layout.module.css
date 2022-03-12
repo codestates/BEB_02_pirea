@@ -1,0 +1,25 @@
+.main_layout {
+  height: 100%;
+  display: flex;
+  align-self: stretch;
+}
+
+.main_sidebar {
+  flex-grow:1;
+}
+
+.main_content {
+  flex-grow:3;
+  background-color: blue;
+  display: flex;
+  flex-direction: column;
+}
+
+.main_content_header {
+  background-color: yellow;
+  flex-grow: 1;
+}
+
+.main_content_body {
+  flex-grow: 9;
+}
