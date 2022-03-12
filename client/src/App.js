@@ -6,7 +6,6 @@ import Createswap from './component/Createswap';
 function App() {
   return (
     <div className="App">
-      
      <Createswap/>
     </div>
   );
