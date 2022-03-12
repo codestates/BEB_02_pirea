@@ -1,0 +1,69 @@
+.main_sidebar {
+  font-size: 2.3vh;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+  
+.sidebar_header {
+  padding: 1vh;
+  margin-left: 2vw;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar_header_logo_pro {
+  height: 13vh;
+  width: 7vw;
+}
+
+.sidebar_header_text {
+  padding-left: 1vw;
+  font-size: 2.5vh;
+}
+
+.sidebar_content_link {
+  flex-grow: 8;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.sidebar_div_main {
+  align-items: center;
+  padding: 2vh;
+}
+
+.sidebar_div_active {
+  background: linear-gradient(90deg, #087592 43.67%, #2393B0 97.5%);
+  box-shadow: 4px 15px 60px rgba(109, 141, 173, 0.25);
+  border-radius: 21px;
+  display: flex;
+  color: #fff;
+  padding: 2vh;
+  align-items: center;
+}
+
+.sidebar_div_deactive {
+  display: flex;
+  padding: 2vh;
+  align-items: center;
+}
+
+
+.sidebar_div_active > div > svg{
+  padding-left: 1vw;
+}
+
+.sidebar_div_deactive > div > svg{
+  color: #087592;
+  padding-left: 1vw;
+}
+
+.sidebar_div_text {
+  padding-left: 2.5vw;
+}
+
+.sidebar_footer {
+  flex-grow: 1;
+}

@@ -1,12 +1,11 @@
 import Layout from '../components/layout'
 
-export default function Explorer() {
+export default function Analytics() {
   return (
     <>
       <Layout>
-        heelo
+        analytics
       </Layout>
     </>
-
   )
 }
