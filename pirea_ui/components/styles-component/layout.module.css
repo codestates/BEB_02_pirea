@@ -6,20 +6,20 @@
 
 .main_sidebar {
   width: 20%;
+  border-right: 1.2px solid #F1F6FC;
 }
 
 .main_content {
   flex-grow: 1;
-  background-color: blue;
   display: flex;
   flex-direction: column;
 }
 
 .main_content_header {
-  background-color: yellow;
-  flex-grow: 1;
+  height: 10%;
+  border-bottom: 2px solid #F1F6FC;
 }
 
 .main_content_body {
-  flex-grow: 9;
+  flex-grow: 1;
 }

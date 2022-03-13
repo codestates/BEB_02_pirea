@@ -1,4 +1,5 @@
 import Sidebar from './sidebar'
+import Content_header from './content_header'
 import Web3 from 'web3'
 import styles from './styles-component/layout.module.css'
 
@@ -12,7 +13,7 @@ export default function Layout({ children }) {
       </div>
       <div className={styles.main_content}>
         <div className={styles.main_content_header}>
-          heelo2
+          <Content_header />
         </div>
         <main className={styles.main_content_body}>
           {children}
