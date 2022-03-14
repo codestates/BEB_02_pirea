@@ -28,6 +28,7 @@ export default function Createswap() {
   // const walletAddressUserB = '0x8772901ea06D450C18A92a53927Ba63EFcC97Dbe';
   const assetsToSwapUserB = [CRYPTOPUNK_421];
   // const assetsToSwapUserB = [CRYPTOPUNK_421];
+  
 
   const handleConnect = () => {
     if (active) {
@@ -76,6 +77,7 @@ export default function Createswap() {
         }
       );
       const signedOrder = await swapSdk.signOrder(order, walletAddressUserB); // 서명서에 사인
+      //signeOrder에 정보 확인 거래 정보 
       console.log("ttsignt", signedOrder);
       setSignedOrder(signedOrder);
 
