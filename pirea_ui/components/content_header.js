@@ -8,6 +8,8 @@ import Avatar from 'react-nice-avatar'
 
 export default function Content_header() {
   const [account, setAccount] = useState();
+  const [isShow, setIsShow] = useState(false);
+
   useEffect(() => {
     setAccount(window.localStorage.getItem("account"));
 
@@ -54,7 +56,7 @@ export default function Content_header() {
         {/*profile*/}
         {
           account ?
-            <div className={c_content_styles.header_profile_login_main}>
+            <div onMouseEnter={() => setIsShow(true)} onMouseLeave={() => setIsShow(false)} className={c_content_styles.header_profile_login_main}>
               <div>
                 <Avatar style={{ width: '3.5rem', height: '3.5rem' }} />
               </div>
@@ -70,7 +72,22 @@ export default function Content_header() {
                 {/*popup icon*/}
                 <Icon icon="fa6-solid:v" color="#444" height="2vh" />
               </div>
-              <div className={c_content_styles.header_profile_login_popup}>
+              <div className={`
+${isShow ?
+                  c_content_styles.header_profile_login_popup
+                  :
+                  c_content_styles.header_profile_login_no_popup
+                }
+
+            `}>
+                {/*popup modal*/}
+                <div onClick={logout} className={c_content_styles.header_profile_login_list_div}>
+                  {/*popup icon*/}
+                  logout
+                </div>
+                <div onClick={logout} className={c_content_styles.header_profile_login_list_div}>
+                  etc
+                </div>
               </div>
             </div>
             :
