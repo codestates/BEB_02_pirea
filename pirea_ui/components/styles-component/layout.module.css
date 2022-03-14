@@ -1,0 +1,25 @@
+.main_layout {
+  height: 100%;
+  display: flex;
+  align-self: stretch;
+}
+
+.main_sidebar {
+  width: 20%;
+  border-right: 1.2px solid #F1F6FC;
+}
+
+.main_content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.main_content_header {
+  height: 10%;
+  border-bottom: 2px solid #F1F6FC;
+}
+
+.main_content_body {
+  flex-grow: 1;
+}
