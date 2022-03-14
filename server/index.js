@@ -1,37 +1,40 @@
 const express = require('express')
-const app = express()
-const port = 3001
+const app =express()
+const port = 3000
 
-const mysql = require('mysql');
+const mysql = require(`mysql`);
 
-// const con = mysql.createConnection({
-//     host : 'localhost',
-//     user: 'root',
-//     password: '1234',
-//     database: 'users'
-// });
-
-con.connect(function(err){
-    if(err) throw err;
-    console.log('Connected');
-    // 데이터베이서 생성
-    // con.query('CREATE DATABASE users', function(err, result){
-    //     console.log('database created');
-    // });
-    // const sql = 'CREATE TABLE users
-    //             (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    //              name VARCHAR(255) NOT NULL,
-    //              email VARCHAR(255) NOT NULL))';
-
-    // con.query(sql. function  (err, result) {
-        
-    // });
+const con = mysql.createConnection({
+    host: `localhost`,
+    user: `root`,
+    password: ``,
+    database: `users`
 });
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+// userB 테이블 작성
+// create table userB (
+// 	walletAddressUserB varchar(200) not null,
+// 	tokenInfo json,
+// 	primary key (`walletAddressUserB`)
+// );
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+con.connect(function(err){
+  //에러일 경우
+  if (err) {throw err;}
+  console.log(`Connected`);
+
+  //DB에 저장
+  // con
+
+  //DB에서 스키마 가져오기
+  // const sql = "select * from userA"
+  // con.query(sql, funtion (err, result, fields) {
+
+  //   if (err) {throw err;}
+  //   console.log(result)
+  // });
+});
+
+
+app.get('/', (req, res) => res.send ('Hello World!'))
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
