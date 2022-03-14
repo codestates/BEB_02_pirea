@@ -1,0 +1,48 @@
+.c_content_header_main {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
+}
+
+.content_header_input {
+  border-radius: 20px;
+  /* border: 1px solid rgba(213, 234, 240, 1); */
+  border:none;
+  filter: drop-shadow(0px 0px 8px rgba(8, 117, 146, 0.1));
+  box-sizing: border-box;
+
+  height: 6vh;
+  width: 25vw;
+}
+
+.content_header_noti_icon {
+  display: flex;
+  padding: 0 2vw 0 2vw;
+}
+
+.content_header_noti_message_icon {
+  background: rgba(197, 197, 197, 15%);
+  border-radius: 10px;
+  width: 2vw;
+  padding: 0.5vw;
+  margin-right: 1vw;
+  display: flex;
+  justify-content: center;
+}
+
+.content_header_noti_bell_icon {
+  background: rgba(197, 197, 197, 15%);
+  border-radius: 10px;
+  width: 2vw;
+  padding: 0.5vw;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+
+.content_header_profile {
+  padding: 0 2vw 0 2vw;
+}
