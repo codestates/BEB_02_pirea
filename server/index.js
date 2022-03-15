@@ -15,9 +15,8 @@ const con = mysql.createConnection({
 
 con.connect(function (err) {
   //에러일 경우
-  if (err) {
-    throw err;
-  }
+  if (err) throw err;
+  
   console.log(`Connected`);
 
   //콘솔창에서 데이터 확인
@@ -27,25 +26,31 @@ con.connect(function (err) {
   //   if (err) {throw err;}
   //   console.log(result)
   // });
+
+
+  //db에 더미데이터 추가
+  const sql = 
+
+  `insert into userA(walletAddressUserA,tokenInfo) values('은연수', json_object(
+    'age', 29,
+    'gender', 'woman',
+    '부서', '개발',
+    '자격증', json_array('CISA', 'PMP', 'CISSP')
+    ))`;
+
+  con.query(sql,function(err, result, fields){
+    if (err) throw err;
+    console.log(result)
+    
+  })
 });
 
 
-//db에 더미데이터 추가
-// const sql =
-//   "insert into userA (walletAddressUserA,tokenInfo) values('safafd','{erc721}')"
-// con.query(sql, function (err, result, fields) {
-//   if (err) {
-//     throw err;
-//   }
-//   console.log(result);
-// });
 
 app.get("/", (req, res) => {
   const sql = "select * from userA";
   con.query(sql, function (err, result, fields) {
-    if (err) {
-      throw err;
-    }
+    if (err) throw err;
     res.send(result);
   });
 });
