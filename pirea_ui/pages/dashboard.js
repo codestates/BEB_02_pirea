@@ -1,9 +1,9 @@
 import Layout from '../components/layout'
-import Map from '../assets/amCharts.pixelMap-1.svg'
 import dashStyles from './styles/dashboard.module.css'
 import Image from "next/image";
 import profile from '../assets/test_item.png'
 import { Icon } from '@iconify/react';
+import Map from '../components/map'
 
 // TODO: 스마트컨트랙트와 연동
 export default function Dashboard() {
@@ -13,8 +13,8 @@ export default function Dashboard() {
         <div className={dashStyles.dashboard_main}>
           {/*left*/}
           <div className={dashStyles.dashboard_left_main}>
-            <div>
-              <Map className={dashStyles.dashboard_map} />
+            <div className={dashStyles.dashboard_map}>
+              <Map />
             </div>
             <div className={dashStyles.dashboard_search_main}>
               <input placeholder="Search Owner Address" className={dashStyles.dashboard_search_input} type="text" />
@@ -25,6 +25,7 @@ export default function Dashboard() {
               <div className={dashStyles.dashboard_description_content_header}>
                 Description
               </div>
+
             </div>
           </div>
           {/*right*/}

@@ -5,12 +5,13 @@
 }
 .dashboard_left_main {
   width: 50%;
+  height: 100%;
 }
 
 .dashboard_map {
-  display: flex;
-  justify-content:center;
-  align-items: center;
+  background-color: #fff;
+  width: 90%;
+  height: 90%;
 }
 .dashboard_search_main {
   margin: 2vh 0 2vh 0;
@@ -29,11 +30,11 @@
 
 .dashboard_description_main {
   margin: 3vh 0;
-  display: flex;
   height: 22vh;
   border-radius: 20px;
   width: 90%;
   box-shadow: 0px 2px 40px 0px rgba(109, 141, 173, 0.25);
+  overflow:auto;
 }
 
 
@@ -83,6 +84,7 @@
   height: 22vh;
   border-radius: 20px;
   box-shadow: 0px 2px 40px 0px rgba(109, 141, 173, 0.25);
+  overflow:auto;
 }
 .dashboard_offers_header {
   padding: 1vw;
@@ -94,6 +96,7 @@
   height: 22vh;
   border-radius: 20px;
   box-shadow: 0px 2px 40px 0px rgba(109, 141, 173, 0.25);
+  overflow:auto;
 }
 
 .dashboard_price_history_header{
