@@ -2,6 +2,8 @@ import { Icon } from '@iconify/react';
 import c_content_styles from './styles-component/c_content.module.css'
 import { useEffect, useState } from 'react'
 import Web3 from 'web3'
+import Web3Token from '../login/login'
+
 import Router from 'next/router'
 import Avatar from 'react-nice-avatar'
 
@@ -16,11 +18,23 @@ export default function Content_header() {
   }, []);
 
   const login = async () => {
+    const web3 = new Web3(window.ethereum)
     const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
     const account = accounts[0];
+
+
+    const token = await Web3Token.sign(msg => web3.eth.personal.sign(msg, account), {
+      domain: 'landnft.com',
+      statement: 'test ',
+      data: '1d',
+    });
+    console.log(token);
+
+
     setAccount(account);
     window.localStorage.setItem("account", account);
-    Router.reload();
+
+
   }
   const logout = () => {
     window.localStorage.removeItem("account");

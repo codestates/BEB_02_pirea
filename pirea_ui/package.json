@@ -20,7 +20,8 @@
     "react-nice-avatar": "^1.2.4",
     "react-notifications": "^1.7.3",
     "react-toastify": "^8.2.0",
-    "web3": "^1.7.1"
+    "web3": "^1.7.1",
+    "web3-token": "^0.2.7"
   },
   "devDependencies": {
     "@iconify/react": "^3.1.4",
