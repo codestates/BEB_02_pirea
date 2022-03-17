@@ -141,17 +141,18 @@
   box-shadow: 0px 2px 40px 0px rgba(109, 141, 173, 0.25);
   overflow:auto;
 }
+
 .dashboard_offers_header {
   padding: 1vw;
   color: #535353;
 }
 
 .dashboard_price_history_main {
-  margin-top: 5vh;
   height: 22vh;
   border-radius: 20px;
   box-shadow: 0px 2px 40px 0px rgba(109, 141, 173, 0.25);
   overflow:auto;
+  margin: 5vh 1vh 1vh 0;
 }
 
 .dashboard_price_history_header{

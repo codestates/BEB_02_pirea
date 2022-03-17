@@ -25,16 +25,18 @@ export default function Content_header() {
 
     const token = await Web3Token.sign(msg => web3.eth.personal.sign(msg, account), {
       domain: 'landnft.com',
-      statement: 'test ',
+      statement: 'login in pirea',
       data: '1d',
     });
+
+    const { address, body } = await Web3Token.verify(token);
+    console.log(address, body);
+
     console.log(token);
 
 
     setAccount(account);
-    window.localStorage.setItem("account", account);
-
-
+    window.localStorage.setItem("account", token);
   }
   const logout = () => {
     window.localStorage.removeItem("account");
@@ -72,7 +74,7 @@ export default function Content_header() {
           account ?
             <div onMouseEnter={() => setIsShow(true)} onMouseLeave={() => setIsShow(false)} className={c_content_styles.header_profile_login_main}>
               <div>
-                <Avatar style={{ width: '4vw', height: '6vh' }} className={c_content_styles.header_profile_login_avatar} />
+                <Avatar style={{ width: '3vw', height: '6vh' }} className={c_content_styles.header_profile_login_avatar} />
               </div>
               <div className={c_content_styles.header_profile_login_properties}>
                 <div className={c_content_styles.header_profile_login_nickname}>

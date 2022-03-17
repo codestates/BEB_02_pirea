@@ -40,7 +40,6 @@ const rejectStyle = {
 };
 
 function MyDropzone({ onChange, previewFile, onDrop }) {
-
   // Do something with the files
   const {
     isDragActive,
@@ -69,8 +68,9 @@ function MyDropzone({ onChange, previewFile, onDrop }) {
         <input {...getInputProps()} />
         {
           isDragActive ?
-            <p>Drop the files here ...</p> :
-            <p>Drag 'n' drop some files here, or click to select files</p>
+            <p>Drop the files here</p>
+            :
+            <p>Drag drop some files here, or click to select files</p>
         }
         {
           previewFile ?
