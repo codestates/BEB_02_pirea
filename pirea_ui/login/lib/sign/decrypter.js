@@ -32,6 +32,7 @@ export const decrypt = token => {
   if (!signature || !signature.length) {
     throw new Error('Token malformed (empty signature)')
   }
+  console.log(body);
 
   const msgBuffer = EthUtil.toBuffer('0x' + toHex(body));
   const msgHash = EthUtil.hashPersonalMessage(msgBuffer);
