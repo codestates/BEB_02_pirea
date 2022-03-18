@@ -27,6 +27,7 @@ const baseStyle = {
   outline: 'none',
   transition: 'border .24s ease-in-out'
 };
+
 const focusedStyle = {
   borderColor: '#2196f3'
 };
@@ -84,7 +85,7 @@ function MyDropzone({ onChange, previewFile, onDrop }) {
 
 
 export default function Dashboard() {
-  const [t, setT] = useState(false);
+  const [t, setT] = useState(true);
   const [previewFile, setPreviewFile] = useState();
 
   async function onChange(e) {
