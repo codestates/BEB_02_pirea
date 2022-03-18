@@ -1,57 +1,30 @@
-.swap_main {
+.assets_main {
   display: flex;
   justify-content: center;
   margin-top: 1vh;
 }
-.swap_left_main {
+.assets_left_main {
   width: 50%;
   height: 100%;
 }
 
-.swap_map {
+.assets_map {
   background-color: #fff;
   width: 90%;
   height: 90%;
 }
-.swap_search_main {
-  margin: 2vh 0 2vh 0;
-  width: 90%;
-  border-bottom: 2px solid #81d0df;
-  display: flex;
-}
 
-.swap_search_main > input:focus {
-  outline: none;
-}
-.swap_search_input {
-  width: 100%;
-  border: none;
-}
-
-.swap_description_main {
-  margin: 3vh 0;
-  height: 22vh;
-  border-radius: 20px;
-  width: 90%;
-  box-shadow: 0px 2px 10px 0px rgba(109, 141, 173, 0.15);
-  overflow: auto;
-}
-
-.swap_description_content_header {
-  padding: 2vh;
-}
-
-.swap_profile_header {
+.assets_profile_header {
   font-weight: 600;
   font-size: 1.5vw;
   color: #363636;
 }
 
-.swap_profile_img_main {
+.assets_profile_img_main {
   display: flex;
   justify-content: center;
 }
-.swap_profile_img {
+.assets_profile_img {
   border: 1px solid #b0afaf;
   border-radius: 15px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
@@ -61,34 +34,34 @@
   justify-content: space-between;
   align-items: center;
 }
-.swap_profile_address_main {
+.assets_profile_address_main {
   display: flex;
   margin: 4vh 0;
 }
 
-.swap_profile_address_header {
+.assets_profile_address_header {
   color: #000000;
   font-weight: 300;
   font-size: 1vw;
 }
 
-.swap_profile_address_text {
+.assets_profile_address_text {
   font-weight: 300;
   font-size: 1vw;
 }
 
-.swap_offers_main {
+.assets_offers_main {
   height: 22vh;
   border-radius: 20px;
   box-shadow: 0px 2px 40px 0px rgba(109, 141, 173, 0.25);
   overflow: auto;
 }
-.swap_offers_header {
+.assets_offers_header {
   padding: 1vw;
   color: #535353;
 }
 
-.swap_price_history_main {
+.assets_price_history_main {
   margin-top: 5vh;
   height: 22vh;
   border-radius: 20px;
@@ -96,7 +69,7 @@
   overflow: auto;
 }
 
-.swap_price_history_header {
+.assets_price_history_header {
   padding: 1vw;
   color: #535353;
 }

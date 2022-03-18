@@ -1,7 +1,7 @@
 import Layout from "../components/layout";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import dashStyles from "./styles/dashboard.module.css";
+import swapStyles from "./styles/swap.module.css";
 import Image from "next/image";
 import profile from "../assets/test_item.png";
 import { Icon } from "@iconify/react";
@@ -12,16 +12,16 @@ export default function Swap() {
     <>
       {/* //? dashboard와 겹치는 스타일 컴포넌트화 하는게 좋을까? */}
       <Layout>
-        <div className={dashStyles.dashboard_main}>
+        <div className={swapStyles.swap_main}>
           {/*left*/}
-          <div className={dashStyles.dashboard_left_main}>
-            <div className={dashStyles.dashboard_map}>
+          <div className={swapStyles.swap_left_main}>
+            <div className={swapStyles.swap_map}>
               <Map />
             </div>
-            <div className={dashStyles.dashboard_search_main}>
+            <div className={swapStyles.swap_search_main}>
               <input
                 placeholder="Search Owner Address"
-                className={dashStyles.dashboard_search_input}
+                className={swapStyles.swap_search_input}
                 type="text"
               />
               <Icon
@@ -31,8 +31,8 @@ export default function Swap() {
                 hFlip={true}
               />
             </div>
-            <div className={dashStyles.dashboard_description_main}>
-              <div className={dashStyles.dashboard_description_content_header}>
+            <div className={swapStyles.swap_description_main}>
+              <div className={swapStyles.swap_description_content_header}>
                 Description
               </div>
             </div>
@@ -40,29 +40,29 @@ export default function Swap() {
           {/*right*/}
           <div>
             <div>
-              <div className={dashStyles.dashboard_profile_header}>
+              <div className={swapStyles.swap_profile_header}>
                 Map Analytics
               </div>
-              <div className={dashStyles.dashboard_profile_img_main}>
-                <div className={dashStyles.dashboard_profile_img}>
+              <div className={swapStyles.swap_profile_img_main}>
+                <div className={swapStyles.swap_profile_img}>
                   <Image src={profile} alt="test" />
                 </div>
               </div>
-              <div className={dashStyles.dashboard_profile_address_main}>
-                <div className={dashStyles.dashboard_profile_address_header}>
+              <div className={swapStyles.swap_profile_address_main}>
+                <div className={swapStyles.swap_profile_address_header}>
                   Owner address:
                 </div>
-                <div className={dashStyles.dashboard_profile_address_text}>
+                <div className={swapStyles.swap_profile_address_text}>
                   0x8772901ea06D450C18A92a53927Ba63EFcC97Dbe
                 </div>
               </div>
               <div></div>
             </div>
-            <div className={dashStyles.dashboard_offers_main}>
-              <div className={dashStyles.dashboard_offers_header}>Offer</div>
+            <div className={swapStyles.swap_offers_main}>
+              <div className={swapStyles.swap_offers_header}>Offer</div>
             </div>
-            {/* <div className={dashStyles.dashboard_price_history_main}>
-              <div className={dashStyles.dashboard_price_history_header}>
+            {/* <div className={swapStyles.swap_price_history_main}>
+              <div className={swapStyles.swap_price_history_header}>
                 Price History
               </div>
             </div> */}
