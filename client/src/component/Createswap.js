@@ -11,10 +11,16 @@ export default function Createswap() {
   const [swapSdk, setSwapSdk] = useState(null);
   const [signOrder, setSignedOrder] = useState("");
   //   const [account, setAccount] = useState('');
+  const [address, setAddress] = useState("");
+  
+  const [cryptopunk420, setcryptopun420] = useState({
+    tokenAddress: "",
+    tokenId: "",
+    type: "",
+  });
 
 
-
-
+  //토큰 하드코딩
   const CRYPTOPUNK_420 = {
     tokenAddress: "0x5ecf874ab5476e1a1a3a06d4436af99345336615",
     tokenId: "1",
@@ -25,6 +31,7 @@ export default function Createswap() {
     amount: "69000000",
     type: "ERC20",
   };
+
   const walletAddressUserA = account;
   const assetsToSwapUserA = [CRYPTOPUNK_420];
   console.log(walletAddressUserA);
@@ -45,6 +52,15 @@ export default function Createswap() {
     });
   };
 
+  const tokenInfoChange = (e) => {
+    setcryptopun420((prevState) => ({
+      ...prevState,
+      [e.target.id]: e.target.value,
+    }));
+  };
+
+  console.log(cryptopunk420);
+  // console.log(CRYPTOPUNK_420);
   useEffect(() => {
     console.log(active);
     if (active) {
@@ -60,10 +76,7 @@ export default function Createswap() {
       if (!swapSdk) {
         return;
       }
-      await swapSdk.approveTokenOrNftByAsset(
-        CRYPTOPUNK_420,
-        walletAddressUserA
-      );
+      await swapSdk.approveTokenOrNftByAsset(CRYPTOPUNK_420, walletAddressUserA);
       // 승인과정
       // Part One
       console.log(walletAddressUserB);
@@ -89,6 +102,28 @@ export default function Createswap() {
     fetchData();
   }, [swapSdk]);
 
+  const handleClick2 = useCallback(() => {
+    const fetchData2 = async () => {
+      if (!swapSdk) {
+        return;
+      }
+
+      // Part 2
+    
+    await swapSdk.approveTokenOrNftByAsset(CRYPTOPUNK_421, walletAddressUserB); // 승인과정
+
+
+    const fillTx = await swapSdk.fillSignedOrder(signOrder);  // 사인
+    console.log("fill", fillTx);
+    const fillTxReceipt = await swapSdk.awaitTransactionHash(fillTx.hash); //rinkbynet 에 요청 fillTx 트랜잭션에 뿌림
+    // console.log(fillTxReceipt.transactionHash);
+    console.log(fillTxReceipt.transactionHash); // 영수증
+
+    }
+    fetchData2();
+
+  }, [swapSdk])
+
   return (
     <div>
       <div>
@@ -104,30 +139,41 @@ export default function Createswap() {
           <input type="text" id="Walletaddress" name="lname" value={account} />
         </div>
       </div>
-{/* --------------------------------------------------------------------------------------------------------------------------------------- */}
-      <div class = "swap">
+      {/* --------------------------------------------------------------------------------------------------------------------------------------- */}
+
+      <div class="swap">
         <div>
           <p>have</p>
         </div>
 
-        <select id="type" >
+        <select id="type" value={cryptopunk420.type} onChange={tokenInfoChange}>
           <option value="ERC20">ERC20</option>
           <option value="ERC721">ERC721</option>
         </select>
 
         <div>
           <label for="fname">Token Address : </label>
-          <input type="text" id="tokenAddress"  />
+          <input
+            type="text"
+            id="tokenAddress"
+            value={cryptopunk420.tokenAddress}
+            onChange={tokenInfoChange}
+          />
         </div>
 
         <div>
           <label for="lname">Token ID : </label>
-          <input type="text" id="tokenId"  />
+          <input
+            type="text"
+            id="tokenId"
+            value={cryptopunk420.tokenId}
+            onChange={tokenInfoChange}
+          />
         </div>
       </div>
-{/* --------------------------------------------------------------------------------------------------------------------------------------- */}
+      {/* --------------------------------------------------------------------------------------------------------------------------------------- */}
 
-      <div class = "swap">
+      <div class="swap">
         <div>
           <p>want</p>
         </div>
@@ -138,26 +184,33 @@ export default function Createswap() {
         </select>
 
         <div>
-          <label for="fname">Token Address : </label>
-          <input type="text" id="tokenAddress"/>
+          <label for="fname">Walletaddress : </label>
+          <input type="text" id="tokenAddress" />
         </div>
 
         <div>
-          <label for="lname">Token ID : </label>
-          <input type="text" id="tokenId"  />
+          <label for="fname">Token Address : </label>
+          <input type="text" id="tokenAddress" />
+        </div>
+
+        <div>
+          <label for="lname">Amount : </label>
+          <input type="text" id="tokenId" />
         </div>
       </div>
-{/* --------------------------------------------------------------------------------------------------------------------------------------- */}
+      {/* --------------------------------------------------------------------------------------------------------------------------------------- */}
 
-        <div id="submit" >
-          <button type="button" onClick={handleClick}>
-            {" "}
-            Submit
-          </button>{" "}
-        </div>
-
+      <div id="submit">
+        <button type="button" onClick={handleClick}>
+          {" "}
+          Submit
+        </button>{" "}
       
-
+        <button type="button" onClick={handleClick2}>
+          {" "}
+          swap
+        </button>
+      </div>
     </div>
   );
 }
