@@ -14,24 +14,25 @@ export default function Createswap() {
   
   
   const [address, setAddress] = useState("");
-  const [cryptopunk420, setcryptopun420] = useState({
-    tokenAddress: "",
-    tokenId: "",
-    type: "",
+  const [cryptopunk420, setcryptopun420] = useState(
+    {
+    tokenAddress: '',
+    tokenId: '',
+    type: '',
   });
 
   
   const [cryptopunk421, setcryptopun421] = useState({
-    tokenAddress: "",
-    amount: "",
-    type: "",
+    tokenAddress: '',
+    amount: '',
+    type: '',
   });
 
 
   //토큰 하드코딩
   const CRYPTOPUNK_420 = {
-    tokenAddress: "0x5ecf874ab5476e1a1a3a06d4436af99345336615",
-    tokenId: "1",
+    tokenAddress: "0x5ECF874ab5476E1A1A3A06d4436AF99345336615",
+    tokenId: "4",
     type: "ERC721",
   };
   const CRYPTOPUNK_421 = {
@@ -41,9 +42,10 @@ export default function Createswap() {
   };
 
   const walletAddressUserA = account;
-  const assetsToSwapUserA = [CRYPTOPUNK_420];
+  const assetsToSwapUserA = [cryptopunk420];
   console.log(walletAddressUserA);
   const walletAddressUserB = "0x8FE3836c1bbf6943c8393707de067CA8795E30Fd";
+  
   // const walletAddressUserB = '0x8772901ea06D450C18A92a53927Ba63EFcC97Dbe';
   const assetsToSwapUserB = [CRYPTOPUNK_421];
   // const assetsToSwapUserB = [CRYPTOPUNK_421];
@@ -77,11 +79,11 @@ export default function Createswap() {
   const addressChange = (e) => {
     setAddress(e.target.value);
   }
-
+  
+  console.log(CRYPTOPUNK_420);
   console.log(cryptopunk420);
   console.log(cryptopunk421);
   console.log(address);
-  // console.log(CRYPTOPUNK_420);
 
 
   useEffect(() => {
@@ -94,16 +96,23 @@ export default function Createswap() {
   }, [library, chainId]);
 
   // Use the SDK however you'd like in the app...
-  const handleClick = useCallback(() => {
-    const fetchData = async () => {
+  const handleClick = (cryptopunk420) => {
+
+
+
+    console.log(`handle`,cryptopunk420);
+
+
+    
       if (!swapSdk) {
         return;
       }
-      await swapSdk.approveTokenOrNftByAsset(CRYPTOPUNK_420, walletAddressUserA);
+      console.log(`before`,window.localStorage.getItem("cryptopunk"))
+      swapSdk.approveTokenOrNftByAsset(cryptopunk420, walletAddressUserA);
       // 승인과정
       // Part One
       console.log(walletAddressUserB);
-      const order = await swapSdk.buildOrder(
+      const order =  swapSdk.buildOrder(
         assetsToSwapUserA,
         assetsToSwapUserB,
         walletAddressUserA, // 서명서 과정
@@ -115,15 +124,33 @@ export default function Createswap() {
           ],
         }
       );
-      const signedOrder = await swapSdk.signOrder(order, walletAddressUserB); // 서명서에 사인
+      const signedOrder = swapSdk.signOrder(order, walletAddressUserB); // 서명서에 사인
+
+      fetch("http://localhost:3000/user", { //text 주소에서 받을 예정
+      method: "post", //통신방법
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({test: account, sign: signOrder}), //textbox라는 객체를 보냄
+
+    })
+    .then((res) => res.json()) 
+    .then((json) => {
+      console.log(json);
+      this.setState({
+        text: json.text,
+      });
+    });
+
+
       //signeOrder에 정보 확인 거래 정보
       console.log("ttsignt", signedOrder);
       setSignedOrder(signedOrder);
 
       // Part 2
-    };
-    fetchData();
-  }, [swapSdk]);
+    
+    
+  }
 
   const handleClick2 = useCallback(() => {
     const fetchData2 = async () => {
@@ -169,10 +196,16 @@ export default function Createswap() {
           <p>have</p>
         </div>
 
-        <select id="type" value={cryptopunk420.type} onChange={tokenInfoChange}>
+        <input
+          type="text"
+          id="type"
+          value={cryptopunk420.type}
+          onChange={tokenInfoChange}
+        />
+        {/* <select id="type" value={cryptopunk420.type} onChange={tokenInfoChange}>
           <option value="ERC20">ERC20</option>
           <option value="ERC721">ERC721</option>
-        </select>
+        </select> */}
 
         <div>
           <label for="fname">Token Address : </label>
@@ -201,35 +234,47 @@ export default function Createswap() {
           <p>want</p>
         </div>
 
-        <select id="type" value={cryptopunk421.type} onChange={tokenInfoChange1}>
+        <select
+          id="type"
+          value={cryptopunk421.type}
+          onChange={tokenInfoChange1}
+        >
           <option value="ERC20">ERC20</option>
           <option value="ERC721">ERC721</option>
         </select>
 
         <div>
           <label for="fname">Token Address : </label>
-          <input type="text" id="tokenAddress" value={cryptopunk421.tokenAddress} onChange={tokenInfoChange1}/>
+          <input
+            type="text"
+            id="tokenAddress"
+            value={cryptopunk421.tokenAddress}
+            onChange={tokenInfoChange1}
+          />
         </div>
 
         <div>
           <label for="lname">Amount : </label>
-          <input type="text" id="amount" value={cryptopunk421.amount} onChange={tokenInfoChange1}/>
+          <input
+            type="text"
+            id="amount"
+            value={cryptopunk421.amount}
+            onChange={tokenInfoChange1}
+          />
         </div>
 
         <div>
           <label for="fname">Walletaddress : </label>
-          <input type="text" id="tokenAddress" onChange={addressChange}/>
+          <input type="text" id="tokenAddress" onChange={addressChange} />
         </div>
-
       </div>
       {/* --------------------------------------------------------------------------------------------------------------------------------------- */}
 
       <div id="submit">
-        <button type="button" onClick={handleClick}>
+        <button type="button" onClick={() => handleClick(cryptopunk420)}>
           {" "}
           Submit
         </button>{" "}
-      
         <button type="button" onClick={handleClick2}>
           {" "}
           swap
