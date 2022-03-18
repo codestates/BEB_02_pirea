@@ -33,6 +33,15 @@ app.include_router(analytics.router)
 app.include_router(swap.router)
 app.include_router(nft_token.router)
 
+app = FastAPI(
+    title="pirea api",
+    version="0.1.0"
+)
+# app.include_router(items.router)
+app.include_router(user.router)
+app.include_router(analytics.router)
+app.include_router(swap.router)
+app.include_router(nft_token.router)
 Base.metadata.create_all(bind=engine)
 
 # TODO: divide the router path
