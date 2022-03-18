@@ -1,3 +1,4 @@
+
 import { Icon } from "@iconify/react";
 import c_content_styles from "./styles-component/c_content.module.css";
 import { useEffect, useState } from "react";
@@ -6,6 +7,7 @@ import { lightTheme, darkTheme, GlobalStyles } from "./themes.js";
 import Web3 from "web3";
 import Router from "next/router";
 import Avatar from "react-nice-avatar";
+
 
 const StyledApp = styled.div`
   color: ${(props) => props.theme.fontColor};
@@ -21,14 +23,30 @@ export default function Content_header() {
   }, []);
 
   const login = async () => {
-    const accounts = await window.ethereum.request({
-      method: "eth_requestAccounts",
-    });
+
+    const web3 = new Web3(window.ethereum)
+    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
+
     const account = accounts[0];
+
+
+    const token = await Web3Token.sign(msg => web3.eth.personal.sign(msg, account), {
+      domain: 'landnft.com',
+      statement: 'login in pirea',
+      data: '1d',
+    });
+
+    const { address, body } = await Web3Token.verify(token);
+    console.log(address, body);
+
+    console.log(token);
+
+
     setAccount(account);
-    window.localStorage.setItem("account", account);
-    Router.reload();
-  };
+
+    window.localStorage.setItem("account", token);
+  }
+
   const logout = () => {
     window.localStorage.removeItem("account");
     Router.reload();
@@ -80,7 +98,8 @@ export default function Content_header() {
               className={c_content_styles.header_profile_login_main}
             >
               <div>
-                <Avatar style={{ width: '4vw', height: '6vh' }} className={c_content_styles.header_profile_login_avatar} />
+
+                <Avatar style={{ width: '3vw', height: '6vh' }} className={c_content_styles.header_profile_login_avatar} />
 
               </div>
               <div className={c_content_styles.header_profile_login_properties}>

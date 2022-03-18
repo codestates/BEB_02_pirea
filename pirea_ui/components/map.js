@@ -1,3 +1,4 @@
+
 import * as THREE from 'three'
 import ReactDOM from 'react-dom'
 import React, { useRef, useMemo, useState, useEffect } from 'react'
@@ -9,6 +10,7 @@ const tempColor = new THREE.Color()
 const data = Array.from({ length: 1000 }, () => ({ color: niceColors[17][Math.floor(Math.random() * 5)], scale: 1 }))
 
 function Boxes() {
+
   const [hovered, set] = useState()
   const colorArray = useMemo(() => Float32Array.from(new Array(1000).fill().flatMap((_, i) => tempColor.set(data[i].color).toArray())), [])
   const meshRef = useRef()
@@ -34,12 +36,16 @@ function Boxes() {
         tempObject.scale.setScalar(scale)
         tempObject.updateMatrix()
         meshRef.current.setMatrixAt(id, tempObject.matrix)
+        // console.log(id, tempObject.position);
       }
       meshRef.current.instanceMatrix.needsUpdate = true
     }
   })
+
   return (
-    <instancedMesh ref={meshRef} args={[null, null, 1000]} onPointerMove={(e) => set(e.instanceId)} onPointerOut={(e) => set(undefined)}>
+    <instancedMesh ref={meshRef} args={[null, null, 1000]} onClick={(e) => {
+      set(e.instanceId);
+    }} onPointerOut={(e) => set(undefined)}>
       <boxGeometry args={[0.6, 0.6, 0.6]}>
         <instancedBufferAttribute attachObject={['attributes', 'color']} args={[colorArray, 3]} />
       </boxGeometry>
@@ -51,6 +57,7 @@ function Boxes() {
 export default function Map() {
   // This reference gives us direct access to the THREE.Mesh object
   const ref = useRef()
+
   return (
     <>
       <Canvas
@@ -63,6 +70,5 @@ export default function Map() {
         <Boxes />
       </Canvas>
     </>
-
   )
 }
