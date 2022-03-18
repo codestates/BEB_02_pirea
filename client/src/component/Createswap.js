@@ -11,11 +11,19 @@ export default function Createswap() {
   const [swapSdk, setSwapSdk] = useState(null);
   const [signOrder, setSignedOrder] = useState("");
   //   const [account, setAccount] = useState('');
-  const [address, setAddress] = useState("");
   
+  
+  const [address, setAddress] = useState("");
   const [cryptopunk420, setcryptopun420] = useState({
     tokenAddress: "",
     tokenId: "",
+    type: "",
+  });
+
+  
+  const [cryptopunk421, setcryptopun421] = useState({
+    tokenAddress: "",
+    amount: "",
     type: "",
   });
 
@@ -59,8 +67,23 @@ export default function Createswap() {
     }));
   };
 
+  const tokenInfoChange1 = (e) => {
+    setcryptopun421((prevState) => ({
+      ...prevState,
+      [e.target.id]: e.target.value,
+    }));
+  };
+
+  const addressChange = (e) => {
+    setAddress(e.target.value);
+  }
+
   console.log(cryptopunk420);
+  console.log(cryptopunk421);
+  console.log(address);
   // console.log(CRYPTOPUNK_420);
+
+
   useEffect(() => {
     console.log(active);
     if (active) {
@@ -178,25 +201,26 @@ export default function Createswap() {
           <p>want</p>
         </div>
 
-        <select id="type">
+        <select id="type" value={cryptopunk421.type} onChange={tokenInfoChange1}>
           <option value="ERC20">ERC20</option>
           <option value="ERC721">ERC721</option>
         </select>
 
         <div>
-          <label for="fname">Walletaddress : </label>
-          <input type="text" id="tokenAddress" />
-        </div>
-
-        <div>
           <label for="fname">Token Address : </label>
-          <input type="text" id="tokenAddress" />
+          <input type="text" id="tokenAddress" value={cryptopunk421.tokenAddress} onChange={tokenInfoChange1}/>
         </div>
 
         <div>
           <label for="lname">Amount : </label>
-          <input type="text" id="tokenId" />
+          <input type="text" id="amount" value={cryptopunk421.amount} onChange={tokenInfoChange1}/>
         </div>
+
+        <div>
+          <label for="fname">Walletaddress : </label>
+          <input type="text" id="tokenAddress" onChange={addressChange}/>
+        </div>
+
       </div>
       {/* --------------------------------------------------------------------------------------------------------------------------------------- */}
 
