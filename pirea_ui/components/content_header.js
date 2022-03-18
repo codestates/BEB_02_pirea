@@ -80,7 +80,8 @@ export default function Content_header() {
               className={c_content_styles.header_profile_login_main}
             >
               <div>
-                <Avatar style={{ width: "3.5rem", height: "3.5rem" }} />
+                <Avatar style={{ width: '4vw', height: '6vh' }} className={c_content_styles.header_profile_login_avatar} />
+
               </div>
               <div className={c_content_styles.header_profile_login_properties}>
                 <div className={c_content_styles.header_profile_login_nickname}>

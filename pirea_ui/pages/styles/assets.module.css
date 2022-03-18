@@ -1,0 +1,75 @@
+.assets_main {
+  display: flex;
+  justify-content: center;
+  margin-top: 1vh;
+}
+.assets_left_main {
+  width: 50%;
+  height: 100%;
+}
+
+.assets_map {
+  background-color: #fff;
+  width: 90%;
+  height: 90%;
+}
+
+.assets_profile_header {
+  font-weight: 600;
+  font-size: 1.5vw;
+  color: #363636;
+}
+
+.assets_profile_img_main {
+  display: flex;
+  justify-content: center;
+}
+.assets_profile_img {
+  border: 1px solid #b0afaf;
+  border-radius: 15px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  box-sizing: border-box;
+  width: 5vw;
+
+  justify-content: space-between;
+  align-items: center;
+}
+.assets_profile_address_main {
+  display: flex;
+  margin: 4vh 0;
+}
+
+.assets_profile_address_header {
+  color: #000000;
+  font-weight: 300;
+  font-size: 1vw;
+}
+
+.assets_profile_address_text {
+  font-weight: 300;
+  font-size: 1vw;
+}
+
+.assets_offers_main {
+  height: 22vh;
+  border-radius: 20px;
+  box-shadow: 0px 2px 40px 0px rgba(109, 141, 173, 0.25);
+  overflow: auto;
+}
+.assets_offers_header {
+  padding: 1vw;
+  color: #535353;
+}
+
+.assets_price_history_main {
+  margin-top: 5vh;
+  height: 22vh;
+  border-radius: 20px;
+  box-shadow: 0px 2px 40px 0px rgba(109, 141, 173, 0.25);
+  overflow: auto;
+}
+
+.assets_price_history_header {
+  padding: 1vw;
+  color: #535353;
+}
