@@ -12,6 +12,9 @@ export default function Createswap() {
   const [signOrder, setSignedOrder] = useState("");
   //   const [account, setAccount] = useState('');
 
+
+
+
   const CRYPTOPUNK_420 = {
     tokenAddress: "0x5ecf874ab5476e1a1a3a06d4436af99345336615",
     tokenId: "1",
@@ -101,48 +104,50 @@ export default function Createswap() {
           <input type="text" id="Walletaddress" name="lname" value={account} />
         </div>
       </div>
-
+{/* --------------------------------------------------------------------------------------------------------------------------------------- */}
       <div class = "swap">
         <div>
           <p>have</p>
         </div>
 
-        <select name="type">
+        <select id="type" >
           <option value="ERC20">ERC20</option>
           <option value="ERC721">ERC721</option>
         </select>
 
         <div>
           <label for="fname">Token Address : </label>
-          <input type="text" id="Tokenaddress" name="fname" />
+          <input type="text" id="tokenAddress"  />
         </div>
 
         <div>
           <label for="lname">Token ID : </label>
-          <input type="text" id="Tokenid" name="lname" />
+          <input type="text" id="tokenId"  />
         </div>
       </div>
+{/* --------------------------------------------------------------------------------------------------------------------------------------- */}
 
       <div class = "swap">
         <div>
           <p>want</p>
         </div>
 
-        <select name="type">
+        <select id="type">
           <option value="ERC20">ERC20</option>
           <option value="ERC721">ERC721</option>
         </select>
 
         <div>
           <label for="fname">Token Address : </label>
-          <input type="text" id="Tokenaddress" name="fname" />
+          <input type="text" id="tokenAddress"/>
         </div>
 
         <div>
           <label for="lname">Token ID : </label>
-          <input type="text" id="Tokenid" name="lname" />
+          <input type="text" id="tokenId"  />
         </div>
       </div>
+{/* --------------------------------------------------------------------------------------------------------------------------------------- */}
 
         <div id="submit" >
           <button type="button" onClick={handleClick}>
