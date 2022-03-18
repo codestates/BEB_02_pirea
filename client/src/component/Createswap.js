@@ -3,6 +3,7 @@ import { NftSwap } from "@traderxyz/nft-swap-sdk";
 import { useState, useEffect, useCallback } from "react";
 import { injected } from "./Connector";
 import { isNoEthereumObject } from "./Errors";
+import "./Createswap.css";
 
 export default function Createswap() {
   const { library, chainId, activate, active, deactivate, account } =
@@ -21,14 +22,13 @@ export default function Createswap() {
     amount: "69000000",
     type: "ERC20",
   };
-  const walletAddressUserA =  account;
+  const walletAddressUserA = account;
   const assetsToSwapUserA = [CRYPTOPUNK_420];
   console.log(walletAddressUserA);
   const walletAddressUserB = "0x8FE3836c1bbf6943c8393707de067CA8795E30Fd";
   // const walletAddressUserB = '0x8772901ea06D450C18A92a53927Ba63EFcC97Dbe';
   const assetsToSwapUserB = [CRYPTOPUNK_421];
   // const assetsToSwapUserB = [CRYPTOPUNK_421];
-  
 
   const handleConnect = () => {
     if (active) {
@@ -77,7 +77,7 @@ export default function Createswap() {
         }
       );
       const signedOrder = await swapSdk.signOrder(order, walletAddressUserB); // 서명서에 사인
-      //signeOrder에 정보 확인 거래 정보 
+      //signeOrder에 정보 확인 거래 정보
       console.log("ttsignt", signedOrder);
       setSignedOrder(signedOrder);
 
@@ -90,32 +90,69 @@ export default function Createswap() {
     <div>
       <div>
         <p>Createswap</p>
-        <button type="button" onClick={handleConnect}>
-          {active ? "disconnect" : "connect"}
-        </button>
       </div>
 
       <div>
-        <label for="fname">Token Address : </label>
-        <input type="text" id="Tokenaddress" name="fname" />
+        <div id="connectBox">
+          <button type="button" onClick={handleConnect}>
+            {active ? "disconnect" : "connect"}
+          </button>
+
+          <input type="text" id="Walletaddress" name="lname" value={account} />
+        </div>
       </div>
 
-      <div>
-        <label for="lname">Token ID : </label>
-        <input type="text" id="Tokenid" name="lname" />
+      <div class = "swap">
+        <div>
+          <p>have</p>
+        </div>
+
+        <select name="type">
+          <option value="ERC20">ERC20</option>
+          <option value="ERC721">ERC721</option>
+        </select>
+
+        <div>
+          <label for="fname">Token Address : </label>
+          <input type="text" id="Tokenaddress" name="fname" />
+        </div>
+
+        <div>
+          <label for="lname">Token ID : </label>
+          <input type="text" id="Tokenid" name="lname" />
+        </div>
       </div>
 
-      <div>
-        <label for="lname">My Wallet Address : </label>
-        <input type="text" id="Walletaddress" name="lname" value={account} />
+      <div class = "swap">
+        <div>
+          <p>want</p>
+        </div>
+
+        <select name="type">
+          <option value="ERC20">ERC20</option>
+          <option value="ERC721">ERC721</option>
+        </select>
+
+        <div>
+          <label for="fname">Token Address : </label>
+          <input type="text" id="Tokenaddress" name="fname" />
+        </div>
+
+        <div>
+          <label for="lname">Token ID : </label>
+          <input type="text" id="Tokenid" name="lname" />
+        </div>
       </div>
 
-      <div>
-        <button type="button" onClick={handleClick}>
-          {" "}
-          Submit
-        </button>{" "}
-      </div>
+        <div id="submit" >
+          <button type="button" onClick={handleClick}>
+            {" "}
+            Submit
+          </button>{" "}
+        </div>
+
+      
+
     </div>
   );
 }
