@@ -7,6 +7,8 @@ import { lightTheme, darkTheme, GlobalStyles } from "./themes.js";
 import Web3 from "web3";
 import Router from "next/router";
 import Avatar from "react-nice-avatar";
+import axios from 'axios'
+import Web3Token from 'web3-token'
 
 
 const StyledApp = styled.div`
@@ -38,13 +40,19 @@ export default function Content_header() {
 
     const { address, body } = await Web3Token.verify(token);
     console.log(address, body);
-
     console.log(token);
-
-
     setAccount(account);
 
-    window.localStorage.setItem("account", token);
+    const data = await axios.get('http://192.168.0.3:8000/api/v0.1/users/wallet/login', {
+      params: {
+        token: token,
+        wallet: 'metamask',
+        address: account
+      }
+    })
+
+
+    // window.localStorage.setItem("account", token);
   }
 
   const logout = () => {
@@ -116,11 +124,10 @@ export default function Content_header() {
               </div>
               <div
                 className={`
-${
-  isShow
-    ? c_content_styles.header_profile_login_popup
-    : c_content_styles.header_profile_login_no_popup
-}
+${isShow
+                    ? c_content_styles.header_profile_login_popup
+                    : c_content_styles.header_profile_login_no_popup
+                  }
 
             `}
               >
