@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, JSON, Date
+from sqlalchemy import Column, Integer, String, LargeBinary,JSON, Date
 from database.db import Base
 import datetime
 
@@ -9,7 +9,7 @@ class Users(Base):
     address = Column(String(255), nullable=False)
     wallet = Column(String(255), nullable=False)
     nickname = Column(String(255), nullable=False)
-    token = Column(String(255), nullable=False)
+    token = Column(LargeBinary, nullable=False)
 
 class SwapSign(Base):
     __tablename__ = "swapsign"

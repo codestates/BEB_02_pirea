@@ -9,6 +9,7 @@ from database.db import get_db
 from sqlalchemy.orm import Session
 from model.models import *
 from fastapi.encoders import jsonable_encoder
+from message_auth.auth import Web3Token
 
 """
 wallet
@@ -34,12 +35,13 @@ class Data(BaseModel):
 async def login_wallet(token: str, address: str, wallet: str, nickname:str ,db: Session = Depends(get_db)):
     token_p = Web3Token(token)
     signer = token_p.get_signer(validate=True)
+    tt = token_p.get_data()
 
-    if address == signer:
+    if address.lower() == signer.lower():
         if get_exists_user(db, signer):
             return get_user(db, signer) 
         else:
-            create_user(db, address, wallet, nickname, token)
+            create_user(db, address, wallet, nickname, token.encode('ascii'))
             return get_user(db, signer)
     else:
         raise HTTPException(status_code=404, detail="Fobbiden")
