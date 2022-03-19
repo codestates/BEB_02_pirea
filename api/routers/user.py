@@ -4,7 +4,6 @@ from typing import Optional
 from pydantic import BaseModel
 from crud.crud_user import *
 from crud.crud_swap import *
-from web3_token import Web3Token 
 from database.db import get_db
 from sqlalchemy.orm import Session
 from model.models import *
