@@ -65,7 +65,7 @@ export default function Content_header() {
       setAccount(address);
 
 
-      const data = await axios.get('http://192.168.0.3:8000/api/v0.1/users/wallet/login', {
+      const data = await axios.get('http://www.pirea.kro.kr/api/v0.1/users/wallet/login', {
         params: {
           token: token,
           wallet: 'metamask',
