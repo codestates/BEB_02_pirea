@@ -41,6 +41,7 @@ html5lib==1.1
 httpie==2.6.0
 idna==3.3
 ipfshttpclient==0.8.0a2
+jsonify==0.5
 jsonschema==4.4.0
 lru-dict==1.1.7
 more-itertools==8.10.0
