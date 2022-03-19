@@ -6,6 +6,8 @@ import { MoonIcon, SunIcon } from "@heroicons/react/solid";
 import Web3 from "web3";
 import Router from "next/router";
 import Avatar from "react-nice-avatar";
+import axios from 'axios'
+import Web3Token from 'web3-token'
 
 //? darkMode1
 // const StyledApp = styled.div`
@@ -58,13 +60,20 @@ export default function Content_header() {
 
     const { address, body } = await Web3Token.verify(token);
     console.log(address, body);
-
     console.log(token);
-
     setAccount(account);
 
-    window.localStorage.setItem("account", token);
-  };
+    const data = await axios.get('http://192.168.0.3:8000/api/v0.1/users/wallet/login', {
+      params: {
+        token: token,
+        wallet: 'metamask',
+        address: account
+      }
+    })
+
+
+    // window.localStorage.setItem("account", token);
+  }
 
   const logout = () => {
     window.localStorage.removeItem("account");
@@ -141,12 +150,33 @@ export default function Content_header() {
               <Icon icon="fa6-solid:v" color="#444" height="2vh" />
             </div>
             <div
-              className={`
-${
-  isShow
-    ? c_content_styles.header_profile_login_popup
-    : c_content_styles.header_profile_login_no_popup
-}
+              onMouseEnter={() => setIsShow(true)}
+              onMouseLeave={() => setIsShow(false)}
+              className={c_content_styles.header_profile_login_main}
+            >
+              <div>
+
+                <Avatar style={{ width: '3vw', height: '6vh' }} className={c_content_styles.header_profile_login_avatar} />
+
+              </div>
+              <div className={c_content_styles.header_profile_login_properties}>
+                <div className={c_content_styles.header_profile_login_nickname}>
+                  nickname
+                </div>
+                <div className={c_content_styles.header_profile_login_address}>
+                  {account.slice(0, 20) + "....."}
+                </div>
+              </div>
+              <div>
+                {/*popup icon*/}
+                <Icon icon="fa6-solid:v" color="#444" height="2vh" />
+              </div>
+              <div
+                className={`
+${isShow
+                    ? c_content_styles.header_profile_login_popup
+                    : c_content_styles.header_profile_login_no_popup
+                  }
 
             `}
             >

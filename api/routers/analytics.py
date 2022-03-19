@@ -15,6 +15,3 @@ async def get_analytics():
     Recent Swap
     Today Site User
     """
-
-    
-
