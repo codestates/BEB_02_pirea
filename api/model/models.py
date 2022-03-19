@@ -1,7 +1,7 @@
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, JSON, Date
-from sqlalchemy.orm import relationship
-from sqlalchemy import MetaData
-from database.db import Base, engine
+from sqlalchemy import Column, Integer, String, JSON, Date
+from database.db import Base
+import datetime
+
 
 class Users(Base):
     __tablename__ = "users"
@@ -12,7 +12,7 @@ class Users(Base):
     token = Column(String(255), nullable=False)
 
 class SwapSign(Base):
-    __tablename__ = "swap"
+    __tablename__ = "swapsign"
     id = Column(Integer, primary_key=True, index=True)
     address = Column(String(255), nullable=False)
     swapcode = Column(String(255), nullable=False)
@@ -26,8 +26,8 @@ class RecentSwapCode(Base):
 
 class Analytics(Base):
     __tablename__ = "analytics"
-    date = Column(Date, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
+    date = Column(Date, primary_key=True, default=datetime.datetime.today().strftime('%Y-%m-%d'))
     newclient = Column(Integer, nullable=False) 
     todaysiteuser = Column(Integer, nullable=False)
     spentmonth = Column(Integer, nullable=False)
-
