@@ -8,7 +8,7 @@ def get_exists_user(db: Session, address: str):
 def get_user(db: Session, address: str):
     return db.query(Users).filter(Users.address == address).first()
 
-def create_user(db: Session, address: str, wallet: str, nickname: str, token: str):
+def create_user(db: Session, address: str, wallet: str, nickname: str, token: bytes):
     user_row = Users(address=address, wallet=wallet, nickname=nickname, token=token)
     db.add(user_row)
     db.commit()
