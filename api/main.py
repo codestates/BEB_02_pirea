@@ -4,49 +4,53 @@ from sqlalchemy.orm import Session
 from database.db import get_db, engine, Base
 from model import models
 from pydantic import BaseModel
-app = FastAPI()
+from routers import user, analytics, swap, nft_token
+from fastapi.middleware.cors import CORSMiddleware
+
+app = FastAPI(
+    title="pirea api",
+    version="0.1.0"
+)
+
+origins = [
+    "http://localhost.tiangolo.com",
+    "https://localhost.tiangolo.com",
+    "http://192.168.0.3:3000",
+    "http:/192.168.0.3:8000",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# app.include_router(items.router)
+app.include_router(user.router)
+app.include_router(analytics.router)
+app.include_router(swap.router)
+app.include_router(nft_token.router)
 
 Base.metadata.create_all(bind=engine)
+
+# TODO: divide the router path
+# TODO: Active Token, New Clients, Spent month, Recent Swap, Balance, Site User
+
+"""
+Active, 한달기준 활성화되는 NFT Token
+New client, 기존에 없던 주소가 요청이 되는 New Client
+Spent month, 한달 기준 사용된 erc20
+Recent Swap, 최근 교환된 내역
+Today Site User 오늘 사이트 유저
+
+POST: data create
+GET: data read
+PUT: data update
+DELETE: data delete
+"""
 
 @app.get("/")
 def read_root():
     return {"hello": "World"}
-
-@app.get("/item/{item_id}")
-def read_item(item_id: int, q: Optional[str] = None):
-    return {"item_id": item_id, "q": q}
-
-@app.get(path="/api/v1/users/{user_id}")
-def get_place(
-    place_id: int,
-    db: Session = Depends(get_db)):
-    result = db.query(models.Users).filter(models.Users.id == place_id).first()
-
-
-    print(place_id)
-    if result is None:
-        raise HTTPException(status_code=404, detail="ID에 해당하는 User가 없습니다.")
-
-    return {
-        "status": "OK",
-        "data": result
-    }
-    
-
-class ReUsers(BaseModel):
-    __tablename__ = "users"
-
-    username: str
-    password: str 
-    nickname: str 
-
-    class Config:
-        orm_mode =True
-    
-
-@app.post(path="/api/v1/users/add")
-async def register_user(req: ReUsers, db: Session = Depends(get_db)):
-    me = models.Users(**req.dict())
-    db.add(me)
-    db.commit()
-    return me

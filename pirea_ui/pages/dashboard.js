@@ -7,7 +7,8 @@ import Map from '../components/map'
 import { useState, useCallback, useMemo } from 'react'
 import { create } from 'ipfs-http-client'
 import { useDropzone } from 'react-dropzone'
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // TODO: 스마트컨트랙트와 연동
 // TODO: map click 동작구현
@@ -27,6 +28,7 @@ const baseStyle = {
   outline: 'none',
   transition: 'border .24s ease-in-out'
 };
+
 const focusedStyle = {
   borderColor: '#2196f3'
 };
@@ -84,8 +86,10 @@ function MyDropzone({ onChange, previewFile, onDrop }) {
 
 
 export default function Dashboard() {
-  const [t, setT] = useState(false);
+  const [t, setT] = useState(true);
   const [previewFile, setPreviewFile] = useState();
+  const notify = () => toast("Wow so easy!");
+
 
   async function onChange(e) {
     const file = e.target.files[0];
@@ -101,6 +105,7 @@ export default function Dashboard() {
 
   return (
     <>
+
       <Layout>
         <div className={dashStyles.dashboard_main}>
           {/*left*/}
