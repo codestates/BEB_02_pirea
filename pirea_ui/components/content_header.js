@@ -83,7 +83,10 @@ export default function Content_header() {
         <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
           <GlobalStyles />
           <StyledApp></StyledApp>
-          <button onClick={() => themeToggler()}>Change Theme</button>
+          <button
+            className={c_content_styles.toggleBtn}
+            onClick={() => themeToggler()}
+          ></button>
 
           {/* message box*/}
           <div className={c_content_styles.content_header_input}>
@@ -118,9 +121,10 @@ export default function Content_header() {
               className={c_content_styles.header_profile_login_main}
             >
               <div>
-
-                <Avatar style={{ width: '3vw', height: '6vh' }} className={c_content_styles.header_profile_login_avatar} />
-
+                <Avatar
+                  style={{ width: "3vw", height: "6vh" }}
+                  className={c_content_styles.header_profile_login_avatar}
+                />
               </div>
               <div className={c_content_styles.header_profile_login_properties}>
                 <div className={c_content_styles.header_profile_login_nickname}>
