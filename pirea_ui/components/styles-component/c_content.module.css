@@ -118,3 +118,12 @@
   width: 10vw;
   text-align: center;
 }
+
+.toggleBtn {
+  height: 30px;
+  width: 70px;
+  border-radius: 50px;
+  border: none;
+  margin: auto;
+  background-image: linear-gradient(aqua, skyblue);
+}
