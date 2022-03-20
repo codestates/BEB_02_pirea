@@ -4,7 +4,7 @@ import Image from "next/image";
 import profile from '../assets/test_item.png'
 import { Icon } from '@iconify/react';
 import Map from '../components/map'
-import { useState, useCallback, useMemo } from 'react'
+import { useState, useCallback, useMemo, useEffect } from 'react'
 import { create } from 'ipfs-http-client'
 import { useDropzone } from 'react-dropzone'
 import { ToastContainer, toast } from 'react-toastify';
@@ -88,7 +88,8 @@ function MyDropzone({ onChange, previewFile, onDrop }) {
 export default function Dashboard() {
   const [t, setT] = useState(true);
   const [previewFile, setPreviewFile] = useState();
-  const notify = () => toast("Wow so easy!");
+  const [value, setValue] = useState("");
+  const [axis, setAxis] = useState({});
 
 
   async function onChange(e) {
@@ -96,6 +97,16 @@ export default function Dashboard() {
     setUserFileUrl(file);
     console.log(file.path)
   }
+  const handleCreate = (data) => {
+    if (data['x'] !== axis['x'] || data['y'] !== axis['y']) {
+      setAxis(data);
+    }
+  }
+
+  useEffect(() => {
+    console.log(axis);
+
+  }, [axis]);
 
   const onDrop = useCallback(acceptedFiles => {
     // setUserFileUrl(acceptedFiles[0]);
@@ -111,7 +122,7 @@ export default function Dashboard() {
           {/*left*/}
           <div className={dashStyles.dashboard_left_main}>
             <div className={dashStyles.dashboard_map}>
-              <Map className={dashStyles.dashboard_map_canvas} />
+              <Map className={dashStyles.dashboard_map_canvas} onChange={handleCreate} />
             </div>
             <div className={dashStyles.dashboard_search_main}>
               <input placeholder="Search Owner Address" className={dashStyles.dashboard_search_input} type="text" />
