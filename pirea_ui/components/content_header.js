@@ -62,7 +62,6 @@ export default function Content_header() {
 
       const { address, body } = await Web3Token.verify(token);
 
-      setAccount(address);
 
 
       const data = await axios.get('http://www.pirea.kro.kr/api/v0.1/users/wallet/login', {
@@ -74,10 +73,12 @@ export default function Content_header() {
         }
       })
       console.log(data.data);
-      // window.localStorage.setItem("account", token);
+      window.localStorage.setItem("account", token);
+      setAccount(address);
       toast.update(id, { render: `Hello \n\n ${address.slice(0, 15)}....`, type: "success", isLoading: false, autoClose: 1000 });
     } catch (e) {
       console.log("twq")
+      setAccount('');
       toast.update(id, { render: "can't login", type: "error", isLoading: false, autoClose: 1000 });
     }
   }
