@@ -6,7 +6,7 @@
 
 .main_sidebar {
   width: 20%;
-  border-right: 1.2px solid #F1F6FC;
+  border-right: 1.2px solid #f1f6fc;
 }
 
 .main_content {
@@ -17,7 +17,7 @@
 
 .main_content_header {
   height: 10%;
-  border-bottom: 2px solid #F1F6FC;
+  border-bottom: 2px solid #f1f6fc;
 }
 
 .main_content_body {
