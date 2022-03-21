@@ -11,9 +11,10 @@ import Web3Token from 'web3-token'
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 
-const StyledApp = styled.div`
-  color: ${(props) => props.theme.fontColor};
-`;
+//? darkMode1
+// const StyledApp = styled.div`
+//   color: ${(props) => props.theme.fontColor};
+// `;
 
 export default function Content_header() {
   const [account, setAccount] = useState();
