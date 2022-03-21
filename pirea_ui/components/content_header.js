@@ -6,10 +6,10 @@ import { MoonIcon, SunIcon } from "@heroicons/react/solid";
 import Web3 from "web3";
 import Router from "next/router";
 import Avatar from "react-nice-avatar";
-import axios from 'axios'
-import Web3Token from 'web3-token'
-import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer, toast } from 'react-toastify';
+import axios from "axios";
+import Web3Token from "web3-token";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
 
 //? darkMode1
 // const StyledApp = styled.div`
@@ -42,52 +42,72 @@ export default function Content_header() {
   useEffect(() => {
     setAccount(window.localStorage.getItem("account"));
   }, []);
-  const functionThatReturnPromise = () => new Promise(resolve => setTimeout(resolve, 3000));
-
+  const functionThatReturnPromise = () =>
+    new Promise((resolve) => setTimeout(resolve, 3000));
 
   const login = async () => {
-    const id = toast.loading("Login ....")
+    const id = toast.loading("Login ....");
 
-
-    const web3 = new Web3(window.ethereum)
-    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
+    const web3 = new Web3(window.ethereum);
+    const accounts = await window.ethereum.request({
+      method: "eth_requestAccounts",
+    });
 
     const account = accounts[0];
 
     try {
-      const token = await Web3Token.sign(msg => web3.eth.personal.sign(msg, account), {
-        domain: 'landnft.com',
-        statement: 'login in pirea',
-        data: '1d',
-      });
+      const token = await Web3Token.sign(
+        (msg) => web3.eth.personal.sign(msg, account),
+        {
+          domain: "landnft.com",
+          statement: "login in pirea",
+          data: "1d",
+        }
+      );
 
       const { address, body } = await Web3Token.verify(token);
 
-
-
-      const data = await axios.get('http://www.pirea.kro.kr/api/v0.1/users/wallet/login', {
-        params: {
-          token: token,
-          wallet: 'metamask',
-          address: address,
-          nickname: 'none'
+      const data = await axios.get(
+        "http://www.pirea.kro.kr/api/v0.1/users/wallet/login",
+        {
+          params: {
+            token: token,
+            wallet: "metamask",
+            address: address,
+            nickname: "none",
+          },
         }
-      })
+      );
       console.log(data.data);
       window.localStorage.setItem("account", token);
       setAccount(address);
-      toast.update(id, { render: `Hello \n\n ${address.slice(0, 15)}....`, type: "success", isLoading: false, autoClose: 1000 });
+      toast.update(id, {
+        render: `Hello \n\n ${address.slice(0, 15)}....`,
+        type: "success",
+        isLoading: false,
+        autoClose: 1000,
+      });
     } catch (e) {
-      console.log("twq")
-      setAccount('');
-      toast.update(id, { render: "can't login", type: "error", isLoading: false, autoClose: 1000 });
+      console.log("twq");
+      setAccount("");
+      toast.update(id, {
+        render: "can't login",
+        type: "error",
+        isLoading: false,
+        autoClose: 1000,
+      });
     }
-  }
+  };
 
   const logout = () => {
-    const id = toast.loading("Log out ...")
+    const id = toast.loading("Log out ...");
     window.localStorage.removeItem("account");
-    toast.update(id, { render: `Goodbye`, type: "success", isLoading: false, autoClose: 1000 });
+    toast.update(id, {
+      render: `Goodbye`,
+      type: "success",
+      isLoading: false,
+      autoClose: 1000,
+    });
     Router.reload();
   };
 
@@ -144,7 +164,7 @@ export default function Content_header() {
             className={c_content_styles.header_profile_login_main}
           >
             <div>
-              <Avatar
+              {/* <Avatar
                 style={{ width: "3vw", height: "6vh" }}
                 className={c_content_styles.header_profile_login_avatar}
               />
@@ -157,7 +177,7 @@ export default function Content_header() {
                 {account.slice(0, 20) + "....."}
               </div>
             </div>
-            <div>
+            <div> */}
               {/*popup icon*/}
               <Icon icon="fa6-solid:v" color="#444" height="2vh" />
             </div>
@@ -186,10 +206,11 @@ export default function Content_header() {
               </div>
               <div
                 className={`
-${isShow
-                    ? c_content_styles.header_profile_login_popup
-                    : c_content_styles.header_profile_login_no_popup
-                  }
+${
+  isShow
+    ? c_content_styles.header_profile_login_popup
+    : c_content_styles.header_profile_login_no_popup
+}
 
             `}
             >
