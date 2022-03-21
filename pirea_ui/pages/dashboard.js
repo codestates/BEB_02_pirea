@@ -82,7 +82,7 @@ function MyDropzone({ onChange, previewFile, onDrop }) {
 }
 
 export default function Dashboard() {
-  const [t, setT] = useState(true);
+  const [t, setT] = useState(false);
   const [previewFile, setPreviewFile] = useState();
   const [value, setValue] = useState("");
   const [axis, setAxis] = useState({});

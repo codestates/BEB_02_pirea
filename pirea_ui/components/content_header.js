@@ -164,7 +164,7 @@ export default function Content_header() {
             className={c_content_styles.header_profile_login_main}
           >
             <div>
-              {/* <Avatar
+              <Avatar
                 style={{ width: "3vw", height: "6vh" }}
                 className={c_content_styles.header_profile_login_avatar}
               />
@@ -177,35 +177,12 @@ export default function Content_header() {
                 {account.slice(0, 20) + "....."}
               </div>
             </div>
-            <div> */}
+            <div>
               {/*popup icon*/}
               <Icon icon="fa6-solid:v" color="#444" height="2vh" />
             </div>
             <div
-              onMouseEnter={() => setIsShow(true)}
-              onMouseLeave={() => setIsShow(false)}
-              className={c_content_styles.header_profile_login_main}
-            >
-              <div>
-                <Avatar
-                  style={{ width: "3vw", height: "6vh" }}
-                  className={c_content_styles.header_profile_login_avatar}
-                />
-              </div>
-              <div className={c_content_styles.header_profile_login_properties}>
-                <div className={c_content_styles.header_profile_login_nickname}>
-                  nickname
-                </div>
-                <div className={c_content_styles.header_profile_login_address}>
-                  {account.slice(0, 20) + "....."}
-                </div>
-              </div>
-              <div>
-                {/*popup icon*/}
-                <Icon icon="fa6-solid:v" color="#444" height="2vh" />
-              </div>
-              <div
-                className={`
+              className={`
 ${
   isShow
     ? c_content_styles.header_profile_login_popup
@@ -234,7 +211,6 @@ ${
           </div>
         )}
         <div></div>
-        {/* </ThemeProvider> */}
       </div>
     </>
   );
