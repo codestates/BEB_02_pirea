@@ -4,6 +4,10 @@
   align-items: center;
   height: 100%;
 }
+.c_content_header_mode {
+  width: 25px;
+  height: 25px;
+}
 
 .content_header_input {
   border-radius: 20px;
@@ -112,13 +116,4 @@
   margin: 0 2vw 0 2vw;
   width: 10vw;
   text-align: center;
-}
-
-.toggleBtn {
-  height: 30px;
-  width: 70px;
-  border-radius: 50px;
-  border: none;
-  margin: auto;
-  background-image: linear-gradient(aqua, skyblue);
 }

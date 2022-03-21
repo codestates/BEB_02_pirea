@@ -1,20 +1,39 @@
 import { Icon } from "@iconify/react";
 import c_content_styles from "./styles-component/c_content.module.css";
 import { useEffect, useState } from "react";
-import styled, { ThemeProvider } from "styled-components";
-import { lightTheme, darkTheme, GlobalStyles } from "./themes.js";
+import { useTheme } from "next-themes";
+import { MoonIcon, SunIcon } from "@heroicons/react/solid";
 import Web3 from "web3";
 import Router from "next/router";
 import Avatar from "react-nice-avatar";
 
-const StyledApp = styled.div`
-  color: ${(props) => props.theme.fontColor};
-`;
+//? darkMode1
+// const StyledApp = styled.div`
+//   color: ${(props) => props.theme.fontColor};
+// `;
 
 export default function Content_header() {
   const [account, setAccount] = useState();
   const [isShow, setIsShow] = useState(false);
-  const [theme, setTheme] = useState("light");
+  // const [theme, setTheme] = useState("light");
+  //? 현재상태와 테마 상태가 일치하도록 만들어주기
+  const [mounted, setMounted] = useState(false);
+  const { systemTheme, theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const renderThemeChanger = () => {
+    if (!mounted) return null;
+    const currentTheme = theme === "system" ? systemTheme : theme;
+
+    if (currentTheme === "dark") {
+      return <SunIcon role="button" onClick={() => setTheme("light")} />;
+    } else {
+      return <MoonIcon role="button" onClick={() => setTheme("dark")} />;
+    }
+  };
 
   useEffect(() => {
     setAccount(window.localStorage.getItem("account"));
@@ -52,74 +71,77 @@ export default function Content_header() {
     Router.reload();
   };
 
-  const themeToggler = () => {
-    theme === "light" ? setTheme("dark") : setTheme("light");
-  };
+  // const themeToggler = () => {
+  //   theme === "light" ? setTheme("dark") : setTheme("light");
+  // };
 
   return (
     <>
       <div className={c_content_styles.c_content_header_main}>
         {/* light, dark modal*/}
-        <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+        {/* <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
           <GlobalStyles />
           <StyledApp></StyledApp>
           <button
             className={c_content_styles.toggleBtn}
             onClick={() => themeToggler()}
-          ></button>
+          ></button> */}
+        <div className={c_content_styles.c_content_header_mode}>
+          {renderThemeChanger()}
+        </div>
 
-          {/* message box*/}
-          <div className={c_content_styles.content_header_input}>
-            <input
-              className={c_content_styles.content_header_input_wright}
-              placeholder="Search"
-            ></input>
+        {/* message box*/}
+        <div className={c_content_styles.content_header_input}>
+          <input
+            className={c_content_styles.content_header_input_wright}
+            placeholder="Search"
+          ></input>
+          <Icon
+            icon="bx:search-alt"
+            color="#bdbdbd"
+            className={c_content_styles.content_header_input_symbol}
+          />
+        </div>
+        {/* icon message, notification*/}
+        <div className={c_content_styles.content_header_noti_icon}>
+          <div className={c_content_styles.content_header_noti_message_icon}>
             <Icon
-              icon="bx:search-alt"
-              color="#bdbdbd"
-              className={c_content_styles.content_header_input_symbol}
+              icon="bx:message-square-detail"
+              height="4vh"
+              color="#828282"
             />
           </div>
-          {/* icon message, notification*/}
-          <div className={c_content_styles.content_header_noti_icon}>
-            <div className={c_content_styles.content_header_noti_message_icon}>
-              <Icon
-                icon="bx:message-square-detail"
-                height="4vh"
-                color="#828282"
+          <div className={c_content_styles.content_header_noti_bell_icon}>
+            <Icon icon="mi:notification" height="4vh" color="#828282" />
+          </div>
+        </div>
+        {/*profile*/}
+        {account ? (
+          <div
+            onMouseEnter={() => setIsShow(true)}
+            onMouseLeave={() => setIsShow(false)}
+            className={c_content_styles.header_profile_login_main}
+          >
+            <div>
+              <Avatar
+                style={{ width: "3vw", height: "6vh" }}
+                className={c_content_styles.header_profile_login_avatar}
               />
             </div>
-            <div className={c_content_styles.content_header_noti_bell_icon}>
-              <Icon icon="mi:notification" height="4vh" color="#828282" />
+            <div className={c_content_styles.header_profile_login_properties}>
+              <div className={c_content_styles.header_profile_login_nickname}>
+                nickname
+              </div>
+              <div className={c_content_styles.header_profile_login_address}>
+                {account.slice(0, 20) + "....."}
+              </div>
             </div>
-          </div>
-          {/*profile*/}
-          {account ? (
+            <div>
+              {/*popup icon*/}
+              <Icon icon="fa6-solid:v" color="#444" height="2vh" />
+            </div>
             <div
-              onMouseEnter={() => setIsShow(true)}
-              onMouseLeave={() => setIsShow(false)}
-              className={c_content_styles.header_profile_login_main}
-            >
-              <div>
-                <Avatar
-                  style={{ width: "3vw", height: "6vh" }}
-                  className={c_content_styles.header_profile_login_avatar}
-                />
-              </div>
-              <div className={c_content_styles.header_profile_login_properties}>
-                <div className={c_content_styles.header_profile_login_nickname}>
-                  nickname
-                </div>
-                <div className={c_content_styles.header_profile_login_address}>
-                  {account.slice(0, 20) + "....."}
-                </div>
-              </div>
-              <div>
-                {/*popup icon*/}
-                <Icon icon="fa6-solid:v" color="#444" height="2vh" />
-              </div>
-              <div
-                className={`
+              className={`
 ${
   isShow
     ? c_content_styles.header_profile_login_popup
@@ -127,33 +149,33 @@ ${
 }
 
             `}
+            >
+              {/*popup modal*/}
+              <div
+                onClick={logout}
+                className={c_content_styles.header_profile_login_list_div}
               >
-                {/*popup modal*/}
-                <div
-                  onClick={logout}
-                  className={c_content_styles.header_profile_login_list_div}
-                >
-                  {/*popup icon*/}
-                  logout
-                </div>
-                <div
-                  onClick={logout}
-                  className={c_content_styles.header_profile_login_list_div}
-                >
-                  etc
-                </div>
+                {/*popup icon*/}
+                logout
+              </div>
+              <div
+                onClick={logout}
+                className={c_content_styles.header_profile_login_list_div}
+              >
+                etc
               </div>
             </div>
-          ) : (
-            <div
-              onClick={login}
-              className={c_content_styles.content_header_profile_no_login}
-            >
-              first login
-            </div>
-          )}
-          <div></div>
-        </ThemeProvider>
+          </div>
+        ) : (
+          <div
+            onClick={login}
+            className={c_content_styles.content_header_profile_no_login}
+          >
+            first login
+          </div>
+        )}
+        <div></div>
+        {/* </ThemeProvider> */}
       </div>
     </>
   );

@@ -1,14 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fredoka&display=swap");
 
 * {
-  font-family: 'Fredoka', sans-serif;
+  font-family: "Fredoka", sans-serif;
   padding: 0;
   margin: 0;
 }
 
-html, body{
+html,
+body {
   height: 100%;
-  width: 100%
+  width: 100%;
 }
 
 #__next {
