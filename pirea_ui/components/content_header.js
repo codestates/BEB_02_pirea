@@ -181,6 +181,7 @@ export default function Content_header() {
               {/*popup icon*/}
               <Icon icon="fa6-solid:v" color="#444" height="2vh" />
             </div>
+
             <div
               className={`
 ${
@@ -190,8 +191,12 @@ ${
 }
 
 `}
+            >
+              {/*popup icon*/}
+              <div
+                onClick={logout}
+                className={c_content_styles.header_profile_login_list_div}
               >
-                {/*popup icon*/}
                 logout
               </div>
               <div
