@@ -84,7 +84,6 @@ function MyDropzone({ onChange, previewFile, onDrop }) {
 export default function Dashboard() {
   const [t, setT] = useState(false);
   const [previewFile, setPreviewFile] = useState();
-  const [value, setValue] = useState("");
   const [axis, setAxis] = useState({});
 
   async function onChange(e) {
@@ -92,6 +91,7 @@ export default function Dashboard() {
     setUserFileUrl(file);
     console.log(file.path);
   }
+
   const handleCreate = (data) => {
     if (data["x"] !== axis["x"] || data["y"] !== axis["y"]) {
       setAxis(data);
