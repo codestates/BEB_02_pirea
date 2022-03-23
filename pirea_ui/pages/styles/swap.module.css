@@ -2,7 +2,11 @@
   display: flex;
   justify-content: center;
   margin-top: 1vh;
-  height: 80%;
+  height: 100%;
+}
+.swap_left_main {
+  margin-right: 2vw;
+  width: 50%;
 }
 
 .swap_left_modal_main {
@@ -10,11 +14,14 @@
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-end;
-  margin-right: 5vh;
+  background-color: white;
+  margin-right: 6vh;
+  padding: 1vh 0;
+  height: 5vh;
 }
 
 .swap_left_modal_button_selected {
-  border: 2px solid #000;
+  border: 2px solid #333;
   padding: 1vh 5vh 1vh 1vh; 
   border-radius: 8px;
   display: flex;
@@ -25,170 +32,53 @@
 .swap_left_modal_button_first {
   border-radius: 6px;
   padding: 1vh 2vh 1vh 2vh;
-  border: 2px solid #000;
+  border: 2px solid #333;
+  background-color: #fff;
+}
+
+.swap_left_modal_button_first_icon {
+  padding-left: 0.5vh;
 }
 
 .swap_left_modal_button_second {
-  border: 2px solid #000;
+  border: 2px solid #333;
   border-radius: 6px;
   padding: 1vh 5vh 1vh 2vh;
-  margin-top: 2vh;
-  display: float;
+  margin-top: 1vh;
+  background-color: #fff;
   position: absolute;
   z-index: 999;
 }
-.swap_left_main {
-  width: 50%;
-  height: 100%;
-}
 
-
-.swap_map {
-  background-color: #fff;
-  width: 90%;
-  height: 70%;
-}
-
-.swap_search_main {
-  margin: 2vh 0 2vh 0;
-  width: 90%;
-  border-bottom: 2px solid #81d0df;
-  display: flex;
-}
-
-.swap_search_main > input:focus {
-  outline: none;
-}
-
-.swap_search_input {
+.swap_left_map_main {
   width: 100%;
-  border: none;
+  height: 55%;
 }
 
-.swap_description_main {
-  margin: 3vh 0;
-  height: 22vh;
+.swap_left_have_main {
   border-radius: 20px;
-  width: 90%;
-  box-shadow: 0px 2px 10px 0px rgba(109, 141, 173, 0.15);
-  overflow: auto;
+box-shadow: 0px 14px 40px rgba(109, 141, 173, 0.25);
+  width: 80%;
+  height: 30%;
+  margin: 1vh 1vh 3vh 9vh;
 }
 
-.swap_description_content_header {
+.swap_left_have_header {
   padding: 2vh;
 }
 
-.swap_profile_header {
-  font-weight: 600;
-  font-size: 1.5vw;
-  color: #363636;
+.swap_right_header {
+  font-size: 1.5em;
 }
 
-.swap_profile_img_main {
-  display: flex;
-  justify-content: center;
-}
-.swap_profile_img {
-  border: 1px solid #b0afaf;
-  border-radius: 15px;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  box-sizing: border-box;
-  width: 5vw;
 
-  justify-content: space-between;
-  align-items: center;
-}
-.swap_profile_address_main {
-  display: flex;
-  margin: 4vh 0;
-}
-
-.swap_profile_address_header {
-  color: #000000;
-  font-weight: 300;
-  font-size: 1vw;
-}
-
-.swap_profile_address_text {
-  font-weight: 300;
-  font-size: 1vw;
-}
-
-.swap_none_profile_address {
-  margin: 3vh 0 2vh 0;
-}
-.swap_none_profile_axis_main {
-  color: #1a1a1a;
-  display: flex;
-  width: 100%;
-  margin: 2vh 0 2vh 0;
-}
-.swap_none_profile_axis_x {
-  width: 50%;
-}
-.swap_none_profile_image_drop_main {
-  width: 100%;
-  color: #1a1a1a;
-}
-.swap_none_profile_input_des_main > input:focus {
-  outline: none;
-}
-.swap_none_profile_image_drop_header {
-  margin: 0 0 2vh 0;
-}
-
-.swap_none_profile_input_des_main {
-  width: 100%;
-  margin: 4vh 0 4vh 0;
-}
-
-.swap_none_profile_input_des_header {
-  margin: 0 0 2vh;
-}
-.swap_none_profile_input_des_text {
-  width: 100%;
-  border: 2px solid #949494;
-}
-.swap_none_profile_button_main {
-  height: 4vh;
-  display: flex;
-  justify-content: flex-end;
-  margin: 2vh 0 2vh;
-}
-.swap_none_profile_button_mint {
-  height: 100%;
-  width: 40%;
-  display: flex;
-  background-color: #2393b0;
-  border-radius: 10px;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  padding: 1vh;
-  cursor: pointer;
-}
-
-.swap_offers_main {
-  height: 22vh;
+.swap_right_want_main {
+  height: 30%;
+  width: 80%;
+  box-shadow: 0px 14px 40px rgba(109, 141, 173, 0.25);
+  margin: 3vh 1vh 1vh 1vh;
   border-radius: 20px;
-  box-shadow: 0px 2px 40px 0px rgba(109, 141, 173, 0.25);
-  overflow: auto;
 }
-
-.swap_offers_header {
-  padding: 1vw;
-  color: #535353;
-}
-
-.swap_price_history_main {
-  height: 22vh;
-  border-radius: 20px;
-  box-shadow: 0px 2px 40px 0px rgba(109, 141, 173, 0.25);
-  overflow: auto;
-  margin: 5vh 1vh 1vh 0;
-}
-
-.swap_price_history_header {
-  padding: 1vw;
-  color: #535353;
+.swap_right_want_header {
+  padding: 2vh;
 }

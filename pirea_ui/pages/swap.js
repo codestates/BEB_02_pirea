@@ -7,6 +7,7 @@ import profile from "../assets/test_item.png";
 import { Icon } from "@iconify/react";
 import Map from "../components/map";
 import { useState, useEffect } from "react";
+import dashStyles from "./styles/dashboard.module.css";
 
 //TODO:
 
@@ -34,32 +35,59 @@ export default function swap() {
               <div className={swapStyles.swap_left_modal_button}>
                 <div className={swapStyles.swap_left_modal_button_first}>
                   have
-                  <Icon icon="ooui:bold-v" color="#333" height="1.5vh" />
+                  <Icon icon="ooui:bold-v" color="#333" height="1.5vh" className={swapStyles.swap_left_modal_button_first_icon} />
                 </div>
                 <div className={swapStyles.swap_left_modal_button_second}>
-                  want
+                  <div>
+                    want
+                  </div>
+                  <div>
+                    load
+                  </div>
                 </div>
+
+
               </div>
             </div>
-            <div>
+            <div className={swapStyles.swap_left_map_main}>
               <Map
                 className={commonStyles.dashboard_map_canvas}
                 onChange={handleCreate}
               />
             </div>
-            <div>
+            <div className={swapStyles.swap_left_have_main}>
+              <div className={swapStyles.swap_left_have_header}>
+                Have
+              </div>
             </div>
           </div>
           <div className={commonStyles.common_right_main}>
-            <div className={commonStyles.common_profile_header}>
+            <div className={swapStyles.swap_right_header}>
               create swap
             </div>
             <div>
               <div>
               </div>
-
+              <div className={dashStyles.dashboard_profile_img}>
+                <Image src={profile} alt="test" />
+              </div>
+              <div>
+                Smart Contract Address:
+              </div>
+              <div>
+                X axis:
+              </div>
+              <div>
+                Y axis:
+              </div>
+            </div>
+            <div className={swapStyles.swap_right_want_main}>
+              <div className={swapStyles.swap_right_want_header}>
+                want
+              </div>
             </div>
           </div>
+
         </div>
       </Layout>
     </>
