@@ -96,7 +96,7 @@ export default function Createswap() {
   }, [library, chainId]);
 
   // Use the SDK however you'd like in the app...
-  const handleClick = (cryptopunk420) => {
+  const handleClick = async(cryptopunk420) => {
 
 
 
@@ -124,14 +124,15 @@ export default function Createswap() {
           ],
         }
       );
-      const signedOrder = swapSdk.signOrder(order, walletAddressUserB); // 서명서에 사인
+      const signedOrder = await swapSdk.signOrder(order, walletAddressUserB); // 서명서에 사인
+      console.log(`signedOrder`,signedOrder);
 
-      fetch("http://localhost:3000/user", { //text 주소에서 받을 예정
+      fetch("http://localhost:4999/user", { //text 주소에서 받을 예정
       method: "post", //통신방법
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify({test: account, sign: signOrder}), //textbox라는 객체를 보냄
+      body: JSON.stringify({test: account, sign: signedOrder}), //textbox라는 객체를 보냄
 
     })
     .then((res) => res.json()) 
