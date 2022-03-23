@@ -9,10 +9,10 @@
 .common_left_main {
   width: 50%;
   height: 100%;
+  margin-right: 5vw;
 }
-
 .common_right_main {
-  width: 100%;
+  width: 50%;
   height: 100%;
 }
 
