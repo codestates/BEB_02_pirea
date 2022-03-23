@@ -37,10 +37,11 @@ app.post("/user", (req, res) => {
   const walletAddressUserA = req.body.test;
   const tokenInfo = req.body.sign;
   con.query(
-  "INSERT INTO userA (walletAddressUserA, tokenInfo) values(?, json_object(?))",
-  [walletAddressUserA, tokenInfo]
+  "INSERT INTO userA (walletAddressUserA, tokenInfo) values(?, ?)",
+  [walletAddressUserA, {tokenInfo}]
   ),
   function (err, rows, fields) {
+    console.log(tokenInfo);
   if (err) {
   console.log("DB저장 실패");
   } else {
