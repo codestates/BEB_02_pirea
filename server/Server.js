@@ -38,10 +38,10 @@ app.post("/user", (req, res) => {
   const tokenInfo = req.body.sign;
   con.query(
   "INSERT INTO userA (walletAddressUserA, tokenInfo) values(?, ?)",
-  [walletAddressUserA, {tokenInfo}]
+  [walletAddressUserA, JSON.stringify(tokenInfo)]
   ),
+
   function (err, rows, fields) {
-    console.log(tokenInfo);
   if (err) {
   console.log("DB저장 실패");
   } else {
