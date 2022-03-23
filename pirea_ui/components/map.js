@@ -66,7 +66,7 @@ export default function Map({ onChange }) {
         linear
         gl={{ antialias: false, alpha: false }}
         camera={{ position: [0, 0, 15], near: 5, far: 20 }}
-        onCreated={({ gl }) => gl.setClearColor('#f0f0f0')}>
+        onCreated={({ gl }) => gl.setClearColor('#ffffff')}>
         <ambientLight />
         <pointLight position={[150, 150, 150]} intensity={0.55} />
         <Boxes onChange={onChange} />

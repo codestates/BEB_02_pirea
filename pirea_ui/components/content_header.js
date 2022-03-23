@@ -184,11 +184,10 @@ export default function Content_header() {
 
             <div
               className={`
-${
-  isShow
-    ? c_content_styles.header_profile_login_popup
-    : c_content_styles.header_profile_login_no_popup
-}
+${isShow
+                  ? c_content_styles.header_profile_login_popup
+                  : c_content_styles.header_profile_login_no_popup
+                }
 
 `}
             >

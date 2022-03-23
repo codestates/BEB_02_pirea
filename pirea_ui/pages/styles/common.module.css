@@ -2,17 +2,15 @@
 
 .common_main {
   display: flex;
-  justify-content: center;
-  margin-top: 1vh;
-  height: 80%;
+  height: 100%;
 }
 .common_left_main {
   width: 50%;
   height: 100%;
+  margin-right: 3vh;
 }
-
 .common_right_main {
-  width: 100%;
+  width: 50%;
   height: 100%;
 }
 

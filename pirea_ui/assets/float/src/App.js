@@ -5,16 +5,14 @@ import { Html, Environment, useGLTF, ContactShadows } from '@react-three/drei'
 import { useSpring } from '@react-spring/core'
 import { a as three } from '@react-spring/three'
 import { a as web } from '@react-spring/web'
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 
 const vec = new THREE.Vector3()
+
 function Model({ open, hinge, ...props }) {
   const group = useRef()
   // Load model
   const { nodes, materials } = useGLTF('/mac-draco.glb')
-  const { glb, setGlb } = useState();
-
   // Take care of cursor state on hover
   const [hovered, setHovered] = useState(false)
   useEffect(() => void (document.body.style.cursor = hovered ? 'pointer' : 'auto'), [hovered])
@@ -62,7 +60,7 @@ function Model({ open, hinge, ...props }) {
   )
 }
 
-export default function Home() {
+export default function App() {
   // This flag controls open state, alternates between true & false
   const [open, setOpen] = useState(false)
   // We turn this into a spring animation that interpolates between 0 and 1
@@ -70,7 +68,7 @@ export default function Home() {
   return (
     <web.main style={{ background: props.open.to([0, 1], ['#f0f0f0', '#d25578']) }}>
       <web.h1 style={{ opacity: props.open.to([0, 1], [1, 0]), transform: props.open.to((o) => `translate3d(-50%,${o * 50 - 100}px,0)`) }}>
-        hello -
+        hello
       </web.h1>
       <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 0], fov: 35 }}>
         <three.pointLight position={[10, 10, 10]} intensity={1.5} color={props.open.to([0, 1], ['#f0f0f0', '#d25578'])} />
@@ -85,5 +83,3 @@ export default function Home() {
     </web.main>
   )
 }
-
-
