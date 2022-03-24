@@ -1,0 +1,50 @@
+.main_layout {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.main_title {
+  font-size: 8vh;
+}
+
+.main_navbar {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 5vh;
+  background-color: black;
+}
+
+.main_go_dashboard {
+  font-size: 3vh;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.main_go_mainpage {
+  font-size: 3vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin-top: 15px;
+  margin-left: 20px;
+}
+
+.main_go_map {
+  font-size: 3vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin-top: 15px;
+  margin-right: 20px;
+}
+
+.main_go_map:hover {
+  color: blanchedalmond;
+}
