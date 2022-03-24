@@ -10,10 +10,8 @@ export default function Createswap() {
     useWeb3React();
   const [swapSdk, setSwapSdk] = useState(null);
   const [signOrder, setSignedOrder] = useState("");
-  //   const [account, setAccount] = useState('');
-  
-  
   const [address, setAddress] = useState("");
+
   const [cryptopunk420, setcryptopun420] = useState(
     {
     tokenAddress: '',
@@ -21,13 +19,11 @@ export default function Createswap() {
     type: '',
   });
 
-  
   const [cryptopunk421, setcryptopun421] = useState({
     tokenAddress: '',
     amount: '',
     type: '',
   });
-
 
   //토큰 하드코딩
   const CRYPTOPUNK_420 = {
@@ -45,10 +41,8 @@ export default function Createswap() {
   const assetsToSwapUserA = [cryptopunk420];
   console.log(walletAddressUserA);
   const walletAddressUserB = "0x8FE3836c1bbf6943c8393707de067CA8795E30Fd";
-  
   // const walletAddressUserB = '0x8772901ea06D450C18A92a53927Ba63EFcC97Dbe';
   const assetsToSwapUserB = [CRYPTOPUNK_421];
-  // const assetsToSwapUserB = [CRYPTOPUNK_421];
 
   const handleConnect = () => {
     if (active) {
@@ -79,12 +73,8 @@ export default function Createswap() {
   const addressChange = (e) => {
     setAddress(e.target.value);
   }
-  
-  console.log(CRYPTOPUNK_420);
-  console.log(cryptopunk420);
-  console.log(cryptopunk421);
-  console.log(address);
-
+  console.log(`cryptopunk420`,cryptopunk420);
+  console.log(`cryptopunk421`,cryptopunk421);
 
   useEffect(() => {
     console.log(active);
@@ -98,16 +88,11 @@ export default function Createswap() {
   // Use the SDK however you'd like in the app...
   const handleClick = async(cryptopunk420) => {
 
-
-
-    console.log(`handle`,cryptopunk420);
-
-
-    
       if (!swapSdk) {
         return;
       }
       console.log(`before`,window.localStorage.getItem("cryptopunk"))
+
       swapSdk.approveTokenOrNftByAsset(cryptopunk420, walletAddressUserA);
       // 승인과정
       // Part One
@@ -126,14 +111,12 @@ export default function Createswap() {
       );
       const signedOrder = await swapSdk.signOrder(order, walletAddressUserB); // 서명서에 사인
       console.log(`signedOrder`,signedOrder);
-
       fetch("http://localhost:4999/user", { //text 주소에서 받을 예정
       method: "post", //통신방법
       headers: {
         "content-type": "application/json",
       },
       body: JSON.stringify({test: account, sign: signedOrder}), //textbox라는 객체를 보냄
-
     })
     .then((res) => res.json()) 
     .then((json) => {
@@ -146,6 +129,7 @@ export default function Createswap() {
 
       //signeOrder에 정보 확인 거래 정보
       console.log("ttsignt", signedOrder);
+
       setSignedOrder(signedOrder);
 
       // Part 2
@@ -194,19 +178,13 @@ export default function Createswap() {
 
       <div class="swap">
         <div>
-          <p>have</p>
+          <p>Have</p>
         </div>
 
-        <input
-          type="text"
-          id="type"
-          value={cryptopunk420.type}
-          onChange={tokenInfoChange}
-        />
-        {/* <select id="type" value={cryptopunk420.type} onChange={tokenInfoChange}>
+        <select id="type" value={cryptopunk420.type} onChange={tokenInfoChange}>
           <option value="ERC20">ERC20</option>
           <option value="ERC721">ERC721</option>
-        </select> */}
+        </select>
 
         <div>
           <label for="fname">Token Address : </label>
@@ -232,7 +210,7 @@ export default function Createswap() {
 
       <div class="swap">
         <div>
-          <p>want</p>
+          <p>Want</p>
         </div>
 
         <select
