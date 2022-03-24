@@ -1,9 +1,9 @@
 import "../styles/global.css";
 import { ThemeProvider } from "next-themes";
 import { motion } from "framer-motion";
+import mainStyles from "./styles/main.module.css"
 
 function MyApp({ Component, pageProps, router }) {
-  const notify = () => toast("Wow so easy!");
 
   return (
     <>
@@ -12,6 +12,7 @@ function MyApp({ Component, pageProps, router }) {
         key={router.route}
         initial="pageInitial"
         animate="pageAnimate"
+        style={{ height: "100%" }}
         variants={{
           pageInitial: {
             opacity: 0,

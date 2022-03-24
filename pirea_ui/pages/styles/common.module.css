@@ -12,6 +12,10 @@
 .common_right_main {
   width: 50%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
 }
 
 .common_map {
