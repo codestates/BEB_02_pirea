@@ -1,22 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
+
+.global_main {
+  font-family: "Roboto Mono", monospace;
+}
 .main_layout {
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
   align-items: center;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
+}
+
+.main_bg {
+  background-image: url("../../../assets/section0_bg.png");
+  /* height: 100vh; */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.main_layout_scroll {
+  margin: 0;
+  padding: 0;
 }
 
 .main_title {
   font-size: 8vh;
 }
 
-.main_navbar {
+.main_title_section0 {
+  font-size: 8vh;
+  color: rgb(204, 204, 204);
+  font-family: "Roboto Mono", monospace;
+  margin-bottom: 5vh;
+  text-align: center;
+}
+
+.main_title_section0_sub {
+  white-space: pre-line;
+  font-size: 2.5vh;
+  color: rgb(69, 83, 145);
+  font-family: "Roboto Mono", monospace;
+  text-align: center;
+}
+
+/* .main_navbar {
   position: fixed;
   top: 0;
   width: 100vw;
   height: 5vh;
   background-color: black;
-}
+} */
 
 .main_go_dashboard {
   font-size: 3vh;
@@ -45,6 +79,54 @@
   margin-right: 20px;
 }
 
-.main_go_map:hover {
-  color: blanchedalmond;
+.main_image_container {
+  width: 50vw;
+
+  margin-bottom: 5vh;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.main_title {
+  font-size: 3vw;
+}
+
+.main_section1 {
+  background-color: #050a25;
+  height: 100%;
+}
+
+.main_section3 {
+  background-color: #050a25;
+  color: bisque;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.main_landImg {
+  width: 65vh;
+  margin-bottom: 5vh;
+}
+
+.main_buyland {
+  font-size: 7vh;
+  margin-bottom: 5vh;
+  color: rgb(204, 204, 204);
+  font-family: "Roboto Mono", monospace;
+}
+
+.main_buyland_sub {
+  font-size: 3vh;
+  color: rgb(204, 204, 204);
+}
+
+.avatar {
+  width: 10vw;
+  height: 10vw;
+  background-color: bisque;
 }

@@ -7,11 +7,11 @@ function MyApp({ Component, pageProps, router }) {
 
   return (
     <>
-      {/*//? 색상 테마 감지, 현재 테마 저장 */}
       <motion.div
         key={router.route}
         initial="pageInitial"
         animate="pageAnimate"
+        style={{ height: "100%" }}
         variants={{
           pageInitial: {
             opacity: 0,
@@ -21,6 +21,7 @@ function MyApp({ Component, pageProps, router }) {
           },
         }}
       >
+        {/*//? 색상 테마 감지, 현재 테마 저장 */}
         <ThemeProvider enableSystem={true} attribute="class">
           <Component {...pageProps} />
         </ThemeProvider>
