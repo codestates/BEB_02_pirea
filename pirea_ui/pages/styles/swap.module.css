@@ -9,50 +9,17 @@
   width: 50%;
 }
 
-.swap_left_modal_main {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-end;
-  background-color: white;
-  margin-right: 6vh;
-  padding: 1vh 0;
-  height: 5vh;
-}
 
-.swap_left_modal_button_selected {
-  border: 2px solid #333;
-  padding: 1vh 5vh 1vh 1vh; 
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
 
-.swap_left_modal_button_first {
-  border-radius: 6px;
-  padding: 1vh 2vh 1vh 2vh;
-  border: 2px solid #333;
-  background-color: #fff;
-}
 
-.swap_left_modal_button_first_icon {
-  padding-left: 0.5vh;
-}
 
-.swap_left_modal_button_second {
-  border: 2px solid #333;
-  border-radius: 6px;
-  padding: 1vh 5vh 1vh 2vh;
-  margin-top: 1vh;
-  background-color: #fff;
-  position: absolute;
-  z-index: 999;
-}
+
+
+
 
 .swap_left_map_main {
   width: 100%;
-  height: 55%;
+  height: 60%;
 }
 
 .swap_left_have_main {
@@ -61,6 +28,9 @@
   width: 80%;
   height: 30%;
   margin: 1vh 1vh 3vh 9vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .swap_right_type_select_main {
@@ -70,17 +40,49 @@
 .swap_left_have_header {
   padding: 2vh;
 }
+.swap_left_have_content {
+  height: 50%;
+  padding: 1vh;
+}
+
+.swap_left_have_footer {
+  display: flex;
+  justify-content: flex-end;
+}
+.swap_left_have_footer_button {
+  margin: 2vh;
+  padding: 1vh;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #fff;
+  background-color: #2393B0;
+}
 
 .swap_right_header {
   font-size: 1.5em;
 }
 
+
 .swap_right_want_main {
+  display: flex;
+  flex-direction: column;
   height: 30%;
   width: 80%;
   box-shadow: 0px 14px 40px rgba(109, 141, 173, 0.25);
   margin: 3vh 1vh 1vh 1vh;
   border-radius: 20px;
+}
+.swap_right_want_footer {
+  display: flex;
+  justify-content: flex-end;
+}
+.swap_right_want_footer_button {
+  margin: 2vh;
+  padding: 1vh;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #fff;
+  background-color: #2393B0;
 }
 
 .swap_right_button_main {
@@ -138,6 +140,9 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+.swap_right_form_main {
+  display: flex;
 }
 .swap_right_form_main > input:focus {
  outline: none;

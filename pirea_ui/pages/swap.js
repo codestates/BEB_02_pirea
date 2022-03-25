@@ -9,27 +9,94 @@ import Map from "../components/map";
 import { useState, useEffect } from "react";
 import dashStyles from "./styles/dashboard.module.css";
 import ErcForm from "../components/ercForm"
+import Swap_have from "../components/swap_have"
+import Swap_want from "../components/swap_want"
+import SwapModalButton from "../components/swap_modal_num_componant";
 
 //TODO:
 
 export default function swap() {
   const [t, setT] = useState(false);
   const [axis, setAxis] = useState({});
-  const [typeModalNum, setTypeModalNum] = useState(1);
+  const [wantAxis, setWantAxis] = useState({});
+  const [haveAxis, setHaveAxis] = useState({});
+
+  const [haveModalNum, setHaveModalNum] = useState(1);
+  const [wantModalNum, setWantModalNum] = useState(1);
+  const [commonModalNum, setCommonModalNum] = useState(1);
   const [typeTrans, setTypeTrans] = useState(1);
+  const [erc20Amount, setErc20Amount] = useState();
+  const [erc721Id, setErc721Id] = useState();
+  const [ercContract, setErcContract] = useState();
+
+  const [tmpHave, setTMPHave] = useState({
+    address: '',
+    tokenId: '',
+    amount: '',
+  });
+  const [tmpWant, setTMPWant] = useState({
+    address: '',
+    tokenId: '',
+    amount: '',
+  });
+
 
   const handleCreate = (data) => {
     if (data["x"] !== axis["x"] || data["y"] !== axis["y"]) {
       setAxis(data);
+      setErc721Id(1);
     }
   };
 
-  const typeErcClick = (data) => {
-    setTypeModalNum(data);
-  };
-
+  /* have want, setting */
   const typeTransClick = (data) => {
     setTypeTrans(data);
+  }
+
+  /* pixel, erc721, erc20 setting */
+  const typeErcClick = (data) => {
+    if (typeTrans == 1) {
+      setHaveModalNum(data);
+      setCommonModalNum(data);
+    } else {
+      setWantModalNum(data);
+      setCommonModalNum(data);
+    }
+  };
+
+  const inputHaveClick = () => {
+    if (typeTrans == 1) {
+      setTMPHave({
+        address: ercContract,
+        tokenId: erc721Id,
+        amount: erc20Amount
+      });
+      setHaveAxis(axis);
+    } else {
+      setTMPWant({
+        address: ercContract,
+        tokenId: erc721Id,
+        amount: erc20Amount
+      });
+      setWantAxis(axis);
+    }
+  }
+
+  const clearHave = () => {
+    setTMPHave({
+      address: '',
+      tokenId: '',
+      amount: ''
+    });
+    setHaveAxis({});
+  }
+  const clearWant = () => {
+    setTMPWant({
+      address: '',
+      tokenId: '',
+      amount: ''
+    });
+    setWantAxis({});
   }
 
   useEffect(() => {
@@ -52,6 +119,14 @@ export default function swap() {
               <div className={swapStyles.swap_left_have_header}>
                 Have
               </div>
+              <div className={swapStyles.swap_left_have_content}>
+                <Swap_have type={haveModalNum} tmpHave={tmpHave} axis={haveAxis} />
+              </div>
+              <div className={swapStyles.swap_left_have_footer}>
+                <div onClick={clearHave} className={swapStyles.swap_left_have_footer_button}>
+                  clear
+                </div>
+              </div>
             </div>
           </div>
           <div className={commonStyles.common_right_main}>
@@ -62,62 +137,14 @@ export default function swap() {
               <Image src={profile} alt="test" />
             </div>
             <div className={swapStyles.swap_right_description_main}>
-              <div className={swapStyles.swap_right_type_select_main}>
-
-                <div onClick={() => typeTransClick(1)} className={`
-${typeTrans == 1
-                    ? swapStyles.swap_right_type_select_div_selected
-                    : swapStyles.swap_right_type_select_div
-                  }
-                `}>
-                  HAVE
-                </div>
-                <div onClick={() => typeTransClick(2)} className={`
-${typeTrans == 2
-                    ? swapStyles.swap_right_type_select_div_selected
-                    : swapStyles.swap_right_type_select_div
-                  }
-                `}>
-                  WANT
-                </div>
-              </div>
-
-
-              <div className={swapStyles.swap_right_type_select_main}>
-
-                <div onClick={() => typeErcClick(1)} className={`
-${typeModalNum == 1
-                    ? swapStyles.swap_right_type_select_div_selected
-                    : swapStyles.swap_right_type_select_div
-                  }
-                `}>
-                  PIXEL
-                </div>
-                <div onClick={() => typeErcClick(2)} className={`
-${typeModalNum == 2
-                    ? swapStyles.swap_right_type_select_div_selected
-                    : swapStyles.swap_right_type_select_div
-                  }
-                `}>
-                  ERC721
-                </div>
-                <div onClick={() => typeErcClick(3)} className={`
-${typeModalNum == 3
-                    ? swapStyles.swap_right_type_select_div_selected
-                    : swapStyles.swap_right_type_select_div
-                  }
-                `}>
-
-                  ERC20
-                </div>
-              </div>
+              <SwapModalButton typeTrans={typeTrans} typeErcClick={typeErcClick} typeTransClick={typeTransClick} commonModalNum={commonModalNum} />
               {/* 여기는 type form */}
-              <ErcForm type={typeModalNum} axis={axis} />
+              <ErcForm type={commonModalNum} axis={axis} setErc20Amount={setErc20Amount} setErc721Id={setErc721Id} setErcContract={setErcContract} />
 
 
               {/* 여기는 button */}
               <div className={swapStyles.swap_right_button_main}>
-                <div className={swapStyles.swap_right_button_div}>
+                <div className={swapStyles.swap_right_button_div} onClick={inputHaveClick}>
                   input
                 </div>
                 <div className={swapStyles.swap_right_button_div}>
@@ -131,6 +158,14 @@ ${typeModalNum == 3
             <div className={swapStyles.swap_right_want_main}>
               <div className={swapStyles.swap_right_want_header}>
                 want
+              </div>
+              <div className={swapStyles.swap_left_have_content}>
+                <Swap_want type={wantModalNum} tmpWant={tmpWant} axis={wantAxis} />
+              </div>
+              <div className={swapStyles.swap_right_want_footer}>
+                <div onClick={clearWant} className={swapStyles.swap_right_want_footer_button}>
+                  clear
+                </div>
               </div>
             </div>
           </div>

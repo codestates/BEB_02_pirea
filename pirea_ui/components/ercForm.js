@@ -1,6 +1,6 @@
 import swapStyles from "../pages/styles/swap.module.css"
 
-export default function ErcForm({ type, axis }) {
+export default function ErcForm({ type, axis, setErc20Amount, setErc721Id, setErcContract }) {
 
 
   if (type == 1) {
@@ -21,12 +21,12 @@ export default function ErcForm({ type, axis }) {
     return (
       <>
         <div className={swapStyles.swap_right_form_main}>
-          <label for="contractAddress"> contract address: </label>
-          <input type="text" name="contractAddress" placeholder="input" className={swapStyles.swap_right_type_input} />
+          <div> contract address: </div>
+          <input onChange={(e) => (e) = setErcContract(e.target.value)} type="text" name="contractAddress" placeholder="input" className={swapStyles.swap_right_type_input} />
         </div>
         <div className={swapStyles.swap_right_form_main}>
-          <label for="tokenId"> token id: </label>
-          <input type="text" name="tokenId" placeholder="input" className={swapStyles.swap_right_type_input} />
+          <div> token id: </div>
+          <input onChange={(e) => (e) = setErc721Id(e.target.value)} type="text" name="tokenId" placeholder="input" className={swapStyles.swap_right_type_input} />
         </div>
       </>
     )
@@ -34,12 +34,12 @@ export default function ErcForm({ type, axis }) {
     return (
       <>
         <div className={swapStyles.swap_right_form_main}>
-          <label for="contractAddress"> contract address: </label>
-          <input type="text" name="contractAddress" placeholder="input" className={swapStyles.swap_right_type_input} />
+          <div> contract address: </div>
+          <input onChange={(e) => (e) = setErcContract(e.target.value)} type="text" name="contractAddress" placeholder="input" className={swapStyles.swap_right_type_input} />
         </div>
         <div className={swapStyles.swap_right_form_main}>
-          <label for="amount"> Amount: </label>
-          <input type="text" name="amount" className={swapStyles.swap_right_type_input} placeholder="input" />
+          <div> Amount: </div>
+          <input onChange={(e) => (e) = setErc20Amount(e.target.value)} type="text" name="amount" className={swapStyles.swap_right_type_input} placeholder="input" />
         </div>
 
       </>
