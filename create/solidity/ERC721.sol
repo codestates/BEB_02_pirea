@@ -4,57 +4,39 @@ pragma solidity ^0.8.10;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
+// import "@openzeppelin/contracts/access/Ownable.sol";
+// import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+// import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 
-contract ERC721_Create is ERC721URIStorage, Ownable, ERC721Enumerable {
+contract ERC721_Create is ERC721 {
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
 
-    constructor() public ERC721("Pirea", "Pi") {}
+    constructor() ERC721("Land", "Pixel") {}
 
-     function _beforeTokenTransfer(
-        address from,
-        address to,
-        uint256 tokenId
-    ) internal
-      override(ERC721, ERC721Enumerable) {
-        super._beforeTokenTransfer(from, to, tokenId);
-    }
-      function _burn(
-        uint256 tokenId
-    ) internal
-      override(ERC721, ERC721URIStorage) {
-        super._burn(tokenId);
-    }
-
-  function supportsInterface(bytes4 interfaceId)
-        public
-        view
-        override(ERC721, ERC721Enumerable)
-        returns (bool)
-    {
-        return super.supportsInterface(interfaceId);
-    }
     function tokenURI(
         uint256 tokenId
-    ) public view
-      override(ERC721, ERC721URIStorage) returns (string memory) {
+    ) 
+    public view
+      override(ERC721) returns (string memory) {
         return super.tokenURI(tokenId);
     }
     
+    // mint function
+    // there are few conditions
+    // 1. tokenId  0 to 199
+    function _mint(address recipient, string memory tokenURI) public onlyOwner returns (uint256) {
+        
+        require(to != address(0), "ERC721: mint to the zero address");
+        require(!_exists(tokenId), "ERC721: token already minted");
+        require(newItemId < 200)
 
-    function mintNFT(address recipient, string memory tokenURI, string memory X,string memory Y) 
-        public onlyOwner returns (uint256) 
-    {
         _tokenIds.increment();
 
         uint256 newItemId = _tokenIds.current();
         _mint(recipient, newItemId);
         _setTokenURI(newItemId, tokenURI);
-        // _coordinates(X, Y);
-
+        
         return newItemId;
     }
 }
