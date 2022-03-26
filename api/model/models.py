@@ -2,7 +2,6 @@ from sqlalchemy import Column, Integer, String, LargeBinary,JSON, Date
 from database.db import Base
 import datetime
 
-
 class Users(Base):
     __tablename__ = "users"
     id = Column(Integer, primary_key=True, index=True)
