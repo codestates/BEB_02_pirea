@@ -17,8 +17,7 @@ import { NftSwap } from '@traderxyz/nft-swap-sdk';
 import { injected } from "./lib/connectors";
 import { approveOrder } from "./lib/approve"
 import axios from "axios";
-import { PopupboxManager, PopupboxContainer } from 'react-popupbox';
-import "react-popupbox/dist/react-popupbox.css"
+import Toast from 'light-toast';
 
 //TODO:
 
@@ -81,6 +80,7 @@ export default function swap() {
   };
 
   const inputHaveClick = () => {
+    // openPopup();
     activate(injected, (error) => {
       if (isNoEthereumObject(error))
         window.open("https://metamask.io/download.html");
@@ -141,12 +141,13 @@ export default function swap() {
         window.localStorage.getItem("account")
       )
 
-      const signedOrder = await swapSdk.signOrder(order, "0xa179C868E21aD4C288f6084Eb349000Ba8623AeA")
-      const response = axios.post("http://192.168.0.3:8000/api/v0.1/swap/create", {
+      const signedOrder = await swapSdk.signOrder(order, window.localStorage.getItem("account"))
+      const response = await axios.post("http://192.168.0.3:8000/api/v0.1/swap/create", {
         order: signedOrder,
         address: window.localStorage.getItem("account")
       });
-      openPopup(response.data);
+      // openPopup(response.data);
+      console.log(response.data);
     } catch (e) {
       console.log(e);
     }
@@ -157,13 +158,16 @@ export default function swap() {
   }
 
   const openPopup = (swap_code) => {
+    Toast.info('message...', 3000, () => {
+      // do something after the toast disappears
+    });
     const content = (
       <div>
         <p className="quotes">{swap_code}</p>
 
       </div>
     )
-    PopupboxManager.open({ content })
+
   }
 
   const clearHave = () => {
@@ -212,7 +216,6 @@ export default function swap() {
     <>
       {/* //? dashboard와 겹치는 스타일 컴포넌트화 하는게 좋을까? */}
       <Layout>
-        <PopupboxContainer />
         <div className={commonStyles.common_main}>
           <div className={commonStyles.common_left_main}>
             <div className={swapStyles.swap_left_map_main}>

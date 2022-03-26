@@ -28,11 +28,10 @@ export default function Sidebar() {
             <div className={sidebar_styles.sidebar_div_main}>
               <div
                 className={`
-              ${
-                router.pathname === "/dashboard"
-                  ? sidebar_styles.sidebar_div_active
-                  : sidebar_styles.sidebar_div_deactive
-              }
+              ${router.pathname === "/dashboard"
+                    ? sidebar_styles.sidebar_div_active
+                    : sidebar_styles.sidebar_div_deactive
+                  }
             `}
               >
                 <div>
@@ -48,11 +47,10 @@ export default function Sidebar() {
             <div className={sidebar_styles.sidebar_div_main}>
               <div
                 className={`
-              ${
-                router.pathname === "/analytics"
-                  ? sidebar_styles.sidebar_div_active
-                  : sidebar_styles.sidebar_div_deactive
-              }
+              ${router.pathname === "/analytics"
+                    ? sidebar_styles.sidebar_div_active
+                    : sidebar_styles.sidebar_div_deactive
+                  }
             `}
               >
                 <div>
@@ -68,11 +66,10 @@ export default function Sidebar() {
             <div onClick={heelo} className={sidebar_styles.sidebar_div_main}>
               <div
                 className={`
-              ${
-                router.pathname === "/assets"
-                  ? sidebar_styles.sidebar_div_active
-                  : sidebar_styles.sidebar_div_deactive
-              }
+              ${router.pathname === "/assets"
+                    ? sidebar_styles.sidebar_div_active
+                    : sidebar_styles.sidebar_div_deactive
+                  }
             `}
               >
                 <div>
@@ -88,11 +85,10 @@ export default function Sidebar() {
             <div className={sidebar_styles.sidebar_div_main}>
               <div
                 className={`
-              ${
-                router.pathname === "/swap"
-                  ? sidebar_styles.sidebar_div_active
-                  : sidebar_styles.sidebar_div_deactive
-              }
+              ${router.pathname === "/swap"
+                    ? sidebar_styles.sidebar_div_active
+                    : sidebar_styles.sidebar_div_deactive
+                  }
             `}
               >
                 <div>
@@ -104,15 +100,33 @@ export default function Sidebar() {
               </div>
             </div>
           </Link>
+          <Link href="/load_swap">
+            <div className={sidebar_styles.sidebar_div_main}>
+              <div
+                className={`
+              ${router.pathname === "/load_swap"
+                    ? sidebar_styles.sidebar_div_active
+                    : sidebar_styles.sidebar_div_deactive
+                  }
+            `}
+              >
+                <div>
+                  <Icon icon="ant-design:swap-outlined" />
+                </div>
+                <div className={sidebar_styles.sidebar_div_text}>
+                  <a>Load Swap</a>
+                </div>
+              </div>
+            </div>
+          </Link>
           <Link href="/allswap">
             <div className={sidebar_styles.sidebar_div_main}>
               <div
                 className={`
-              ${
-                router.pathname === "/allswap"
-                  ? sidebar_styles.sidebar_div_active
-                  : sidebar_styles.sidebar_div_deactive
-              }
+              ${router.pathname === "/allswap"
+                    ? sidebar_styles.sidebar_div_active
+                    : sidebar_styles.sidebar_div_deactive
+                  }
             `}
               >
                 <div>

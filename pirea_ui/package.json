@@ -20,6 +20,7 @@
     "express": "^4.17.3",
     "framer-motion": "^6.2.8",
     "ipfs-http-client": "^56.0.1",
+    "light-toast": "^0.3.5",
     "next": "12.1.0",
     "next-themes": "^0.1.1",
     "nice-color-palettes": "^3.0.0",
