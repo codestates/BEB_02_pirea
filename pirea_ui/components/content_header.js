@@ -79,7 +79,8 @@ export default function Content_header() {
         }
       );
       console.log(data.data);
-      window.localStorage.setItem("account", token);
+      window.localStorage.setItem("account", address);
+      window.localStorage.setItem("token", token);
       setAccount(address);
       toast.update(id, {
         render: `Hello \n\n ${address.slice(0, 15)}....`,
