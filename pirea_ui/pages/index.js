@@ -12,6 +12,7 @@ import { motion, useMotionValue } from "framer-motion";
 import Head from "next/head";
 import Link from "next/link";
 import mainStyles from "./styles/main.module.css";
+import Laptop from "../components/laptop"
 
 export default function Home() {
   return (
@@ -38,7 +39,7 @@ export default function Home() {
               },
             }}
           >
-            <div>NotebookPage</div>
+            <Laptop/>
           </motion.div>
         </div>
         <div className={mainStyles.main_go_dashboard}>
