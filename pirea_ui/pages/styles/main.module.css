@@ -10,6 +10,9 @@
   flex-direction: column;
   justify-content: center;
 }
+.main_myapp_layout {
+  height: 100%
+}
 
 .main_bg {
   background-image: url("../../../assets/section0_bg.png");

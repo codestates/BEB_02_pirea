@@ -219,7 +219,7 @@ export default function Dashboard() {
                       icon="akar-icons:circle-check-fill"
                       color="white"
                       height="17"
-                      // hFlip={true}
+                    // hFlip={true}
                     />
                     <div>Mint</div>
                   </div>

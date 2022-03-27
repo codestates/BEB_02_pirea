@@ -1,11 +1,15 @@
 from typing import Optional
 from fastapi import FastAPI, Depends, Path, HTTPException
 from sqlalchemy.orm import Session
+from sqlalchemy.sql.schema import MetaData
 from database.db import get_db, engine, Base
 from model import models
 from pydantic import BaseModel
 from routers import user, analytics, swap, nft_token
 from fastapi.middleware.cors import CORSMiddleware
+
+
+Base.metadata.create_all(engine)
 
 app = FastAPI(
     title="pirea api",
