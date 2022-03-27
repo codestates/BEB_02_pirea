@@ -1,23 +1,6 @@
 {
-  "name": "beb_02_pirea-1",
-  "version": "1.0.0",
-  "description": "This project is a real estate platform based on NFT.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Kawasaki-JY/BEB_02_pirea-1.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Kawasaki-JY/BEB_02_pirea-1/issues"
-  },
-  "homepage": "https://github.com/Kawasaki-JY/BEB_02_pirea-1#readme",
   "dependencies": {
-    "axios": "^0.26.1",
-    "ipfs-http-client": "^56.0.1"
+    "body-parser": "^1.19.2",
+    "cors": "^2.8.5"
   }
 }
