@@ -25,7 +25,15 @@ const BuyLand2 = batch(StickyIn(80, 50), FadeIn(), MoveIn(2000, 0));
 const Swap = batch(Sticky(50, 20), FadeIn(), MoveIn(0, 1000), MoveOut(0, -500));
 const Team = batch(Fade(), Sticky(50, 20), ZoomIn(2, 1));
 
-export default function Home() {
+/* import dynamic from 'next/dynamic';
+
+const Chart = dynamic(()=> import('react-apexcharts'), {
+    ssr:false,
+}) */
+
+export default function Main() {
+  
+
   return (
     <>
       <Head>
