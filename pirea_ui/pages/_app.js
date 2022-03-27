@@ -14,7 +14,6 @@ function getLibrary(provider) {
 export default function MyApp({ Component, pageProps, router }) {
   return (
     <>
-      {/*//? 색상 테마 감지, 현재 테마 저장 */}
       <motion.div
         key={router.route}
         initial="pageInitial"
@@ -34,7 +33,6 @@ export default function MyApp({ Component, pageProps, router }) {
             <Component {...pageProps} />
           </ThemeProvider>
         </Web3ReactProvider>
-
       </motion.div>
     </>
   );
