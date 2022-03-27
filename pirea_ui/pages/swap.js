@@ -130,7 +130,6 @@ export default function swap() {
     const haveForm = approveOrder(tmpHave);
 
 
-
     console.log("want", wantForm);
     console.log("have", haveForm);
 
@@ -142,7 +141,7 @@ export default function swap() {
       )
 
       const signedOrder = await swapSdk.signOrder(order, window.localStorage.getItem("account"))
-      const response = await axios.post("http://192.168.0.3:8000/api/v0.1/swap/create", {
+      const response = await axios.post("http://www.pirea.kro.kr/api/v0.1/swap/create", {
         order: signedOrder,
         address: window.localStorage.getItem("account")
       });
@@ -248,7 +247,7 @@ export default function swap() {
             <div className={swapStyles.swap_right_description_main}>
               <SwapModalButton typeTrans={typeTrans} typeErcClick={typeErcClick} typeTransClick={typeTransClick} commonModalNum={commonModalNum} haveModalNum={haveModalNum} wantModalNum={wantModalNum} />
               {/* 여기는 type form */}
-              <ErcForm type={haveModalNum} axis={axis} setErc20Amount={setErc20Amount} setErc721Id={setErc721Id} setErcContract={setErcContract} />
+              <ErcForm type={commonModalNum} axis={axis} setErc20Amount={setErc20Amount} setErc721Id={setErc721Id} setErcContract={setErcContract} />
 
 
               {/* 여기는 button */}
