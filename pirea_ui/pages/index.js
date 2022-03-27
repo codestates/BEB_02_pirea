@@ -12,12 +12,13 @@ import { motion, useMotionValue } from "framer-motion";
 import Head from "next/head";
 import Link from "next/link";
 import mainStyles from "./styles/main.module.css";
-import Laptop from "../components/laptop"
+import Laptop from "../components/laptop";
+import { Navbar } from "../components/navbar";
 
 export default function Home() {
   return (
     <>
-      <Laptop/>
+      <Laptop />
     </>
   );
 }
