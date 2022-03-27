@@ -12,6 +12,7 @@ function getLibrary(provider) {
 }
 
 export default function MyApp({ Component, pageProps, router }) {
+   if (typeof window === 'undefined') return (<>loading </>);
   return (
     <>
       <motion.div
