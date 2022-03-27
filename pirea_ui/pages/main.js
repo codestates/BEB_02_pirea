@@ -64,7 +64,7 @@ export default function Home() {
           <div className={mainStyles.global_main}>
             <ScrollPage page={0}>
               <Animator animation={batch(Sticky(), Fade(), MoveOut(0, -500))}>
-                <div>
+                <div className={mainStyles.global_main_support}>
                   {/* <motion.div
                   initial="hidden"
                   animate="visible"
@@ -90,6 +90,7 @@ export default function Home() {
                   <motion.div
                     initial="hidden"
                     animate="visible"
+                    style={{ height: "100%" }}
                     variants={{
                       hidden: {
                         scale: 1,
