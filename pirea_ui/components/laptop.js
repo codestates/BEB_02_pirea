@@ -5,6 +5,7 @@ import { Environment, useGLTF, ContactShadows } from '@react-three/drei'
 import { useSpring } from '@react-spring/core'
 import { a as three } from '@react-spring/three'
 import { a as web } from '@react-spring/web'
+import laptopStyles from "./styles-component/laptop.module.css"
 // import flbfile from "../public/mac-draco.glb"
 
 
@@ -59,10 +60,11 @@ export default function Laptop() {
   // We turn this into a spring animation that interpolates between 0 and 1
   const props = useSpring({ open: Number(open) })
   return (
-    <web.main style={{ background: props.open.to([0, 1], ['#f0f0f0', '#d25578']) }}>
+    <web.main className={laptopStyles.laptop_main} style={{ background: props.open.to([0, 1], ['#f0f0f0', '#d25578']) }}>
       <web.h1 style={{ opacity: props.open.to([0, 1], [1, 0]), transform: props.open.to((o) => `translate3d(-50%,${o * 50 - 100}px,0)`) }}>
         hello
       </web.h1>
+
       <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 0], fov: 35 }}>
         <three.pointLight position={[10, 10, 10]} intensity={1.5} color={props.open.to([0, 1], ['#f0f0f0', '#d25578'])} />
         <Suspense fallback={null}>
@@ -77,4 +79,3 @@ export default function Laptop() {
   )
 }
 
-useGLTF.preload('/donut48.gltf')
