@@ -7,6 +7,7 @@ import { a as three } from "@react-spring/three";
 import { a as web } from "@react-spring/web";
 import laptopStyles from "./styles-component/laptop.module.css";
 import { Navbar } from "../components/navbar";
+import { motion } from "framer-motion";
 // import flbfile from "../public/mac-draco.glb"
 
 const vec = new THREE.Vector3();
@@ -116,7 +117,20 @@ export default function Laptop() {
           ),
         }}
       >
-        hello
+        <motion.div
+          initial="pageInitial"
+          animate="pageAnimate"
+          variants={{
+            pageInitial: {
+              opacity: 0,
+            },
+            pageAnimate: {
+              opacity: 1,
+            },
+          }}
+        >
+          <div className={laptopStyles.laptop_title}>hello</div>
+        </motion.div>
       </web.h1>
 
       <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 0], fov: 35 }}>

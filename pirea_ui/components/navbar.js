@@ -1,58 +1,62 @@
 import Link from "next/link";
 import navStyles from "./styles-component/navbar.module.css";
+import Logo from "../assets/Logo_img.svg";
+import { motion } from "framer-motion";
 
 export const Navbar = () => {
   return (
     <>
-      <div className={navStyles.nav_position}>
-        <nav className="flex items-center flex-wrap bg-green-400 p-3 ">
+      <motion.div
+        initial={{
+          opacity: 0,
+          y: -70,
+        }}
+        animate={{
+          duration: 1,
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{
+          duration: 1,
+          ease: [0.6, 0.05, -0.01, 0.9],
+        }}
+      >
+        <div className={navStyles.nav_position}>
           <Link href="/">
-            <a className="inline-flex items-center p-2 mr-4 ">
-              {/* <svg
-             
-            </svg> */}
-              <span className="text-xl text-white font-bold uppercase tracking-wide">
-                pirea
-              </span>
-            </a>
-          </Link>
-          <button className=" inline-flex p-3 hover:bg-green-600 rounded lg:hidden text-white ml-auto hover:text-white outline-none">
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          </button>
-          <div className="hidden w-full lg:inline-flex lg:flex-grow lg:w-auto">
-            <div className="lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start  flex flex-col lg:h-auto">
-              <Link href="/">
-                <a className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-green-600 hover:text-white ">
-                  Home
-                </a>
-              </Link>
-              <Link href="/">
-                <a className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-green-600 hover:text-white">
-                  Services
-                </a>
-              </Link>
-              <Link href="/">
-                <a className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-green-600 hover:text-white">
-                  About us
-                </a>
-              </Link>
+            <div className={navStyles.nav_logo_text}>
+              <Logo className={navStyles.nav_logo} />
+              <span className={navStyles.nav_title}>pirea</span>
             </div>
+          </Link>
+          <div className={navStyles.nav_link_box}>
+            {" "}
+            <motion.div
+              whileHover={{
+                scale: 1.2,
+                transition: {
+                  duration: 0.2,
+                },
+              }}
+            >
+              <Link href="/main">
+                <a className={navStyles.nav_link}>main</a>
+              </Link>
+            </motion.div>
+            <motion.div
+              whileHover={{
+                scale: 1.2,
+                transition: {
+                  duration: 0.2,
+                },
+              }}
+            >
+              <Link href="/dashboard">
+                <a className={navStyles.nav_link}>Dashboard</a>
+              </Link>
+            </motion.div>
           </div>
-        </nav>
-      </div>
+        </div>
+      </motion.div>
     </>
   );
 };
