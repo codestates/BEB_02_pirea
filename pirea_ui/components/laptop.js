@@ -72,20 +72,10 @@ function Model({ open, hinge, ...props }) {
             material={materials["matte.001"]}
             geometry={nodes["Cube008_1"].geometry}
           />
-          <mesh geometry={nodes["Cube008_2"].geometry}>
-            <Html
-              className="content"
-              rotation-x={-Math.PI / 2}
-              position={[0, 0.05, -0.09]}
-              transform
-              occlude
-            >
-              <div className="wrapper"></div>
-              <div className={laptopStyles.view_container}>
-                <div className={laptopStyles.view_title}>Welcome to Pirea</div>
-              </div>
-            </Html>
-          </mesh>
+          <Html rotation-x={-Math.PI / 2} position={[0, 0.05, -0.09]} transform occlude>
+            <InnerLaptop />
+
+          </Html>
         </group>
       </three.group>
       <mesh
