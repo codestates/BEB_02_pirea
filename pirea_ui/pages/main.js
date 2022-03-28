@@ -32,6 +32,13 @@ const Chart = dynamic(()=> import('react-apexcharts'), {
 }) */
 
 export default function Main() {
+  if (typeof window === 'undefined') {
+    return (
+      <>
+      </>
+    );
+  }
+
   return (
     <>
       <Head>

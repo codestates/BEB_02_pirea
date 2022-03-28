@@ -4,22 +4,23 @@ import { motion } from "framer-motion";
 
 import { Web3Provider } from "@ethersproject/providers";
 import { Web3ReactProvider } from "@web3-react/core";
+import AppStyles from "../styles/App.module.css"
 
 
 function getLibrary(provider) {
   const library = new Web3Provider(provider, "any");
   return library;
 }
-
 export default function MyApp({ Component, pageProps, router }) {
-   if (typeof window === 'undefined') return (<>loading </>);
+
   return (
     <>
-      <motion.div
+      {/* <motion.div
         key={router.route}
         initial="pageInitial"
         animate="pageAnimate"
         style={{ height: "100%" }}
+        className={AppStyles.test}
         variants={{
           pageInitial: {
             opacity: 0,
@@ -28,13 +29,13 @@ export default function MyApp({ Component, pageProps, router }) {
             opacity: 1,
           },
         }}
-      >
-        <Web3ReactProvider getLibrary={getLibrary}>
-          <ThemeProvider enableSystem={true} attribute="class">
-            <Component {...pageProps} />
-          </ThemeProvider>
-        </Web3ReactProvider>
-      </motion.div>
+      > */}
+      <Web3ReactProvider getLibrary={getLibrary}>
+        <ThemeProvider enableSystem={true} attribute="class">
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </Web3ReactProvider>
+      {/* </motion.div> */}
     </>
   );
 }
