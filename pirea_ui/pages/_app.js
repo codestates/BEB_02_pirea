@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import { Web3Provider } from "@ethersproject/providers";
 import { Web3ReactProvider } from "@web3-react/core";
 import 'bootstrap/dist/css/bootstrap.min.css'; // react-bootstrap (necessary)
+import './allswap.css' //allswap css
+
 import AppStyles from "../styles/App.module.css"
 
 
