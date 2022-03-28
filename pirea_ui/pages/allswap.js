@@ -3,19 +3,73 @@ import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import axios from "axios";
+import useSWR from "swr";
+import { useState } from "react";
+
+// const cors = require('cors');
+//http://www.pirea.kro.kr/api/v0.1/swap/get/all?more=1
 
 export default function AllSwap() {
-  //todo
-  /*
-  makerAddress
-takerAddress
-Maker ContractAddress
-Taker ContractAddress
-tokenId
-tokenId
-type: erc721
-type: erc721 
-*/
+  const [haveForm, setHaveForm] = useState({});
+  const apiEndPoint = "http://www.pirea.kro.kr/api/v0.1/swap/get/all" ;
+  
+
+  const fetcher = async (url) => await axios.get(url, {
+    headers: {
+      'Access-Control-Allow-Origin': '*' ,
+    },
+      params: {
+        more : "1"
+      },
+  }).then((res) => res.data);
+
+  const {data, error}= useSWR(apiEndPoint, fetcher);
+
+  console.log(`data`, data);
+
+  // const obj = JSON.parse(data);
+   console.log(`data1`,data.id);
+
+ if (error){
+   return(
+     <>
+      <Layout>
+        <div >
+          failed
+        </div>
+      </Layout>
+     </>
+   )
+ }
+
+ if (!data){
+   return(
+     <>
+     <Layout>
+       <div>
+         Loading
+       </div>
+     </Layout>
+     </>
+   )
+ }
+  // useEffect(() => {
+  //   const getPosts = async () =>{
+  //     try{
+        
+  //     const response = await axios.get(apiEndPoint);
+  //     let haveform =  response.data["haveForm"] ;
+  //     setHave(haveform);
+  //   } catch(e){
+      
+  //   }
+  // }
+  //   getPosts();
+  // }, []);
+  
+  // console.log(`haveForm`,have);
+
   return (
     <>
       <Layout>
