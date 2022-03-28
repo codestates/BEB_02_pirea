@@ -63,5 +63,4 @@
     "tailwindcss": "^3.0.23"
   },
   "proxy": "http://www.pirea.kro.kr/api/v0.1/swap/get/all?more=1"
-  
 }
