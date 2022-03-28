@@ -1,6 +1,6 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/codestates/BEB_02_pirea/blob/main/LICENSE) [![CircleCI Status](https://circleci.com/gh/codestates/BEB_02_pirea.svg?style=shield&circle-token=d959a6dd5a01fb71788b38d2d799df221a59bd5c)](https://github.com/codestates/BEB_02_pirea)
 
-# Project  Pirea
+# About The Project Pirea:rocket: 
 
 ![스크린샷, 2022-03-29 01-23-29](https://user-images.githubusercontent.com/93482597/160443583-30f045a6-dc84-4ae4-a038-927c7a9c2c2b.png)
 
@@ -21,3 +21,13 @@ npm run dev
 open http://localhost:3000/dashboard
 
 ```
+  
+# Team Contact
+  ***If you want***:sunglasses:  : [Team Details](https://github.com/codestates/BEB_02_pirea/wiki/Members) <div>
+  tetgo :  [Git](https://github.com/tetgo), [Blog]()                      
+  Kawasaki-JY : [Git](https://github.com/Kawasaki-JY), [Blog]()                          
+  idoasisay : [Git](https://github.com/idoasisay), [Blog]()                            
+  NonamedBread : [Git](https://github.com/NonamedBread), [Blog](https://velog.io/@rbghks2102)                          
+  <div>
+  
+ 
