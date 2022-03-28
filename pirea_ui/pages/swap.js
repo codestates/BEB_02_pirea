@@ -71,6 +71,8 @@ export default function swap() {
 
   /* pixel, erc721, erc20 setting */
   const typeErcClick = (data) => {
+
+    console.log(data);
     if (typeTrans == 1) {
       setHaveModalNum(data);
       setCommonModalNum(data);
@@ -94,7 +96,7 @@ export default function swap() {
 
     if (typeTrans == 1) {
       setTMPHave({
-        type: commonModalNum,
+        type: haveModalNum,
         address: "0x59A7d1eE47aF7273CF226b587C1ACdb4aB2Ec1a0",
         tokenId: erc721Id,
         amount: erc20Amount
@@ -102,7 +104,7 @@ export default function swap() {
       setHaveAxis(axis);
     } else {
       setTMPWant({
-        type: commonModalNum,
+        type: wantModalNum,
         address: "0x59A7d1eE47aF7273CF226b587C1ACdb4aB2Ec1a0",
         tokenId: erc721Id,
         amount: erc20Amount
@@ -292,7 +294,6 @@ export default function swap() {
               <ErcForm typeTrans={typeTrans} type={`${typeTrans == 1
                 ? haveModalNum
                 : wantModalNum
-
                 }`} axis={axis} setErc20Amount={setErc20Amount} setErc721Id={setErc721Id} setErcContract={setErcContract} />
 
 

@@ -13,16 +13,16 @@ export default function Sidebar() {
     <>
       <div className={sidebar_styles.main_sidebar}>
         <div className={sidebar_styles.sidebar_header}>
-            <div className={sidebar_styles.sidebar_header_logo}>
-              <Logo className={sidebar_styles.sidebar_header_logo_pro} />
-            </div>
-            <div className={sidebar_styles.sidebar_header_text}>
-              <Link href="/">
-                <div>
-                  Pirea
-                </div>
-              </Link>
-            </div>
+          <div className={sidebar_styles.sidebar_header_logo}>
+            <Logo className={sidebar_styles.sidebar_header_logo_pro} />
+          </div>
+          <div className={sidebar_styles.sidebar_header_text}>
+            <Link href="/">
+              <div>
+                Pirea
+              </div>
+            </Link>
+          </div>
         </div>
 
         <div className={sidebar_styles.sidebar_content_link}>
@@ -37,7 +37,7 @@ export default function Sidebar() {
             `}
               >
                 <div>
-                  <Icon icon="ic:twotone-space-dashboard" />
+                  <Icon height="2.5rem" icon="ic:twotone-space-dashboard" />
                 </div>
                 <div className={sidebar_styles.sidebar_div_text}>
                   <a className={sidebar_styles.sidebar_link_a}>Dashboard</a>
@@ -56,7 +56,7 @@ export default function Sidebar() {
             `}
               >
                 <div>
-                  <Icon icon="carbon:text-link-analysis" />
+                  <Icon height="2.2rem" icon="carbon:text-link-analysis" />
                 </div>
                 <div className={sidebar_styles.sidebar_div_text}>
                   <a className={sidebar_styles.sidebar_link_a}>Analytics</a>
@@ -75,7 +75,7 @@ export default function Sidebar() {
             `}
               >
                 <div>
-                  <Icon icon="fluent:wallet-24-regular" />
+                  <Icon height="2.2rem" icon="fluent:wallet-24-regular" />
                 </div>
                 <div className={sidebar_styles.sidebar_div_text}>
                   <a className={sidebar_styles.sidebar_link_a}>Assets</a>
@@ -94,7 +94,7 @@ export default function Sidebar() {
             `}
               >
                 <div>
-                  <Icon icon="ant-design:swap-outlined" />
+                  <Icon height="2.2rem" icon="ant-design:swap-outlined" />
                 </div>
                 <div className={sidebar_styles.sidebar_div_text}>
                   <a className={sidebar_styles.sidebar_link_a}>Swap</a>
@@ -113,7 +113,7 @@ export default function Sidebar() {
             `}
               >
                 <div>
-                  <Icon icon="ant-design:swap-outlined" />
+                  <Icon height="2.2rem" icon="ant-design:swap-outlined" />
                 </div>
                 <div className={sidebar_styles.sidebar_div_text}>
                   <a className={sidebar_styles.sidebar_link_a}>Load</a>
@@ -132,7 +132,7 @@ export default function Sidebar() {
             `}
               >
                 <div>
-                  <Icon icon="fluent:cloud-swap-20-regular" />
+                  <Icon height="2.2rem" icon="fluent:cloud-swap-20-regular" />
                 </div>
                 <div className={sidebar_styles.sidebar_div_text}>
                   <a className={sidebar_styles.sidebar_link_a}>All_swap</a>

@@ -138,7 +138,7 @@ export default function Laptop() {
         <three.pointLight
           position={[10, 10, 10]}
           intensity={1.5}
-          color={props.open.to([0, 1], ["#f0f0f0", "#d25578"])}
+          color={props.open.to([0, 1], ["#f0f0f0", "#ffffff"])}
         />
         <Suspense fallback={null}>
           <group

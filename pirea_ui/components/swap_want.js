@@ -31,7 +31,7 @@ export default function Swap_want({ type, tmpWant, axis }) {
       <div>
         <div> ERC20 </div>
         <div>contract address: {tmpWant['address']}</div>
-        <div>tokenid: {tmpWant['amount']}</div>
+        <div>amount: {tmpWant['amount']}</div>
       </div>
     )
   }

@@ -1,5 +1,6 @@
 import Layout from "../components/layout";
-import loadSwapHave from "../components/loadSwapHave"
+import LoadSwapHave from "../components/loadSwapHave"
+import LoadSwapWant from "../components/loadSwapWant"
 import commonStyles from "./styles/common.module.css"
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
@@ -15,28 +16,58 @@ export default function Load() {
 
 
   useEffect(() => {
-    try {
-      axios.get(url, {
-        params: {
-          swapcode: swap_code
-        }
-      }).then((res) => {
-        setData(res.data)
-        setLoading(false)
-      });
-    } catch (e) {
-      console.log(e);
+    const getData = async () => {
+      try {
+        await axios.get(url, {
+          params: {
+            swapcode: swap_code
+          }
+        }).then((res) => {
+          setData(res.data)
+          setLoading(false)
+        });
+      } catch (e) {
+        console.log(e);
+      }
     }
-  }, [])
+    if (swap_code !== null) {
+      getData();
+    }
+  }, [swap_code])
 
-  if (loading || !data) return <div> Loading.. </div>
   console.log(data);
+  if (!swap_code) {
+    return (
+      <>
+        <Layout>
+          <div className={commonStyles.common_main}>
+            input swap code
+          </div>
+        </Layout>
+      </>
+    )
+  }
+
+  if (!data) return (
+    <>
+      <Layout>
+        <div className={commonStyles.common_main}>
+          loading
+        </div>
+      </Layout>
+    </>
+  )
 
   return (
     <>
       <Layout>
         <div className={commonStyles.common_main}>
-          {data['id']}
+          <div>
+            <LoadSwapWant wantForm={data['wantForm']} />
+          </div>
+          <div>
+            <LoadSwapHave haveForm={data['haveForm']} />
+          </div>
         </div>
       </Layout>
     </>
