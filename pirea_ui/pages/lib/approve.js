@@ -1,5 +1,6 @@
 export const approveOrder = (setTmpOrder) => {
   console.log(setTmpOrder);
+
   var approveForm;
   if (setTmpOrder['type'] == 1 || setTmpOrder['type'] == 2) {
     approveForm = {
