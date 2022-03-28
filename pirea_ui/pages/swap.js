@@ -40,6 +40,7 @@ export default function swap() {
   const { library, chainId, activate, active, deactivate } = useWeb3React();
   const [swapSdk, setSwapSdk] = useState(null);
 
+
   const [tmpHave, setTMPHave] = useState({
     type: '',
     address: '',
@@ -115,42 +116,40 @@ export default function swap() {
     const approveId = toast.loading("Approve loading...");
     var orderForm = approveOrder(tmpHave);
     console.log(orderForm);
-    
+
 
     try {
-    const approvalStatus = await swapSdk.loadApprovalStatus(
-      orderForm,
-      window.localStorage.getItem("account"))
+      const approvalStatus = await swapSdk.loadApprovalStatus(
+        orderForm,
+        window.localStorage.getItem("account"))
 
 
-    if (!approvalStatus.contractApproved) {
-      const approvalTx = await swapSdk.approveTokenOrNftByAsset(orderForm, window.localStorage.getItem("account"));
-      const approvalReceipt = await approvalTx.wait();
-      // console.log(orderForm.tokenAddress, approvalReceipt);
-      toast.update(approveId, {
-        render: `${approvalReceipt} sucess approve`,
-        type: "success",
-        isLoading: false,
-        autoClose: 1000,
-      });
-    } else {
-      toast.update(approveId, {
-        render: "already approve",
-        type: "error",
-        isLoading: false,
-        autoClose: 1000,
-      });
-    }
-  }catch (e) {
+      if (!approvalStatus.contractApproved) {
+        const approvalTx = await swapSdk.approveTokenOrNftByAsset(orderForm, window.localStorage.getItem("account"));
+        const approvalReceipt = await approvalTx.wait();
+        // console.log(orderForm.tokenAddress, approvalReceipt);
+        toast.update(approveId, {
+          render: `${approvalReceipt} sucess approve`,
+          type: "success",
+          isLoading: false,
+          autoClose: 1000,
+        });
+      } else {
+        toast.update(approveId, {
+          render: "already approve",
+          type: "error",
+          isLoading: false,
+          autoClose: 1000,
+        });
+      }
+    } catch (e) {
       toast.update(approveId, {
         render: "can`t approve",
         type: "error",
         isLoading: false,
         autoClose: 1000,
       });
-  }
-
-
+    }
   }
 
   const createSwap = async () => {
@@ -170,7 +169,7 @@ export default function swap() {
       )
 
       const signedOrder = await swapSdk.signOrder(order, window.localStorage.getItem("account"))
-      const response = await axios.post("http://192.168.0.3:8000/api/v0.1/swap/create", {
+      const response = await axios.post("http://www.pirea.kro.kr/api/v0.1/swap/create", {
         order: signedOrder,
         address: window.localStorage.getItem("account"),
         haveForm: haveForm,
@@ -290,12 +289,11 @@ export default function swap() {
             <div className={swapStyles.swap_right_description_main}>
               <SwapModalButton typeTrans={typeTrans} typeErcClick={typeErcClick} typeTransClick={typeTransClick} commonModalNum={commonModalNum} haveModalNum={haveModalNum} wantModalNum={wantModalNum} />
               {/* 여기는 type form */}
-              <ErcForm typeTrans={typeTrans} type={`${
-typeTrans == 1 
-? haveModalNum
-: wantModalNum
+              <ErcForm typeTrans={typeTrans} type={`${typeTrans == 1
+                ? haveModalNum
+                : wantModalNum
 
-}`} axis={axis} setErc20Amount={setErc20Amount} setErc721Id={setErc721Id} setErcContract={setErcContract} />
+                }`} axis={axis} setErc20Amount={setErc20Amount} setErc721Id={setErc721Id} setErcContract={setErcContract} />
 
 
               {/* 여기는 button */}
@@ -325,7 +323,6 @@ typeTrans == 1
               </div>
             </div>
           </div>
-
         </div>
       </Layout>
     </>

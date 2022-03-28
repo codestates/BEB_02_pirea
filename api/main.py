@@ -20,6 +20,7 @@ origins = [
     "http://localhost.tiangolo.com",
     "https://localhost.tiangolo.com",
     "http://192.168.0.3:3000",
+    "http://192.168.0.1:3000",
     "http:/192.168.0.3:8000",
 ]
 

@@ -10,6 +10,7 @@ import axios from "axios";
 import Web3Token from "web3-token";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
+import { useRouter } from 'next/router'
 
 //? darkMode1
 // const StyledApp = styled.div`
@@ -23,10 +24,20 @@ export default function Content_header() {
   //? 현재상태와 테마 상태가 일치하도록 만들어주기
   const [mounted, setMounted] = useState(false);
   const { systemTheme, theme, setTheme } = useTheme();
+  const router = useRouter();
+
+
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  const searchBarKeyDown = (e) => {
+    if (e.key == "Enter") {
+      console.log(e.target.value);
+      router.push(`/load?swap_code=${e.target.value}`)
+    }
+  }
 
   const renderThemeChanger = () => {
     if (!mounted) return null;
@@ -42,8 +53,7 @@ export default function Content_header() {
   useEffect(() => {
     setAccount(window.localStorage.getItem("account"));
   }, []);
-  const functionThatReturnPromise = () =>
-    new Promise((resolve) => setTimeout(resolve, 3000));
+
 
   const login = async () => {
     const id = toast.loading("Login ....");
@@ -112,6 +122,8 @@ export default function Content_header() {
     Router.reload();
   };
 
+
+
   // const themeToggler = () => {
   //   theme === "light" ? setTheme("dark") : setTheme("light");
   // };
@@ -136,7 +148,8 @@ export default function Content_header() {
         <div className={c_content_styles.content_header_input}>
           <input
             className={c_content_styles.content_header_input_wright}
-            placeholder="Search"
+            placeholder="swap code search"
+            onKeyDown={searchBarKeyDown}
           ></input>
           <Icon
             icon="bx:search-alt"
@@ -166,7 +179,7 @@ export default function Content_header() {
           >
             <div>
               <Avatar
-                style={{ width: "3vw", height: "6vh" }}
+                style={{ width: "3vw", height: "4vh" }}
                 className={c_content_styles.header_profile_login_avatar}
               />
             </div>
