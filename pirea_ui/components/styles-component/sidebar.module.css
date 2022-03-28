@@ -61,6 +61,9 @@
   padding-left: 1vw;
 }
 
+.sidebar_div_active > div > a {
+  color: #fff;
+}
 .sidebar_div_deactive > div > svg {
   color: #087592;
   padding-left: 1vw;
@@ -72,8 +75,26 @@
   text-align: center;
   justify-content: center;
 }
+
+.sidebar_div_text > a{
+  text-decoration: none;
+  color: black;
+
+}
+
+.sidebar_div_text > a:hover{
+  text-decoration: none;
+}
+
+.sidebar_div_text > a:active{
+  text-decoration: none;
+}
+
+
 .sidebar_link_a {
   font-size: 1rem;
+  color: #000000;
+
 }
 .sidebar_footer {
   flex-grow: 1;
