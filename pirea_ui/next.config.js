@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-  reactStrictMode: true,
+  // reactStrictMode: true,
   webpack: config => {
     // 아래를 추가합니다.
     config.module.rules.push({
