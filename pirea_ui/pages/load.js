@@ -15,22 +15,22 @@ export default function Load() {
 
 
   useEffect(() => {
-
-    axios.get(url, {
-      params: {
-        swapcode: swap_code
-      }
-    }).then((res) => {
-      setData(res.data)
-      setLoading(false)
-    });
+    try {
+      axios.get(url, {
+        params: {
+          swapcode: swap_code
+        }
+      }).then((res) => {
+        setData(res.data)
+        setLoading(false)
+      });
+    } catch (e) {
+      console.log(e);
+    }
   }, [])
-
 
   if (loading || !data) return <div> Loading.. </div>
   console.log(data);
-
-
 
   return (
     <>
