@@ -4,9 +4,7 @@ import Logo from "../assets/Logo_img.svg";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-function heelo() {
-  console.log("hello");
-}
+
 // TODO: 반응형 웹
 export default function Sidebar() {
   const router = useRouter();
@@ -15,12 +13,16 @@ export default function Sidebar() {
     <>
       <div className={sidebar_styles.main_sidebar}>
         <div className={sidebar_styles.sidebar_header}>
-          <div className={sidebar_styles.sidebar_header_logo}>
-            <Logo className={sidebar_styles.sidebar_header_logo_pro} />
-          </div>
-          <Link href="/">
-            <div className={sidebar_styles.sidebar_header_text}>Pirea</div>
-          </Link>
+            <div className={sidebar_styles.sidebar_header_logo}>
+              <Logo className={sidebar_styles.sidebar_header_logo_pro} />
+            </div>
+            <div className={sidebar_styles.sidebar_header_text}>
+              <Link href="/">
+                <div>
+                  Pirea
+                </div>
+              </Link>
+            </div>
         </div>
 
         <div className={sidebar_styles.sidebar_content_link}>
@@ -63,7 +65,7 @@ export default function Sidebar() {
             </div>
           </Link>
           <Link href="/assets">
-            <div onClick={heelo} className={sidebar_styles.sidebar_div_main}>
+            <div className={sidebar_styles.sidebar_div_main}>
               <div
                 className={`
               ${router.pathname === "/assets"
@@ -76,7 +78,7 @@ export default function Sidebar() {
                   <Icon icon="fluent:wallet-24-regular" />
                 </div>
                 <div className={sidebar_styles.sidebar_div_text}>
-                  <a className={sidebar_styles.sidebar_link_a}>My Assets</a>
+                  <a className={sidebar_styles.sidebar_link_a}>Assets</a>
                 </div>
               </div>
             </div>
@@ -100,11 +102,11 @@ export default function Sidebar() {
               </div>
             </div>
           </Link>
-          <Link href="/load_swap">
+          <Link href="/load">
             <div className={sidebar_styles.sidebar_div_main}>
               <div
                 className={`
-              ${router.pathname === "/load_swap"
+              ${router.pathname === "/load"
                     ? sidebar_styles.sidebar_div_active
                     : sidebar_styles.sidebar_div_deactive
                   }
@@ -114,7 +116,7 @@ export default function Sidebar() {
                   <Icon icon="ant-design:swap-outlined" />
                 </div>
                 <div className={sidebar_styles.sidebar_div_text}>
-                  <a className={sidebar_styles.sidebar_link_a}>Load Swap</a>
+                  <a className={sidebar_styles.sidebar_link_a}>Load</a>
                 </div>
               </div>
             </div>
@@ -133,7 +135,7 @@ export default function Sidebar() {
                   <Icon icon="fluent:cloud-swap-20-regular" />
                 </div>
                 <div className={sidebar_styles.sidebar_div_text}>
-                  <a className={sidebar_styles.sidebar_link_a}>All Swap</a>
+                  <a className={sidebar_styles.sidebar_link_a}>All_swap</a>
                 </div>
               </div>
             </div>

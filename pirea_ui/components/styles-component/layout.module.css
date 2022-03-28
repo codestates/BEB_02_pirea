@@ -1,5 +1,6 @@
 .main_layout {
   height: 100%;
+  width: 100%;
   display: flex;
   align-self: stretch;
 }
@@ -7,12 +8,14 @@
 .main_sidebar {
   width: 20%;
   border-right: 1.2px solid #f1f6fc;
+  height: 100%;
 }
 
 .main_content {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  width: 80%;
 }
 
 .main_content_header {
