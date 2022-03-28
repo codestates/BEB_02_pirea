@@ -3,6 +3,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gamja+Flower&family=Poppins&family=Press+Start+2P&family=Roboto+Mono:wght@400;500&family=Sunflower:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gamja+Flower&family=Pacifico&family=Patrick+Hand&family=Poppins&family=Press+Start+2P&family=Raleway:wght@600&family=Roboto+Mono:wght@400;500&family=Satisfy&family=Sunflower:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gamja+Flower&family=Poppins&family=Press+Start+2P&family=Raleway:wght@600&family=Roboto+Mono:wght@400;500&family=Sunflower:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Roboto+Mono&display=swap");
 
 .global_main {
   font-family: "Roboto Mono", monospace;
@@ -125,9 +126,7 @@
 
 .main_image_container {
   width: 50vw;
-
   margin-bottom: 5vh;
-
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -139,14 +138,13 @@
 }
 
 .main_section1 {
-  background-color: #1d223f;
+  background-color: #272727;
   height: 100%;
 }
 
-.main_section2_container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.main_landImg {
+  width: 65vh;
+  margin-bottom: 5vh;
 }
 
 .main_section1_card {
@@ -155,18 +153,22 @@
   background-color: yellowgreen;
 }
 
-.main_section3 {
-  background-color: #050a25;
-  color: bisque;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.main_feat {
+  /* background-image: url(".././assets/info_1.jpg"); */
+  width: 100px;
+  height: 100px;
 }
 
-.main_landImg {
-  width: 65vh;
-  margin-bottom: 5vh;
+.main_section1_container {
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  min-height: 100vh;
+  padding: 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .main_buyland {
@@ -179,6 +181,15 @@
 .main_buyland_sub {
   font-size: 3vh;
   color: rgb(204, 204, 204);
+}
+
+.main_section3 {
+  background-color: #272727;
+  color: bisque;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .avatar {

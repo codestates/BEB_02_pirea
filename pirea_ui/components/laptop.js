@@ -8,6 +8,8 @@ import { a as web } from "@react-spring/web";
 import laptopStyles from "./styles-component/laptop.module.css";
 import { Navbar } from "../components/navbar";
 import { motion } from "framer-motion";
+import View from "./laptop_view";
+
 // import flbfile from "../public/mac-draco.glb"
 import InnerLaptop from "./innerLaptop"
 
@@ -70,9 +72,20 @@ function Model({ open, hinge, ...props }) {
             material={materials["matte.001"]}
             geometry={nodes["Cube008_1"].geometry}
           />
-          <Html rotation-x={-Math.PI / 2} position={[0, 0.05, -0.09]} className={`${open ? null : laptopStyles.laptop_test}`} transform occlude>
-            <InnerLaptop />
-          </Html>
+          <mesh geometry={nodes["Cube008_2"].geometry}>
+            <Html
+              className="content"
+              rotation-x={-Math.PI / 2}
+              position={[0, 0.05, -0.09]}
+              transform
+              occlude
+            >
+              <div className="wrapper"></div>
+              <div className={laptopStyles.view_container}>
+                <div className={laptopStyles.view_title}>Welcome to Pirea</div>
+              </div>
+            </Html>
+          </mesh>
         </group>
       </three.group>
       <mesh
@@ -107,7 +120,7 @@ export default function Laptop() {
   return (
     <web.main
       className={laptopStyles.laptop_main}
-      style={{ background: props.open.to([0, 1], ["#f0f0f0", "#d25578"]) }}
+      style={{ background: props.open.to([0, 1], ["#f0f0f0", "#2a93d4"]) }}
     >
       <Navbar />
       <web.h1
@@ -119,18 +132,13 @@ export default function Laptop() {
         }}
       >
         <motion.div
-          initial="pageInitial"
-          animate="pageAnimate"
-          variants={{
-            pageInitial: {
-              opacity: 0,
-            },
-            pageAnimate: {
-              opacity: 1,
-            },
+          className={laptopStyles.laptop_title}
+          animate={{
+            color: "#000000",
+            fontSize: 300,
           }}
         >
-          <div className={laptopStyles.laptop_title}>hello</div>
+          hello
         </motion.div>
       </web.h1>
 

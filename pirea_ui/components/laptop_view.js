@@ -2,9 +2,9 @@ import Link from "next/link";
 import Head from "next/head";
 import reactDom from "react-dom";
 import { motion, useMotionValue, useViewportScroll } from "framer-motion";
-import mainStyles from "./styles/main.module.css";
+import mainStyles from "../pages/styles/main.module.css";
 import { Color } from "three";
-import { Navbar } from "../components/navbar";
+import { Navbar } from "./navbar";
 
 import {
   Animator,
@@ -32,45 +32,8 @@ const Chart = dynamic(()=> import('react-apexcharts'), {
 }) */
 
 export default function Main() {
-  if (typeof window === 'undefined') {
-    return (
-      <>
-      </>
-    );
-  }
-
   return (
     <>
-      <Head>
-        <title>Pirea</title>
-      </Head>
-
-      {/* <div className={mainStyles.main_go_mainpage}>
-        <motion.div
-          whileHover={{
-            scale: 1.2,
-            transition: {
-              duration: 0.2,
-            },
-          }}
-        >
-          <Link href="/">Home</Link>
-        </motion.div>
-      </div>
-
-      <div className={mainStyles.main_go_map}>
-        <motion.div
-          whileHover={{
-            scale: 1.2,
-            transition: {
-              duration: 0.2,
-            },
-          }}
-        >
-          <Link href="/dashboard">map</Link>
-        </motion.div>
-      </div> */}
-
       {/* //? 여기다하면되겠다 */}
       <div className={mainStyles.main_bg}>
         <Navbar />
@@ -152,40 +115,6 @@ export default function Main() {
               </ScrollPage>
             </div>
           </div>
-          <ScrollPage page={1}>
-            <div className={mainStyles.main_section1}>
-              <Animator>
-                <div className={mainStyles.main_section1_container}>
-                  <div className={mainStyles.main_buyland}>WITH PIREA</div>
-                  <div>
-                    <div className={mainStyles.main_feat}></div>
-                  </div>
-                </div>
-              </Animator>
-              {/* <Animator animation={BuyLand2}>
-                
-              </Animator> */}
-            </div>
-          </ScrollPage>
-
-          {/* <ScrollPage page={2}>
-            <Animator animation={Swap}>
-              <div className={mainStyles.main_buyland}>Swap</div>
-            </Animator>
-          </ScrollPage> */}
-
-          <ScrollPage page={2}>
-            <div className={mainStyles.main_section3}>
-              <Animator animation={Swap}>
-                <div className={mainStyles.main_buyland}> TEAM MEMBERS</div>
-              </Animator>
-
-              <li className={mainStyles.avatar}></li>
-              <li className={mainStyles.avatar}></li>
-              <li className={mainStyles.avatar}></li>
-              <li className={mainStyles.avatar}></li>
-            </div>
-          </ScrollPage>
         </ScrollContainer>
       </div>
     </>

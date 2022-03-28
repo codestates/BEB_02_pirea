@@ -40,3 +40,7 @@ font-family: 'Patrick Hand', cursive;
 
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gamja+Flower&family=Pacifico&family=Patrick+Hand&family=Poppins&family=Press+Start+2P&family=Raleway:wght@600&family=Roboto+Mono:wght@400;500&family=Satisfy&family=Sunflower:wght@500&display=swap');
 font-family: 'Satisfy', cursive;
+
+
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Roboto+Mono&display=swap');
+font-family: 'Roboto Mono', monospace;
