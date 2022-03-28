@@ -1,6 +1,6 @@
 import swapStyles from "../pages/styles/swap.module.css"
 
-export default function ErcForm({ type, axis, setErc20Amount, setErc721Id, setErcContract }) {
+export default function ErcForm({typeTrans, type, axis, setErc20Amount, setErc721Id, setErcContract }) {
 
 
   if (type == 1) {

@@ -1,4 +1,4 @@
-// import "../styles/global.css";
+import "../styles/global.css";
 import { ThemeProvider } from "next-themes";
 import { motion } from "framer-motion";
 
@@ -12,9 +12,9 @@ function getLibrary(provider) {
 }
 
 export default function MyApp({ Component, pageProps, router }) {
+   if (typeof window === 'undefined') return (<>loading </>);
   return (
     <>
-      {/*//? 색상 테마 감지, 현재 테마 저장 */}
       <motion.div
         key={router.route}
         initial="pageInitial"
@@ -34,7 +34,6 @@ export default function MyApp({ Component, pageProps, router }) {
             <Component {...pageProps} />
           </ThemeProvider>
         </Web3ReactProvider>
-
       </motion.div>
     </>
   );

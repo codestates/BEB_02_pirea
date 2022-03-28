@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gamja+Flower&family=Pacifico&family=Poppins&family=Press+Start+2P&family=Raleway:wght@600&family=Roboto+Mono:wght@400;500&family=Sunflower:wght@500&display=swap");
+
+.laptop_main {
+  height: 100%;
+  width: 100%;
+}
+
+.laptop_title {
+  font-size: 100px;
+  font-family: "Pacifico", cursive;
+  font-weight: lighter;
+  letter-spacing: 3px;
+  background: linear-gradient(to top, #bbded6, #8ac6d1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
