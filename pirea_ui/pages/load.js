@@ -1,61 +1,36 @@
 import Layout from "../components/layout";
+import loadSwapHave from "../components/loadSwapHave"
 import commonStyles from "./styles/common.module.css"
 import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 import axios from "axios";
-import useSWR from "swr";
 
 export default function Load() {
-  const router = useRouter()
-  const { swap_code } = router.query
 
-  if (swap_code === undefined) {
-    return (
-      <>
-        <Layout>
-          <div className={commonStyles.common_main}>
-            input Search code
-          </div>
-        </Layout>
-      </>
-    )
-  }
+  const url = 'http://www.pirea.kro.kr/api/v0.1/swap/get';
+  const [data, setData] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+  const { swap_code } = router.query;
 
 
-  const address = `http://www.pirea.kro.kr/api/v0.1/swap/get`;
-  const fetcher = async (url) => await axios.get(url, {
-    params: {
-      swapcode: swap_code
-    }
-  }).then((res) => res.data);
+  useEffect(() => {
 
-  const { data, error } = useSWR(address, fetcher);
+    axios.get(url, {
+      params: {
+        swapcode: swap_code
+      }
+    }).then((res) => {
+      setData(res.data)
+      setLoading(false)
+    });
+  }, [])
 
 
+  if (loading || !data) return <div> Loading.. </div>
+  console.log(data);
 
 
-  if (error) {
-    return (
-      <>
-        <Layout>
-          <div className={commonStyles.common_main}>
-            failed
-          </div>
-        </Layout>
-      </>
-    )
-  }
-
-  if (!data) {
-    return (
-      <>
-        <Layout>
-          <div className={commonStyles.common_main}>
-            Loading
-          </div>
-        </Layout>
-      </>
-    )
-  }
 
   return (
     <>

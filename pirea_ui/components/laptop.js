@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import React, { Suspense, useEffect, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Environment, useGLTF, ContactShadows } from "@react-three/drei";
+import { Html, Environment, useGLTF, ContactShadows } from "@react-three/drei";
 import { useSpring } from "@react-spring/core";
 import { a as three } from "@react-spring/three";
 import { a as web } from "@react-spring/web";
@@ -9,6 +9,7 @@ import laptopStyles from "./styles-component/laptop.module.css";
 import { Navbar } from "../components/navbar";
 import { motion } from "framer-motion";
 // import flbfile from "../public/mac-draco.glb"
+import InnerLaptop from "./innerLaptop"
 
 const vec = new THREE.Vector3();
 
@@ -68,10 +69,10 @@ function Model({ open, hinge, ...props }) {
             material={materials["matte.001"]}
             geometry={nodes["Cube008_1"].geometry}
           />
-          <mesh
-            material={materials["screen.001"]}
-            geometry={nodes["Cube008_2"].geometry}
-          />
+          <Html rotation-x={-Math.PI / 2} position={[0, 0.05, -0.09]} transform occlude>
+            <InnerLaptop />
+
+          </Html>
         </group>
       </three.group>
       <mesh
