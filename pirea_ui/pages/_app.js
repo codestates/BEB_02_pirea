@@ -11,9 +11,8 @@ function getLibrary(provider) {
   const library = new Web3Provider(provider, "any");
   return library;
 }
-
 export default function MyApp({ Component, pageProps, router }) {
-  if (typeof window === 'undefined') return (<> <div> loading </div> </>);
+
   return (
     <>
       {/* <motion.div
