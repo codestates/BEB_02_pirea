@@ -6,7 +6,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Roboto+Mono&display=swap");
 
 .global_main {
-  font-family: "Roboto Mono", monospace;
+  /* font-family: "Roboto Mono", monospace; */
   height: 100%;
 }
 
@@ -55,6 +55,17 @@
   }
 }
 
+.forest {
+  background-image: url("../assets/main_forest.png");
+  /* position: absolute; */
+  bottom: 0;
+  min-width: 100vw;
+  max-height: 100vh;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .main_layout_scroll {
   margin: 0;
   padding: 0;
@@ -65,11 +76,11 @@
 }
 
 .main_title_section0 {
-  font-size: 10vh;
+  font-size: 12vh;
   color: rgb(204, 204, 204);
   font-family: "Poppins", sans-serif;
   /* margin-bottom: 5vh; */
-  letter-spacing: -1vh;
+  letter-spacing: -5vh;
   background: linear-gradient(to top, #6392e9, #fff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -81,7 +92,7 @@
 .main_title_section0_sub {
   /* white-space: pre-line; */
   font-size: 2.5vh;
-  color: white;
+  color: rgb(219, 235, 255);
   font-family: "Poppins", sans-serif;
   /* text-align: center; */
   /* margin-bottom: 1px; */

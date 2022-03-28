@@ -122,9 +122,20 @@ export default function Laptop() {
       >
         <motion.div
           className={laptopStyles.laptop_title}
-          animate={{
-            color: "#000000",
-            fontSize: 300,
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: {
+              scale: 1,
+              opacity: 0,
+            },
+            visible: {
+              scale: 1.3,
+              opacity: 1,
+              transition: {
+                delay: 1,
+              },
+            },
           }}
         >
           hello

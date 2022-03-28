@@ -32,11 +32,8 @@ const Chart = dynamic(()=> import('react-apexcharts'), {
 }) */
 
 export default function Main() {
-  if (typeof window === 'undefined') {
-    return (
-      <>
-      </>
-    );
+  if (typeof window === "undefined") {
+    return <></>;
   }
 
   return (
@@ -77,79 +74,81 @@ export default function Main() {
 
         <ScrollContainer>
           <div className={mainStyles.sky}>
-            <div className={mainStyles.global_main}>
-              <ScrollPage page={0}>
-                <Animator
-                  animation={batch(Sticky(30, 40), Fade(), MoveOut(0, -500))}
-                >
-                  <div className={mainStyles.global_main_support}>
-                    <motion.div
-                      initial="hidden"
-                      animate="visible"
-                      variants={{
-                        hidden: {
-                          scale: 1,
-                          opacity: 0,
-                        },
-                        visible: {
-                          scale: 1,
-                          opacity: 1,
-                          transition: {
-                            delay: 1,
+            <div className={mainStyles.forest}>
+              <div className={mainStyles.global_main}>
+                <ScrollPage page={0}>
+                  <Animator
+                    animation={batch(Sticky(30, 40), Fade(), MoveOut(0, -500))}
+                  >
+                    <div className={mainStyles.global_main_support}>
+                      <motion.div
+                        initial="hidden"
+                        animate="visible"
+                        variants={{
+                          hidden: {
+                            scale: 1,
+                            opacity: 0,
                           },
-                        },
-                      }}
-                    >
-                      <div className={mainStyles.main_title_section0_sub}>
-                        <div>Welcome to</div>
-                      </div>
-                    </motion.div>
-                    <motion.div
-                      initial="hidden"
-                      animate="visible"
-                      style={{ height: "100%" }}
-                      variants={{
-                        hidden: {
-                          scale: 1,
-                          opacity: 0,
-                        },
-                        visible: {
-                          scale: 1,
-                          opacity: 1,
-                          transition: {
-                            delay: 0.6,
+                          visible: {
+                            scale: 1,
+                            opacity: 1,
+                            transition: {
+                              delay: 1,
+                            },
                           },
-                        },
-                      }}
-                    >
-                      <div className={mainStyles.main_title_section0}>
-                        Pirea - World
-                      </div>
-                    </motion.div>
-                    <motion.div
-                      initial="hidden"
-                      animate="visible"
-                      variants={{
-                        hidden: {
-                          scale: 1,
-                          opacity: 0,
-                        },
-                        visible: {
-                          scale: 1,
-                          opacity: 1,
-                          transition: {
-                            delay: 1,
+                        }}
+                      >
+                        <div className={mainStyles.main_title_section0_sub}>
+                          Welcome to
+                        </div>
+                      </motion.div>
+                      <motion.div
+                        initial="hidden"
+                        animate="visible"
+                        style={{ height: "100%" }}
+                        variants={{
+                          hidden: {
+                            scale: 1,
+                            opacity: 0,
                           },
-                        },
-                      }}
-                    >
-                      <div className={mainStyles.main_title_section0_sub}>
-                        <div>Another Republic of Korea.</div>
-                      </div>
-                    </motion.div>
-                  </div>
-                </Animator>
-              </ScrollPage>
+                          visible: {
+                            scale: 1,
+                            opacity: 1,
+                            transition: {
+                              delay: 0.6,
+                            },
+                          },
+                        }}
+                      >
+                        <div className={mainStyles.main_title_section0}>
+                          Pirea - World
+                        </div>
+                      </motion.div>
+                      <motion.div
+                        initial="hidden"
+                        animate="visible"
+                        variants={{
+                          hidden: {
+                            scale: 1,
+                            opacity: 0,
+                          },
+                          visible: {
+                            scale: 1,
+                            opacity: 1,
+                            transition: {
+                              delay: 1,
+                            },
+                          },
+                        }}
+                      >
+                        <div className={mainStyles.main_title_section0_sub}>
+                          Another Republic of Korea.
+                        </div>
+                      </motion.div>
+                    </div>
+                  </Animator>
+                </ScrollPage>
+              </div>
             </div>
           </div>
           <ScrollPage page={1}>
