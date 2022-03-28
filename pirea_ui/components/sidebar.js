@@ -38,7 +38,7 @@ export default function Sidebar() {
                   <Icon icon="ic:twotone-space-dashboard" />
                 </div>
                 <div className={sidebar_styles.sidebar_div_text}>
-                  <a>Dashboard</a>
+                  <a className={sidebar_styles.sidebar_link_a}>Dashboard</a>
                 </div>
               </div>
             </div>
@@ -57,7 +57,7 @@ export default function Sidebar() {
                   <Icon icon="carbon:text-link-analysis" />
                 </div>
                 <div className={sidebar_styles.sidebar_div_text}>
-                  <a>Analytics</a>
+                  <a className={sidebar_styles.sidebar_link_a}>Analytics</a>
                 </div>
               </div>
             </div>
@@ -76,7 +76,7 @@ export default function Sidebar() {
                   <Icon icon="fluent:wallet-24-regular" />
                 </div>
                 <div className={sidebar_styles.sidebar_div_text}>
-                  <a>My Assets</a>
+                  <a className={sidebar_styles.sidebar_link_a}>My Assets</a>
                 </div>
               </div>
             </div>
@@ -95,7 +95,7 @@ export default function Sidebar() {
                   <Icon icon="ant-design:swap-outlined" />
                 </div>
                 <div className={sidebar_styles.sidebar_div_text}>
-                  <a>Swap</a>
+                  <a className={sidebar_styles.sidebar_link_a}>Swap</a>
                 </div>
               </div>
             </div>
@@ -114,7 +114,7 @@ export default function Sidebar() {
                   <Icon icon="ant-design:swap-outlined" />
                 </div>
                 <div className={sidebar_styles.sidebar_div_text}>
-                  <a>Load Swap</a>
+                  <a className={sidebar_styles.sidebar_link_a}>Load Swap</a>
                 </div>
               </div>
             </div>
@@ -133,7 +133,7 @@ export default function Sidebar() {
                   <Icon icon="fluent:cloud-swap-20-regular" />
                 </div>
                 <div className={sidebar_styles.sidebar_div_text}>
-                  <a>All Swap</a>
+                  <a className={sidebar_styles.sidebar_link_a}>All Swap</a>
                 </div>
               </div>
             </div>

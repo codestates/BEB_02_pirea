@@ -22,6 +22,8 @@
   margin-left: 2vh;
 }
 
+
+
 .sidebar_content_link {
   flex-grow: 8;
   display: flex;
@@ -60,9 +62,14 @@
 }
 
 .sidebar_div_text {
-  padding-left: 2.5vw;
+  padding-left: 1vw;
+  display: flex;
+  text-align: center;
+  justify-content: center;
 }
-
+.sidebar_link_a {
+  font-size: 1rem;
+}
 .sidebar_footer {
   flex-grow: 1;
 }
