@@ -181,9 +181,11 @@ export default function Dashboard() {
               </div>
               <div className={dashStyles.dashboard_none_profile_axis_main}>
                 <div className={dashStyles.dashboard_none_profile_axis_x}>
-                  x:
+                  x: {axis['x']}
                 </div>
-                <div>y:</div>
+                <div>
+                  y: {axis['y']}
+                </div>
               </div>
               <div className={dashStyles.dashboard_none_profile_input_des_main}>
                 <div
