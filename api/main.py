@@ -9,6 +9,9 @@ from routers import user, analytics, swap, nft_token
 from fastapi.middleware.cors import CORSMiddleware
 
 
+# TODO: API 받아서, ABI 받아오고 TOKEN URL 받아오기.
+# TODO: JSON API SECRET FILE 만들기...
+
 Base.metadata.create_all(engine)
 
 app = FastAPI(
