@@ -296,7 +296,6 @@ export default function swap() {
                 : wantModalNum
                 }`} axis={axis} setErc20Amount={setErc20Amount} setErc721Id={setErc721Id} setErcContract={setErcContract} />
 
-
               {/* 여기는 button */}
               <div className={swapStyles.swap_right_button_main}>
                 <div className={swapStyles.swap_right_button_div} onClick={inputHaveClick}>

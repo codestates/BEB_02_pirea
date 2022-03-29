@@ -35,3 +35,4 @@ def get_swapcode_recent_all(db: Session, more: int):
     sign_code_all = db.query(SwapSign).filter(maxNum >= SwapSign.id, SwapSign.id >= minNum).all()
 
     return sign_code_all
+
