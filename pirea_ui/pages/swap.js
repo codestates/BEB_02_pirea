@@ -97,7 +97,7 @@ export default function swap() {
     if (typeTrans == 1) {
       setTMPHave({
         type: haveModalNum,
-        address: "0x59A7d1eE47aF7273CF226b587C1ACdb4aB2Ec1a0",
+        address: ercContract,
         tokenId: erc721Id,
         amount: erc20Amount
       });
@@ -105,7 +105,7 @@ export default function swap() {
     } else {
       setTMPWant({
         type: wantModalNum,
-        address: "0x59A7d1eE47aF7273CF226b587C1ACdb4aB2Ec1a0",
+        address: ercContract,
         tokenId: erc721Id,
         amount: erc20Amount
       });
@@ -171,7 +171,7 @@ export default function swap() {
       )
 
       const signedOrder = await swapSdk.signOrder(order, window.localStorage.getItem("account"))
-      const response = await axios.post("http://www.pirea.kro.kr/api/v0.1/swap/create", {
+      const response = await axios.post("http://192.168.0.3:8000/api/v0.1/swap/create", {
         order: signedOrder,
         address: window.localStorage.getItem("account"),
         haveForm: haveForm,
