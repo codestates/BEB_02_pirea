@@ -8,11 +8,9 @@ import { a as web } from "@react-spring/web";
 import laptopStyles from "./styles-component/laptop.module.css";
 import { Navbar } from "../components/navbar";
 import { motion } from "framer-motion";
-import View from "./laptop_view";
 
 // import flbfile from "../public/mac-draco.glb"
-import InnerLaptop from "./innerLaptop"
-
+import InnerLaptop from "./innerLaptop";
 
 const vec = new THREE.Vector3();
 
@@ -72,7 +70,13 @@ function Model({ open, hinge, ...props }) {
             material={materials["matte.001"]}
             geometry={nodes["Cube008_1"].geometry}
           />
-          <Html rotation-x={-Math.PI / 2} position={[0, 0.05, -0.09]} className={`${open ? null : laptopStyles.laptop_test}`} transform occlude>
+          <Html
+            rotation-x={-Math.PI / 2}
+            position={[0, 0.05, -0.09]}
+            className={`${open ? null : laptopStyles.laptop_test}`}
+            transform
+            occlude
+          >
             <InnerLaptop />
           </Html>
         </group>
@@ -106,6 +110,14 @@ export default function Laptop() {
   const [open, setOpen] = useState(false);
   // We turn this into a spring animation that interpolates between 0 and 1
   const props = useSpring({ open: Number(open) });
+
+  // const sayHello = ({}) => {
+  //   const [hello, sethello] = useState(true);
+  //   setTimeout(() => {
+  //     sethello(false);
+  //   }, 4000);
+  // };
+
   return (
     <web.main
       className={laptopStyles.laptop_main}
@@ -146,7 +158,7 @@ export default function Laptop() {
         <three.pointLight
           position={[10, 10, 10]}
           intensity={1.5}
-          color={props.open.to([0, 1], ["#f0f0f0", "#ffffff"])}
+          color={props.open.to([0, 1], ["#f0f0f0", "#2a93d4"])}
         />
         <Suspense fallback={null}>
           <group
