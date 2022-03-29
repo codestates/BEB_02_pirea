@@ -38,8 +38,23 @@
     
   </div>
 </div>
+
+# :wrench: RoadMap & MileSton
+
+<div align="center">
   
+  ***Click!*** here to view our team's roadmap, milestones and figma <div></div>
+  :point_down::point_down::point_down:
+  
+  [Road Map]() <div></div>
+  [Mile Stone](https://www.notion.so/4add8d561e05403bbaa1f8d2b4e922f2?v=7127d824c7d84cf0b0507b3a23392e28) <div></div>
+  [figma](https://www.figma.com/file/1PocJDvNJANyKxL8cMzof4/LAND-NFT?node-id=0%3A1)
+  
+</div>
+
 # :bulb: Getting Started
+
+
 
 ```bash
 
@@ -87,4 +102,5 @@ Please click the our :point_right: [wiki](https://github.com/codestates/BEB_02_p
   
   ***If you want*** : :point_right: [Team Details](https://github.com/codestates/BEB_02_pirea/wiki/Members) :point_left:
   
- 
+# :key: License
+content
