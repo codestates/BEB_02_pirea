@@ -26,18 +26,20 @@
 또한 자신이 가진 NFT(ERC-721)를 다른 사람과 NFT(ERC-721) 나 Token(ERC-21)과 스왑 할 수 있으며                 
 자신이 가진 땅을 여행할 수 있는 기능 또한 구현할 예정입니다.  
   
-  <div></div>
+<div></div>
     
 ***Pirea 프로젝트는 위 모든 것이 가능한 NFT 기반의 부동산 플랫폼입니다!***
   
-  
+  <div align="right">
 
-  
-  [READEME - English version]()
-  
+  [READEME - English version]() <div></div>
+   [View Demo](https://github.com/codestates/BEB_02_pirea/wiki/Output) <div></div>
+  [Report Bug & Request Feature](https://github.com/codestates/BEB_02_pirea/issues)
+    
+  </div>
 </div>
   
-# Getting Started
+# :bulb: Getting Started
 
 ```bash
 
@@ -48,26 +50,41 @@ npm run dev
 open http://localhost:3000/dashboard
 
 ```
-# Documentation
+# :page_facing_up: Documentation
 
-|제목|내용|
+|Audience|Link|
 |---|:---:|
-|||
-|||
-|||
+|Project Goals|https://github.com/codestates/BEB_02_pirea/wiki/Goals|
+|Configuration|https://github.com/codestates/BEB_02_pirea/wiki/Configuration|
+|UI design|https://github.com/codestates/BEB_02_pirea/wiki/UI-design|
+|DFD|https://github.com/codestates/BEB_02_pirea/wiki/DFD|
+|DB Schema &nbsp|https://github.com/codestates/BEB_02_pirea/wiki/DB-Schema|
+|Output|https://github.com/codestates/BEB_02_pirea/wiki/Output|
 
-# :question: Looking for more Pirea details :question:
-   Please click the our [wiki](https://github.com/codestates/BEB_02_pirea/wiki) :point_left:
+# :thumbsup: Contributing
+Contributions are what make this open source project such an amazing thing to be learn, inspire, and create. Any contributions you make are greatly appreciated.
+
+1. Fork the Project
+2. Create your Feature Branch (git checkout -b dev/AwesomeFeature)
+3. Commit your Changes (git commit -m 'Add some AwesomeFeature')
+4. Push to the Branch (git push origin dev/AwesomeFeature)
+5. Open a Pull Request
+
+# :mag_right: Looking for more Pirea details 
+Please click the our :point_right: [wiki](https://github.com/codestates/BEB_02_pirea/wiki) :point_left:
   
   
-# Team Contact
-  ***If you want*** : [Team Details](https://github.com/codestates/BEB_02_pirea/wiki/Members) :point_left:
-  <div>
+# :busts_in_silhouette: Team Contact
+
+  <div></div>
   
   tetgo :  [Git](https://github.com/tetgo), [Blog]()                                      
   Kawasaki-JY : [Git](https://github.com/Kawasaki-JY), [Blog]()                                        
   idoasisay : [Git](https://github.com/idoasisay), [Blog]()                                           
   NonamedBread : [Git](https://github.com/NonamedBread), [Blog](https://velog.io/@rbghks2102)                                            
   
+  <div></div>
+  
+  ***If you want*** : :point_right: [Team Details](https://github.com/codestates/BEB_02_pirea/wiki/Members) :point_left:
   
  
