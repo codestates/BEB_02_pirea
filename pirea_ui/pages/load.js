@@ -41,7 +41,7 @@ export default function Load() {
       <>
         <Layout>
           <div className={commonStyles.common_main}>
-            input swap code
+            input Search code
           </div>
         </Layout>
       </>

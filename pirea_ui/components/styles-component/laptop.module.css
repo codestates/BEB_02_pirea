@@ -5,7 +5,7 @@
   width: 100%;
 }
 
-.laptop_title {
+/* .laptop_title {
   font-size: 100px;
   font-family: "Pacifico", cursive;
   font-weight: lighter;
@@ -13,6 +13,37 @@
   background: linear-gradient(to top, #bbded6, #8ac6d1);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+} */
+
+.laptop_title {
+  font-size: 100px;
+  font-family: "Pacifico", cursive;
+  font-weight: lighter;
+  letter-spacing: 3px;
+  color: #fff;
+  background: linear-gradient(90deg, #ffb6b9, #fae3d9, #bbded6, #8ac6d1);
+  background-size: 400% 400%;
+  animation: backgroundChange 10s ease-in-out infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 20px;
+}
+
+@keyframes backgroundChange {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.view_title {
+  font-family: "Pacifico", cursive;
+  color: #000;
 }
 .laptop_test {
   display: none;
