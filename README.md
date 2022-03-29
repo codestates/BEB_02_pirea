@@ -32,8 +32,10 @@
   
   <div align="right">
 
-  [READEME - English version]() <div></div>
-   [View Demo](https://github.com/codestates/BEB_02_pirea/wiki/Output) <div></div>
+  [READEME - 한국어 버전](https://github.com/codestates/BEB_02_pirea/blob/main/README_ko.md) <div></div>
+    
+  [View Demo](https://github.com/codestates/BEB_02_pirea/wiki/Output) <div></div>
+    
   [Report Bug & Request Feature](https://github.com/codestates/BEB_02_pirea/issues)
     
   </div>
@@ -46,7 +48,7 @@
   ***Click!*** here to view our team's roadmap, milestones and figma <div></div>
   :point_down::point_down::point_down:
   
-  [Road Map]() <div></div>
+  [Road Map](https://github.com/codestates/BEB_02_pirea/wiki/Roadmap) <div></div>
   [Mile Stone](https://www.notion.so/4add8d561e05403bbaa1f8d2b4e922f2?v=7127d824c7d84cf0b0507b3a23392e28) <div></div>
   [Figma](https://www.figma.com/file/1PocJDvNJANyKxL8cMzof4/LAND-NFT?node-id=0%3A1)
   
@@ -70,6 +72,7 @@ open http://localhost:3000/dashboard
 |Audience|Link|
 |---|:---:|
 |Project Goals|https://github.com/codestates/BEB_02_pirea/wiki/Goals|
+|Structure|https://github.com/codestates/BEB_02_pirea/wiki/Structure|
 |Configuration|https://github.com/codestates/BEB_02_pirea/wiki/Configuration|
 |UI design|https://github.com/codestates/BEB_02_pirea/wiki/UI-design|
 |DFD|https://github.com/codestates/BEB_02_pirea/wiki/DFD|
@@ -85,6 +88,12 @@ Contributions are what make this open source project such an amazing thing to be
 3. Commit your Changes (git commit -m 'Add some AwesomeFeature')
 4. Push to the Branch (git push origin dev/AwesomeFeature)
 5. Open a Pull Request
+
+[Configuration Example]() <div></div>
+
+[Code of conduct]() <div></div>
+
+[Contributor]() <div></div>
 
 # :mag_right: Looking for more Pirea details 
 Please click the our :point_right: [wiki](https://github.com/codestates/BEB_02_pirea/wiki) :point_left:
