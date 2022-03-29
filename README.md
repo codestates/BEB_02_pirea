@@ -48,7 +48,7 @@
   
   [Road Map]() <div></div>
   [Mile Stone](https://www.notion.so/4add8d561e05403bbaa1f8d2b4e922f2?v=7127d824c7d84cf0b0507b3a23392e28) <div></div>
-  [figma](https://www.figma.com/file/1PocJDvNJANyKxL8cMzof4/LAND-NFT?node-id=0%3A1)
+  [Figma](https://www.figma.com/file/1PocJDvNJANyKxL8cMzof4/LAND-NFT?node-id=0%3A1)
   
 </div>
 
@@ -75,6 +75,7 @@ open http://localhost:3000/dashboard
 |DFD|https://github.com/codestates/BEB_02_pirea/wiki/DFD|
 |DB Schema &nbsp|https://github.com/codestates/BEB_02_pirea/wiki/DB-Schema|
 |Output|https://github.com/codestates/BEB_02_pirea/wiki/Output|
+|Stack|https://github.com/codestates/BEB_02_pirea/wiki/Stack|
 
 # :thumbsup: Contributing
 Contributions are what make this open source project such an amazing thing to be learn, inspire, and create. Any contributions you make are greatly appreciated.
@@ -100,7 +101,7 @@ Please click the our :point_right: [wiki](https://github.com/codestates/BEB_02_p
   
   <div></div>
   
-  ***If you want*** : :point_right: [Team Details](https://github.com/codestates/BEB_02_pirea/wiki/Members) :point_left:
+  ***If you want*** : :point_right: [Team Members Details](https://github.com/codestates/BEB_02_pirea/wiki/Members) :point_left:
   
 # :key: License
 content
