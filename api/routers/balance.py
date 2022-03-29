@@ -5,4 +5,3 @@ from pydantic import BaseModel
 router = APIRouter (
     prefix="/api/v0.1/balance"
 )
-

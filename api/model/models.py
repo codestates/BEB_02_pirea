@@ -19,11 +19,11 @@ class SwapSign(Base):
     wantForm = Column(JSON, nullable=False)
     sign = Column(JSON, nullable=False)
 
-#class RecentSwapCode(Base):
-#    __tablename__ = "recentswap"
-#    id = Column(Integer, primary_key=True, index=True)
-#    date = Column(Date, nullable=False)
-#    address = Column(String(255), nullable=False)
+class RecentSwapCode(Base):
+    __tablename__ = "recentswap"
+    id = Column(Integer, primary_key=True, index=True)
+    date = Column(Date, nullable=False)
+    address = Column(String(255), nullable=False)
 
 class Analytics(Base):
     __tablename__ = "analytics"
@@ -32,3 +32,9 @@ class Analytics(Base):
     newclient = Column(Integer, nullable=False) 
     todaysiteuser = Column(Integer, nullable=False)
     spentmonth = Column(Integer, nullable=False)
+
+class SmarContractorAbi(Base):
+    __tablename__ = "abi"
+    id = Column(Integer, primary_key=True, index=True,autoincrement=True)
+    contractAddress = Column(String(255), nullable=False)
+    abijson = Column(JSON, nullable=False)

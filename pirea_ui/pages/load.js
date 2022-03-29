@@ -14,7 +14,6 @@ export default function Load() {
   const router = useRouter();
   const { swap_code } = router.query;
 
-
   useEffect(() => {
     const getData = async () => {
       try {
@@ -35,7 +34,6 @@ export default function Load() {
     }
   }, [swap_code])
 
-  console.log(data);
   if (!swap_code) {
     return (
       <>
