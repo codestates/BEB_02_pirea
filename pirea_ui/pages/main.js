@@ -337,22 +337,22 @@ export default function Main() {
                 <div className={mainStyles.member_title}> TEAM MEMBERS</div>
               </Animator>
               <div className={mainStyles.member_container}>
-                <li className={mainStyles.avatar}></li>
+                <li className={mainStyles.avatar1}></li>
                 <div className={mainStyles.member_name}>지웅</div>
                 <div className={mainStyles.member_role}>PM / Full Stack</div>
               </div>
               <div className={mainStyles.member_container}>
-                <li className={mainStyles.avatar}></li>
+                <li className={mainStyles.avatar2}></li>
                 <div className={mainStyles.member_name}>미진</div>
                 <div className={mainStyles.member_role}>Front End</div>
               </div>
               <div className={mainStyles.member_container}>
-                <li className={mainStyles.avatar}></li>
+                <li className={mainStyles.avatar3}></li>
                 <div className={mainStyles.member_name}>재열</div>
                 <div className={mainStyles.member_role}>Front End</div>
               </div>
               <div className={mainStyles.member_container}>
-                <li className={mainStyles.avatar}></li>
+                <li className={mainStyles.avatar4}></li>
                 <div className={mainStyles.member_name}>규환</div>
                 <div className={mainStyles.member_role}>Full Stack</div>
               </div>

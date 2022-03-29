@@ -372,11 +372,42 @@
   font-family: "Poppins", sans-serif;
 }
 
-.avatar {
+.avatar1 {
   border-radius: 50%;
   width: 12vw;
   height: 12vw;
-  background-color: bisque;
+  background-image: url("../assets/avatar1.png");
+  background-size: cover;
+  list-style: none;
+  margin: 2vw;
+}
+
+.avatar2 {
+  border-radius: 50%;
+  width: 12vw;
+  height: 12vw;
+  background-image: url("../assets/avatar2.png");
+  background-size: cover;
+  list-style: none;
+  margin: 2vw;
+}
+
+.avatar3 {
+  border-radius: 50%;
+  width: 12vw;
+  height: 12vw;
+  background-image: url("../assets/avatar3.png");
+  background-size: cover;
+  list-style: none;
+  margin: 2vw;
+}
+
+.avatar4 {
+  border-radius: 50%;
+  width: 12vw;
+  height: 12vw;
+  background-image: url("../assets/avatar4.png");
+  background-size: cover;
   list-style: none;
   margin: 2vw;
 }

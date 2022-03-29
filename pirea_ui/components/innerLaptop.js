@@ -1,7 +1,3 @@
 export default function InnerLaptop() {
-  return (
-    <>
-      hello
-    </>
-  )
+  return <>hello</>;
 }
