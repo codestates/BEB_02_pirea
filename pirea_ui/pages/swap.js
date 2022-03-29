@@ -171,7 +171,7 @@ export default function swap() {
       )
 
       const signedOrder = await swapSdk.signOrder(order, window.localStorage.getItem("account"))
-      const response = await axios.post("http://192.168.0.3:8000/api/v0.1/swap/create", {
+      const response = await axios.post("http://www.pirea.kro.kr/api/v0.1/swap/create", {
         order: signedOrder,
         address: window.localStorage.getItem("account"),
         haveForm: haveForm,
