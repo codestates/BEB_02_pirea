@@ -66,20 +66,28 @@
 }
 .dashboard_profile_address_main {
   display: flex;
-  margin: 4vh 0;
+  flex-direction: column;
+  margin: 2vh 0;
 }
 
 .dashboard_profile_address_header {
   color: #000000;
   font-weight: 300;
-  font-size: 1vw;
+  font-size: 1rem;
 }
 
 .dashboard_profile_address_text {
   font-weight: 300;
-  font-size: 1vw;
+  font-size: 0.9rem;
+}
+.dashboard_profile_axis_main {
+  display: flex;
+  padding: 0 0 1vh 0;
 }
 
+.dashboard_profile_axis_y_ex {
+  padding: 0 0 0 1vh;
+}
 .dashboard_none_profile_address {
   margin: 3vh 0 2vh 0;
 }

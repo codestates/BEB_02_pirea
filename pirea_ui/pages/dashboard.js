@@ -90,6 +90,7 @@ export default function Dashboard() {
   const [userFileUrl, setUserFileUrl] = useState(``);
   const [userFileDesc, setUserFileDesc] = useState(``);
   const [axis, setAxis] = useState({});
+  const [ownerAddr, setOwnerAddr] = useState({});
   const [tokenId, setTokenId] = useState();
   const [web3, setWeb3] = useState();
   const [tokenContract, setTokenContract] = useState();
@@ -120,6 +121,8 @@ export default function Dashboard() {
       if (tokenIdtmp == 0) {
         setT(false);
       } else {
+        const ownerAddr = await tokenContract.methods.ownerOf(tokenIdtmp).call();
+        setOwnerAddr(ownerAddr);
         setT(true);
       }
     }
@@ -234,14 +237,24 @@ export default function Dashboard() {
                 </div>
                 <div className={dashStyles.dashboard_profile_address_main}>
                   <div className={dashStyles.dashboard_profile_address_header}>
-                    Owner address:
+                    Owner address
                   </div>
                   <div className={dashStyles.dashboard_profile_address_text}>
-                    0x8772901ea06D450C18A92a53927Ba63EFcC97Dbe
+                    {ownerAddr}
                   </div>
                 </div>
-                <div></div>
-                <div></div>
+                <div className={dashStyles.dashboard_profile_address_main}>
+                  <div className={dashStyles.dashboard_profile_address_header}>
+                    token id
+                  </div>
+                  <div className={dashStyles.dashboard_profile_address_text}>
+                    {tokenId}
+                  </div>
+                </div>
+                <div className={dashStyles.dashboard_profile_axis_main}>
+                  <div>x: {axis['x']} </div>
+                  <div className={dashStyles.dashboard_profile_axis_y_ex}>y: {axis['y']}</div>
+                </div>
               </div>
               <div className={dashStyles.dashboard_offers_main}>
                 <div className={dashStyles.dashboard_offers_header}>Offer</div>
@@ -266,6 +279,11 @@ export default function Dashboard() {
                 </div>
                 <div>
                   y: {axis['y']}
+                </div>
+              </div>
+              <div>
+                <div>
+
                 </div>
               </div>
               <div className={dashStyles.dashboard_none_profile_input_des_main}>
