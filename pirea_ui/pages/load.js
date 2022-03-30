@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react'
 import { useWeb3React } from "@web3-react/core";
 import { injected } from "./lib/connectors";
 import { NftSwap } from '@traderxyz/nft-swap-sdk';
-
+import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 
 export default function Load() {
@@ -20,16 +20,12 @@ export default function Load() {
   const { library, chainId, activate, active, deactivate } = useWeb3React();
   const [swapSdk, setSwapSdk] = useState(null);
 
-
   useEffect(() => {
-
     if (active) {
-
       const sdk = new NftSwap(library, library.getSigner(), chainId);
       setSwapSdk(sdk);
       console.log(sdk);
     }
-
     const getData = async () => {
       try {
         await axios.get(url, {
@@ -75,19 +71,33 @@ export default function Load() {
 
 
   const approve = async () => {
+    const id = toast.loading("approve ....");
     activate(injected, (error) => {
       if (isNoEthereumObject(error))
         window.open("https://metamask.io/download.html");
     });
     if (active) {
-
       const sdk = new NftSwap(library, library.getSigner(), chainId);
       setSwapSdk(sdk);
       console.log(sdk);
     }
+    try {
+      await swapSdk.approveTokenOrNftByAsset(data['wantForm'], window.localStorage.getItem("account"))
 
-    await swapSdk.approveTokenOrNftByAsset(data['wantForm'], window.localStorage.getItem("account"))
-
+      toast.update(id, {
+        render: `approve, success`,
+        type: "success",
+        isLoading: false,
+        autoClose: 3000,
+      });
+    } catch (e) {
+      toast.update(id, {
+        render: "can't approve",
+        type: "error",
+        isLoading: false,
+        autoClose: 2000,
+      });
+    }
   }
 
   const accept = async () => {
@@ -116,20 +126,21 @@ export default function Load() {
     }
   }
 
+
   return (
     <>
       <Layout>
         <div className={loadStyles.load_main}>
           <div className={loadStyles.load_left_main} >
             <LoadType form={data['wantForm']} tokenUrl={data['want_token_url']} approve={approve} />
-            {/*<div className={loadStyles.load_left_button_main}>
+            <div className={loadStyles.load_left_button_main}>
               <div onClick={approve} className={loadStyles.load_left_approve_btn_main}>
                 approve
               </div>
               <div onClick={accept} className={loadStyles.load_left_accept_btn_main}>
                 accept swap
               </div>
-            </div>*/}
+            </div>
           </div>
           <div className={loadStyles.load_right_main}>
             <LoadType form={data['haveForm']} tokenUrl={data['have_token_url']} />

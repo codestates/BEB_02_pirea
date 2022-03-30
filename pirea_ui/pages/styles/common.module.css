@@ -2,6 +2,7 @@
 
 .common_main {
   display: flex;
+  justify-content: center;
   height: 100%;
 }
 .common_left_main {
@@ -21,7 +22,7 @@
 .common_map {
   background-color: #fff;
   width: 90%;
-  height: 70%;
+  height: 50%;
 }
 
 /* ? Search */
