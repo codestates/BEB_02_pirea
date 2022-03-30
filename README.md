@@ -20,12 +20,11 @@
 
 ![스크린샷, 2022-03-29 01-23-29](https://user-images.githubusercontent.com/93482597/160443583-30f045a6-dc84-4ae4-a038-927c7a9c2c2b.png)
 
-
-
-***Pirea(Pixel Korea) 프로젝트***는 픽셀로 이루어진 지도에서 자신이 원하는 자신만의 땅을 가질 수 있습니다.           
-물론 단순하게 픽셀을 소유하는 것이 아닌 각 픽셀의 정보를 NFT에 맵핑시켜 세상에서 하나밖에 없는 자신만의 땅을 가지게 될 것입니다.              
-또한 자신이 가진 NFT(ERC-721)를 다른 사람과 NFT(ERC-721) 나 Token(ERC-21)과 스왑 할 수 있으며                 
-자신이 가진 땅을 여행할 수 있는 기능 또한 구현할 예정입니다.  
+ 
+***Pirea(Pixel Korea) project***allows you to own the land you want on a map made of pixels.                 
+Of course, you don't just own the pixels, you have the only land in the world by mapping the information of each pixel to the NFT.            
+In addition, you can swap your NFT (ERC-721) with another NFT (ERC-721) or Token (ERC-21).                    
+We are also planning to implement a function that allows you to travel to your own land.                    
   
 <div></div>
     
@@ -33,7 +32,7 @@
   
   <div align="right">
 
-  [READEME - 한국어 버전](https://github.com/codestates/BEB_02_pirea/blob/main/README_ko.md) <div></div>
+  [READEME - 한국어 버전](https://github.com/codestates/BEB_02_pirea/blob/main/README_KO.md) <div></div>
     
   [View Demo](https://github.com/codestates/BEB_02_pirea/wiki/Output) <div></div>
     
@@ -79,7 +78,7 @@ open http://localhost:3000/dashboard
 |Configuration|https://github.com/codestates/BEB_02_pirea/wiki/Configuration|
 |UI design|https://github.com/codestates/BEB_02_pirea/wiki/UI-design|
 |DFD|https://github.com/codestates/BEB_02_pirea/wiki/DFD|
-|DB Schema &nbsp|https://github.com/codestates/BEB_02_pirea/wiki/DB-Schema|
+|DB Schema|https://github.com/codestates/BEB_02_pirea/wiki/DB-Schema|
 |Output|https://github.com/codestates/BEB_02_pirea/wiki/Output|
 |Stack|https://github.com/codestates/BEB_02_pirea/wiki/Stack|
 
@@ -122,4 +121,5 @@ Please click the our :point_right: [wiki](https://github.com/codestates/BEB_02_p
   ***If you want*** : :point_right: [Team Members Details](https://github.com/codestates/BEB_02_pirea/wiki/Members) :point_left:
   
 # :key: License
-content
+
+[License](https://github.com/codestates/BEB_02_pirea/blob/main/LICENSE)
