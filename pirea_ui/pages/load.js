@@ -61,7 +61,7 @@ export default function Load() {
       <Layout>
         <div className={commonStyles.common_main}>
           <div>
-            <LoadSwapWant wantForm={data['wantForm']} />
+            <LoadSwapWant wantForm={data['wantForm']}  />
           </div>
           <div>
             <LoadSwapHave haveForm={data['haveForm']} />

@@ -20,6 +20,8 @@ import axios from "axios";
 import Toast from 'light-toast';
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
+import abi from "./lib/abi"
+import Web3 from "web3"
 
 
 //TODO:
@@ -39,6 +41,7 @@ export default function swap() {
   const [ercContract, setErcContract] = useState();
   const { library, chainId, activate, active, deactivate } = useWeb3React();
   const [swapSdk, setSwapSdk] = useState(null);
+  const [web3, setWeb3] = useState('');
 
 
   const [tmpHave, setTMPHave] = useState({
@@ -85,12 +88,26 @@ export default function swap() {
     window.localStorage.setItem("commonModalNum", data);
   };
 
-  const inputHaveClick = () => {
+  const inputHaveClick = async () => {
     // openPopup();
+
+    const web = new Web3(window.ethereum);  // 새로운 web3 객체를 만든다
+    const tokenContract = new web.eth.Contract(
+      abi,
+      "0x13E5a6e5F9241e1FB7eceecC86A9b94B10471611"
+    );
+    var a = await tokenContract.methods.getTokenId(-1, -1).call();
+    console.log("tokenid", a);
+
+
     activate(injected, (error) => {
       if (isNoEthereumObject(error))
         window.open("https://metamask.io/download.html");
     });
+
+
+
+
 
 
 
@@ -258,7 +275,7 @@ export default function swap() {
   return (
     <>
       {/* //? dashboard와 겹치는 스타일 컴포넌트화 하는게 좋을까? */}
-      <Layout>
+      <Layout setWeb3={setWeb3}>
         <div className={commonStyles.common_main}>
           <div className={commonStyles.common_left_main}>
             <div className={swapStyles.swap_left_map_main}>
