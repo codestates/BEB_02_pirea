@@ -2,6 +2,7 @@
   
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/codestates/BEB_02_pirea/blob/main/LICENSE) [![CircleCI Status](https://circleci.com/gh/codestates/BEB_02_pirea.svg?style=shield&circle-token=d959a6dd5a01fb71788b38d2d799df221a59bd5c)](https://github.com/codestates/BEB_02_pirea) 
 ![GitHub version](https://img.shields.io/badge/version-0.0.1-critical.svg)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
   <div></div>
   
 ![GitHub Code Size](https://img.shields.io/github/languages/code-size/codestates/BEB_02_pirea)
@@ -36,7 +37,7 @@
     
   [View Demo](https://github.com/codestates/BEB_02_pirea/wiki/Output) <div></div>
     
-  [Report Bug & Request Feature](https://github.com/codestates/BEB_02_pirea/issues)
+  [Report Bug & Request Feature](https://github.com/codestates/BEB_02_pirea/issues) <div></div>
     
   </div>
 </div>
@@ -49,8 +50,10 @@
   :point_down::point_down::point_down:
   
   [Road Map](https://github.com/codestates/BEB_02_pirea/wiki/Roadmap) <div></div>
+  
   [Mile Stone](https://www.notion.so/4add8d561e05403bbaa1f8d2b4e922f2?v=7127d824c7d84cf0b0507b3a23392e28) <div></div>
-  [Figma](https://www.figma.com/file/1PocJDvNJANyKxL8cMzof4/LAND-NFT?node-id=0%3A1)
+  
+  [Figma](https://www.figma.com/file/1PocJDvNJANyKxL8cMzof4/LAND-NFT?node-id=0%3A1) <div></div>
   
 </div>
 
@@ -89,12 +92,18 @@ Contributions are what make this open source project such an amazing thing to be
 4. Push to the Branch (git push origin dev/AwesomeFeature)
 5. Open a Pull Request
 
-[Configuration Example]() <div></div>
+<div align="center">
+  
+  If you would like to contribute to the project, please read our Code of Conduct. <div></div>
+  
+  
+  
+ :heavy_check_mark: [Code of conduct]() <div></div>
 
-[Code of conduct]() <div></div>
+:star2: [Contributor]() <div></div>
 
-[Contributor]() <div></div>
-
+</div>
+  
 # :mag_right: Looking for more Pirea details 
 Please click the our :point_right: [wiki](https://github.com/codestates/BEB_02_pirea/wiki) :point_left:
   
