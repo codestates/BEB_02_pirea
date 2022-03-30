@@ -96,7 +96,7 @@ open http://localhost:3000/dashboard
   
   tetgo :  [Git](https://github.com/tetgo), [Blog]()                                      
   Kawasaki-JY : [Git](https://github.com/Kawasaki-JY), [Blog]()                                        
-  idoasisay : [Git](https://github.com/idoasisay), [Blog]()                                           
+  mijin6060 : [Git](https://github.com/mijin6060), [Blog]()                                              
   NonamedBread : [Git](https://github.com/NonamedBread), [Blog](https://velog.io/@rbghks2102)                                            
   
   <div></div>

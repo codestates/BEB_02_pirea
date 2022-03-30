@@ -114,7 +114,7 @@ Please click the our :point_right: [wiki](https://github.com/codestates/BEB_02_p
   
   tetgo :  [Git](https://github.com/tetgo), [Blog]()                                      
   Kawasaki-JY : [Git](https://github.com/Kawasaki-JY), [Blog]()                                        
-  idoasisay : [Git](https://github.com/idoasisay), [Blog]()                                           
+  mijin6060 : [Git](https://github.com/mijin6060), [Blog]()                                           
   NonamedBread : [Git](https://github.com/NonamedBread), [Blog](https://velog.io/@rbghks2102)                                            
   
   <div></div>
