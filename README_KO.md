@@ -88,10 +88,17 @@ Contributions are what make this open source project such an amazing thing to be
 4. Push to the Branch (git push origin dev/AwesomeFeature)
 5. Open a Pull Request
 
-
-:heavy_check_mark: [Code of conduct](https://github.com/codestates/BEB_02_pirea-1/blob/main/CodeOfConduct.md) <div></div>
+<div align="center">
+  
+  If you would like to contribute to the project, please read our Code of Conduct. <div></div>
+  
+  
+  
+ :heavy_check_mark: [Code of conduct](https://github.com/codestates/BEB_02_pirea-1/blob/main/CodeOfConduct.md) <div></div>
 
 :star2: [Contributor](https://github.com/codestates/BEB_02_pirea-1/blob/main/CodeOfConduct.md) <div></div>
+
+</div>
 
 # :mag_right: Looking for more Pirea details 
 Please click the our :point_right: [wiki](https://github.com/codestates/BEB_02_pirea/wiki) :point_left:
