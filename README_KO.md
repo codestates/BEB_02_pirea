@@ -80,10 +80,9 @@ open http://localhost:3000/dashboard
   프로젝트에 기여하고 싶으면 행동강령을 읽어주세요. <div></div>
   
   
-  
- :heavy_check_mark: [행동강령](https://github.com/codestates/BEB_02_pirea-1/blob/main/CodeOfConduct.md) <div></div>
+ :heavy_check_mark: [행동강령](https://github.com/codestates/BEB_02_pirea/blob/main/CodeOfConduct.md) <div></div>
 
-:star2: [기여자 목록](https://github.com/codestates/BEB_02_pirea-1/blob/main/CodeOfConduct.md) <div></div>
+:star2: [기여자 목록](https://github.com/codestates/BEB_02_pirea/blob/main/%20Contributor.md) <div></div>
 
 </div>
 
