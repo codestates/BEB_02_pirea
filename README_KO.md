@@ -112,4 +112,4 @@ Please click the our :point_right: [wiki](https://github.com/codestates/BEB_02_p
   ***If you want*** : :point_right: [Team Members Details](https://github.com/codestates/BEB_02_pirea/wiki/Members) :point_left:
   
 # :key: License
-content
+[License](https://github.com/codestates/BEB_02_pirea/blob/main/LICENSE)
