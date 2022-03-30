@@ -97,9 +97,10 @@ Contributions are what make this open source project such an amazing thing to be
   
   
   
- :heavy_check_mark: [Code of conduct](https://github.com/codestates/BEB_02_pirea-1/blob/main/CodeOfConduct.md) <div></div>
-
-:star2: [Contributor](https://github.com/codestates/BEB_02_pirea-1/blob/main/CodeOfConduct.md) <div></div>
+:heavy_check_mark: [Code of conduct](https://github.com/codestates/BEB_02_pirea/blob/main/CodeOfConduct.md
+) <div></div>
+  
+:star2: [Contributor](https://github.com/codestates/BEB_02_pirea/blob/main/%20Contributor.md) <div></div>
 
 </div>
   
@@ -113,7 +114,7 @@ Please click the our :point_right: [wiki](https://github.com/codestates/BEB_02_p
   
   tetgo :  [Git](https://github.com/tetgo), [Blog]()                                      
   Kawasaki-JY : [Git](https://github.com/Kawasaki-JY), [Blog]()                                        
-  idoasisay : [Git](https://github.com/idoasisay), [Blog]()                                           
+  mijin6060 : [Git](https://github.com/mijin6060), [Blog]()                                           
   NonamedBread : [Git](https://github.com/NonamedBread), [Blog](https://velog.io/@rbghks2102)                                            
   
   <div></div>
