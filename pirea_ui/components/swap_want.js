@@ -13,6 +13,18 @@ export default function Swap_want({ type, tmpWant, axis }) {
       <div>
         <div> PIXEL </div>
         <div>contract address: {tmpWant['address']} </div>
+
+        {tmpWant['ownerAddr']
+          ?
+          (
+
+            <div>
+              ownerAddr {tmpWant['ownerAddr']}
+            </div>
+          )
+          : (null)
+        }
+
         <div>x: {axis['x']}</div>
         <div>y: {axis['y']}</div>
         <div>tokenid: {tmpWant['tokenId']}</div>

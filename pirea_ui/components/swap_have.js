@@ -7,12 +7,23 @@ export default function Swap_have({ type, tmpHave, axis }) {
       </>
     );
   }
+  console.log(tmpHave);
 
   if (type == 1) {
     return (
       <div>
         <div> PIXEL </div>
         <div>contract address: {tmpHave['address']} </div>
+        {tmpHave['ownerAddr']
+          ?
+          (
+
+            <div>
+             ownerAddr {tmpHave['ownerAddr']}
+            </div>
+          )
+          : (null)
+        }
         <div>x: {axis['x']}</div>
         <div>y: {axis['y']}</div>
         <div>tokenid: {tmpHave['tokenId']}</div>

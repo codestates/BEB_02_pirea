@@ -90,15 +90,7 @@ export default function swap() {
 
   const inputHaveClick = async () => {
     // openPopup();
-
-    const web = new Web3(window.ethereum);  // 새로운 web3 객체를 만든다
-    const tokenContract = new web.eth.Contract(
-      abi,
-      "0x13E5a6e5F9241e1FB7eceecC86A9b94B10471611"
-    );
-    var a = await tokenContract.methods.getTokenId(-1, -1).call();
-    console.log("tokenid", a);
-
+    var a = 0;
 
     activate(injected, (error) => {
       if (isNoEthereumObject(error))
@@ -108,26 +100,61 @@ export default function swap() {
 
 
 
+    console.log(commonModalNum);
+    if (commonModalNum == 1) {
+      const web = new Web3(window.ethereum);  // 새로운 web3 객체를 만든다
+      const tokenContract = new web.eth.Contract(
+        abi,
+        "0x13E5a6e5F9241e1FB7eceecC86A9b94B10471611"
+      );
+      const tokenCallId = await tokenContract.methods.getTokenId(axis['x'], axis['y']).call();
+      const ownerAddr = await tokenContract.methods.ownerOf(tokenCallId).call();
+      console.log(ownerAddr);
 
-
-
-    if (typeTrans == 1) {
-      setTMPHave({
-        type: haveModalNum,
-        address: ercContract,
-        tokenId: erc721Id,
-        amount: erc20Amount
-      });
-      setHaveAxis(axis);
+      console.log("tokenid", a);
+      console.log("before", erc721Id);
+      if (typeTrans == 1) {
+        setTMPHave({
+          type: haveModalNum,
+          address: "0x13E5a6e5F9241e1FB7eceecC86A9b94B10471611",
+          tokenId: tokenCallId,
+          amount: erc20Amount,
+          ownerAddr: ownerAddr
+        });
+        setHaveAxis(axis);
+      } else {
+        setTMPWant({
+          type: wantModalNum,
+          address: "0x13E5a6e5F9241e1FB7eceecC86A9b94B10471611",
+          tokenId: tokenCallId,
+          amount: erc20Amount,
+          ownerAddr: ownerAddr
+        });
+        setWantAxis(axis);
+      }
     } else {
-      setTMPWant({
-        type: wantModalNum,
-        address: ercContract,
-        tokenId: erc721Id,
-        amount: erc20Amount
-      });
-      setWantAxis(axis);
+      if (typeTrans == 1) {
+        setTMPHave({
+          type: haveModalNum,
+          address: ercContract,
+          tokenId: tokenCallId,
+          amount: erc20Amount
+        });
+        setHaveAxis(axis);
+      } else {
+        setTMPWant({
+          type: wantModalNum,
+          address: ercContract,
+          tokenId: tokenCallId,
+          amount: erc20Amount
+        });
+        setWantAxis(axis);
+      }
     }
+
+
+
+
   }
 
   const approve = async () => {
@@ -147,6 +174,7 @@ export default function swap() {
         const approvalTx = await swapSdk.approveTokenOrNftByAsset(orderForm, window.localStorage.getItem("account"));
         const approvalReceipt = await approvalTx.wait();
         // console.log(orderForm.tokenAddress, approvalReceipt);
+        console.log(approvalReceipt);
         toast.update(approveId, {
           render: `${approvalReceipt} sucess approve`,
           type: "success",
@@ -200,8 +228,10 @@ export default function swap() {
         render: `${response.data} sucess approve`,
         type: "success",
         isLoading: false,
-        autoClose: 1000,
+        autoClose: 4000,
       });
+
+      openPopup(response.data);
     } catch (e) {
       console.log(e);
       toast.update(createSwapId, {
@@ -218,7 +248,7 @@ export default function swap() {
   }
 
   const openPopup = (swap_code) => {
-    Toast.info('message...', 3000, () => {
+    Toast.info(swap_code, 3000, () => {
       // do something after the toast disappears
     });
     const content = (
@@ -231,7 +261,6 @@ export default function swap() {
   }
 
   const clearHave = () => {
-    openPopup();
     setTMPHave({
       address: '',
       tokenId: '',
