@@ -97,9 +97,9 @@ Contributions are what make this open source project such an amazing thing to be
   
   
   
- :heavy_check_mark: [Code of conduct]() <div></div>
+ :heavy_check_mark: [Code of conduct](https://github.com/codestates/BEB_02_pirea-1/blob/main/CodeOfConduct.md) <div></div>
 
-:star2: [Contributor]() <div></div>
+:star2: [Contributor](https://github.com/codestates/BEB_02_pirea-1/blob/main/CodeOfConduct.md) <div></div>
 
 </div>
   
