@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+ // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.7;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
@@ -19,9 +19,17 @@ contract testCoz is ERC721URIStorage, Ownable, ERC721Enumerable {
       int16 y;
     }
 
+    struct AxisTokenId {
+      uint256 id;
+      int16 x;
+      int16 y;
+    }
+
     uint256 pixelPrice = 10e18;
-    mapping (uint256 => Axis) public axis;
-    mapping (int16 => mapping (int16 => uint256))_axisTokenId;
+    mapping uint256 => Axis) public axis;
+    mapping (int16 => mapping (int16 => uint256)) _axisTokenId;
+
+
     //mapping (int16 => mapping (int16 => int256)) _axisTokenId;
 
     function _beforeTokenTransfer(
@@ -83,7 +91,34 @@ contract testCoz is ERC721URIStorage, Ownable, ERC721Enumerable {
         return (axis[tokenId].x, axis[tokenId].y);
     }
 
+    function tokenAxisx(uint256 tokenId) public view returns(int16) {
+      return axis[tokenId].x;
+    }
+
+    function tokenAxisy(uint256 tokenId) public view returns(int16) {
+      return axis[tokenId].y;
+    }
+
     function getTokenId(int16 x_value, int16 y_value) public view returns(uint256) {
         return _axisTokenId[x_value][y_value];
     }
-} 
+
+    function getTokenAllByAddress(address addr) public view returns(AxisTokenId[] memory) {
+       uint256 currentId = _tokenIds.current();
+       uint[] memory tokenArray = new uint[](currentId);
+       AxisTokenId[] memory AxisArray = new AxisTokenId[](currentId);
+
+       uint count = 0;
+       for(uint256 i = 1; i <= currentId; i++) {
+         if ( addr == ownerOf(i)) {
+          AxisTokenId memory Axistmp;
+          Axistmp.id = i;
+          Axistmp.x = tokenAxisx(i);
+          Axistmp.y = tokenAxisy(i);
+          AxisArray[count] = Axistmp;
+          count++;
+         }
+       }
+       return AxisArray;
+    }
+}

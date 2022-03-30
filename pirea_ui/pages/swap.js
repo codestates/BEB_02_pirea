@@ -137,7 +137,7 @@ export default function swap() {
         setTMPHave({
           type: haveModalNum,
           address: ercContract,
-          tokenId: tokenCallId,
+          tokenId: erc721Id,
           amount: erc20Amount
         });
         setHaveAxis(axis);
@@ -145,7 +145,7 @@ export default function swap() {
         setTMPWant({
           type: wantModalNum,
           address: ercContract,
-          tokenId: tokenCallId,
+          tokenId: erc721Id,
           amount: erc20Amount
         });
         setWantAxis(axis);
