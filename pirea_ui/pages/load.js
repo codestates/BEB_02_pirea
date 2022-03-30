@@ -1,6 +1,5 @@
 import Layout from "../components/layout";
-import LoadSwapHave from "../components/loadSwapHave"
-import LoadSwapWant from "../components/loadSwapWant"
+import LoadType from "../components/loadType";
 import commonStyles from "./styles/common.module.css"
 import loadStyles from "../components/styles-component/load.module.css"
 import { useRouter } from 'next/router'
@@ -121,23 +120,20 @@ export default function Load() {
     <>
       <Layout>
         <div className={loadStyles.load_main}>
-          <div className={loadStyles.left_main} >
-            <LoadSwapWant wantForm={data['wantForm']} wantTokenUrl={data['want_token_url']} approve={approve} />
-            <div className={loadStyles.load_left_button_main}>
-
+          <div className={loadStyles.load_left_main} >
+            <LoadType form={data['wantForm']} tokenUrl={data['want_token_url']} approve={approve} />
+            {/*<div className={loadStyles.load_left_button_main}>
               <div onClick={approve} className={loadStyles.load_left_approve_btn_main}>
                 approve
               </div>
               <div onClick={accept} className={loadStyles.load_left_accept_btn_main}>
                 accept swap
               </div>
-            </div>
+            </div>*/}
           </div>
-
-          <div className={loadStyles.right_main}>
-            <LoadSwapHave haveForm={data['haveForm']} haveTokenUrl={data['have_token_url']} />
+          <div className={loadStyles.load_right_main}>
+            <LoadType form={data['haveForm']} tokenUrl={data['have_token_url']} />
           </div>
-
         </div>
       </Layout>
     </>
