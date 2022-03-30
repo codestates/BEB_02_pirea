@@ -21,7 +21,7 @@
 ![스크린샷, 2022-03-29 01-23-29](https://user-images.githubusercontent.com/93482597/160443583-30f045a6-dc84-4ae4-a038-927c7a9c2c2b.png)
 
  
-***Pirea(Pixel Korea) project***allows you to own the land you want on a map made of pixels.                 
+***Pirea(Pixel Korea) project*** allows you to own the land you want on a map made of pixels.                 
 Of course, you don't just own the pixels, you have the only land in the world by mapping the information of each pixel to the NFT.            
 In addition, you can swap your NFT (ERC-721) with another NFT (ERC-721) or Token (ERC-21).                    
 We are also planning to implement a function that allows you to travel to your own land.                    
