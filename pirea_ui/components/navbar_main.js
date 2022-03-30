@@ -38,8 +38,8 @@ export const Navbar = () => {
                 },
               }}
             >
-              <Link href="/main">
-                <a className={navStyles.nav_link}>AboutUs</a>
+              <Link href="/">
+                <a className={navStyles.nav_link}>Home</a>
               </Link>
             </motion.div>
             <motion.div

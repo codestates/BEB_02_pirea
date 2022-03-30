@@ -4,7 +4,7 @@ import reactDom from "react-dom";
 import { motion } from "framer-motion";
 import mainStyles from "./styles/main.module.css";
 import { Color } from "three";
-import { Navbar } from "../components/navbar";
+import { Navbar } from "../components/navbar_main";
 import { Icon } from "@iconify/react";
 
 import {
@@ -146,14 +146,24 @@ export default function Main() {
                         Buy a local NFT of pixels or<br></br> exchange your area
                         with someone else!
                       </div>
-                      <div className={mainStyles.main_section0_git}>
-                        <Icon
-                          icon="akar-icons:github-fill"
-                          color="#8A8B8C"
-                          height="30"
-                        />
-                        <span className={mainStyles.go_github}>GITHUB</span>
-                      </div>
+                      <Link href="https://github.com/codestates/BEB_02_pirea">
+                        <motion.div
+                          className={mainStyles.main_section0_git}
+                          whileHover={{
+                            color: "white",
+                            transition: {
+                              duration: 0.2,
+                            },
+                          }}
+                        >
+                          <Icon
+                            icon="akar-icons:github-fill"
+                            color="#8A8B8C"
+                            height="30"
+                          />
+                          <span className={mainStyles.go_github}>GITHUB</span>
+                        </motion.div>
+                      </Link>
                     </motion.div>
                   </div>
                 </Animator>
