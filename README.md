@@ -28,7 +28,7 @@ We are also planning to implement a function that allows you to travel to your o
   
 <div></div>
     
-***Pirea 프로젝트는 위 모든 것이 가능한 NFT 기반의 부동산 플랫폼입니다!***
+***The Pirea project is an NFT-based real estate platform!***
   
   <div align="right">
 
