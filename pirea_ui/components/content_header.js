@@ -17,7 +17,7 @@ import { useRouter } from 'next/router'
 //   color: ${(props) => props.theme.fontColor};
 // `;
 
-export default function Content_header() {
+export default function Content_header({ setWeb3 }) {
   const [account, setAccount] = useState();
   const [isShow, setIsShow] = useState(false);
   // const [theme, setTheme] = useState("light");
@@ -64,6 +64,7 @@ export default function Content_header() {
     });
 
     const account = accounts[0];
+    setWeb3(web3);
 
     try {
       const token = await Web3Token.sign(

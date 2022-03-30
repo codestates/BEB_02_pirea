@@ -9,6 +9,9 @@ import { create } from "ipfs-http-client";
 import { useDropzone } from "react-dropzone";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import abi from "./lib/abi"
+import Web3 from "web3"
+import axios from "axios"
 
 // TODO: 스마트컨트랙트와 연동
 // TODO: map click 동작구현
@@ -84,29 +87,107 @@ function MyDropzone({ onChange, previewFile, onDrop }) {
 export default function Dashboard() {
   const [t, setT] = useState(false);
   const [previewFile, setPreviewFile] = useState();
+  const [userFileUrl, setUserFileUrl] = useState(``);
+  const [userFileDesc, setUserFileDesc] = useState(``);
   const [axis, setAxis] = useState({});
+  const [tokenId, setTokenId] = useState();
+  const [web3, setWeb3] = useState();
+  const [tokenContract, setTokenContract] = useState();
+  const smartContractAddr = "0x13E5a6e5F9241e1FB7eceecC86A9b94B10471611";
+  const client = create("https://ipfs.infura.io:5001/api/v0");
 
   async function onChange(e) {
     const file = e.target.files[0];
     setUserFileUrl(file);
-    console.log(file.path);
   }
 
-  const handleCreate = (data) => {
-    if (data["x"] !== axis["x"] || data["y"] !== axis["y"]) {
-      setAxis(data);
-    }
-  };
-
-  useEffect(() => {
-    console.log(axis);
-  }, [axis]);
+  const onDescChange = (e) => {
+    setUserFileDesc(e.target.value);
+  }
 
   const onDrop = useCallback((acceptedFiles) => {
     // setUserFileUrl(acceptedFiles[0]);
     setPreviewFile({ preview: URL.createObjectURL(acceptedFiles[0]) });
     setUserFileUrl(URL.createObjectURL(acceptedFiles[0]));
   });
+
+  const handleCreate = async (data) => {
+    if (data["x"] !== axis["x"] || data["y"] !== axis["y"]) {
+      setAxis(data);
+
+      const tokenIdtmp = await tokenContract.methods.getTokenId(data["x"], data["y"]).call();
+      setTokenId(tokenIdtmp)
+      if (tokenIdtmp == 0) {
+        setT(false);
+      } else {
+        setT(true);
+      }
+    }
+  };
+
+  const mintHandleClick = async () => {
+
+    const id = toast.loading("mint ....");
+    const file = await axios
+      .get(userFileUrl, { responseType: "blob" })
+      .then(response => {
+        return response.data;
+      });
+    const cid = await client.add(file);
+    const image_url = `https://ipfs.infura.io/ipfs/${cid.path}`;
+    let metadata = {
+      image: image_url,
+      axis: axis['x'],
+      axis: axis['y'],
+      description: userFileDesc
+    };
+
+    let cid2;
+    cid2 = await client.add(JSON.stringify(metadata));
+    const metadata_url = `https://ipfs.infura.io/ipfs/${cid2.path}`;
+    console.log(metadata_url);
+
+    try {
+      // 최종적으로 주문서를 만들어 mint를 발생 시킵니다.
+      let account = window.localStorage.getItem("account")
+      var result = await tokenContract.methods.mintNFT(account, metadata_url, axis['x'], axis['y']).send({
+        from: account,
+        gasLimit: 5000000,
+        value: 0,
+      });
+      console.log(result);
+      toast.update(id, {
+        render: `result \n\n ${result['transactionHash']}`,
+        type: "success",
+        isLoading: false,
+        autoClose: 3000,
+      });
+      // 결과값 출력!
+    } catch (err) {
+      //  에러가 날경우 err 출력
+      console.log(err);
+      toast.update(id, {
+        render: "can't mint",
+        type: "error",
+        isLoading: false,
+        autoClose: 2000,
+      });
+    }
+  }
+
+
+  useEffect(() => {
+    console.log(axis);
+    const web = new Web3(window.ethereum);  // 새로운 web3 객체를 만든다
+    setWeb3(web);
+    const tokenContract = new web.eth.Contract(
+      abi,
+      smartContractAddr
+    );
+    setTokenContract(tokenContract);
+  }, [axis]);
+
+
 
   return (
     <>
@@ -195,6 +276,7 @@ export default function Dashboard() {
                 </div>
                 <input
                   className={dashStyles.dashboard_none_profile_input_des_text}
+                  onChange={onDescChange}
                   type="text"
                 />
               </div>
@@ -213,7 +295,7 @@ export default function Dashboard() {
                   onDrop={onDrop}
                   previewFile={previewFile}
                 />
-                <div className={dashStyles.dashboard_none_profile_button_main}>
+                <div onClick={mintHandleClick} className={dashStyles.dashboard_none_profile_button_main}>
                   <div
                     className={dashStyles.dashboard_none_profile_button_mint}
                   >
