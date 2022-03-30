@@ -6,6 +6,7 @@ import { MoonIcon, SunIcon } from "@heroicons/react/solid";
 import Web3 from "web3";
 import Router from "next/router";
 import Avatar from "react-nice-avatar";
+import Avvvatars from 'avvvatars-react'
 import axios from "axios";
 import Web3Token from "web3-token";
 import "react-toastify/dist/ReactToastify.css";
@@ -178,9 +179,10 @@ export default function Content_header() {
             className={c_content_styles.header_profile_login_main}
           >
             <div>
-              <Avatar
-                style={{ width: "3vw", height: "4vh" }}
+              <Avvvatars value={window.localStorage.getItem("account")}
                 className={c_content_styles.header_profile_login_avatar}
+                size={32}
+                style="shape"
               />
             </div>
             <div className={c_content_styles.header_profile_login_properties}>
