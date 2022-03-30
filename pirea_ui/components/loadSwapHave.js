@@ -1,19 +1,23 @@
 
-export default function LoadSwapHave({ haveForm }) {
+export default function LoadSwapHave({ haveForm, haveTokenUrl }) {
 
   if (haveForm['type'] === "ERC721") {
     return (
       <>
         <div>
-          <div>
-            contract address: {haveForm['tokenAddress']}
-          </div>
-          <div>
-            token id: {haveForm['tokenId']}
-          </div>
-          <div>
-            type: {haveForm['type']}
-          </div>
+            <div>
+              have token url: {haveTokenUrl}
+            </div>
+            <div>
+              contract address: {haveForm['tokenAddress']}
+            </div>
+            <div>
+              token id: {haveForm['tokenId']}
+            </div>
+            <div>
+              type: {haveForm['type']}
+            </div>
+  
         </div>
       </>
     )
@@ -21,6 +25,7 @@ export default function LoadSwapHave({ haveForm }) {
     return (
       <>
         <div>
+
           <div>
             contract address: {haveForm['tokenAddress']}
           </div>
