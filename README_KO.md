@@ -1,19 +1,4 @@
-<div align="right">
-  
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/codestates/BEB_02_pirea/blob/main/LICENSE) [![CircleCI Status](https://circleci.com/gh/codestates/BEB_02_pirea.svg?style=shield&circle-token=d959a6dd5a01fb71788b38d2d799df221a59bd5c)](https://github.com/codestates/BEB_02_pirea) 
-![GitHub version](https://img.shields.io/badge/version-0.0.1-critical.svg)  
-  <div></div>
-  
-![GitHub Code Size](https://img.shields.io/github/languages/code-size/codestates/BEB_02_pirea)                                  
-![GitHub Last Commit](https://img.shields.io/github/last-commit/codestates/BEB_02_pirea)                                                
-![GitHub Repo Size](https://img.shields.io/github/repo-size/codestates/BEB_02_pirea)                                            
-![GitHub language count](https://img.shields.io/github/languages/count/codestates/BEB_02_pirea)                                     
-![GitHub Commit Activiy](https://img.shields.io/github/commit-activity/y/codestates/BEB_02_pirea )                                          
-
-
-</div>
-
-# :rocket: About The Project Pirea
+# :rocket:  Pirea 프로젝트
 
 <div align="center">
 
@@ -33,27 +18,29 @@
 
   [READEME - 한국어 버전](https://github.com/codestates/BEB_02_pirea/blob/main/README_ko.md) <div></div>
     
-  [View Demo](https://github.com/codestates/BEB_02_pirea/wiki/Output) <div></div>
+  [시연 영상](https://github.com/codestates/BEB_02_pirea/wiki/Output) <div></div>
     
-  [Report Bug & Request Feature](https://github.com/codestates/BEB_02_pirea/issues)
+  [버그 제출 & 기능 요청](https://github.com/codestates/BEB_02_pirea/issues)
     
   </div>
 </div>
 
-# :wrench: RoadMap & MileSton
+# :wrench: 로드맵, 마일스톤, 피그마
 
 <div align="center">
   
-  ***Click!*** here to view our team's roadmap, milestones and figma <div></div>
+   로드맵, 마일스톤, 피그마를 아래에서 확인할 수 있습니다. <div></div>
   :point_down::point_down::point_down:
   
-  [Road Map](https://github.com/codestates/BEB_02_pirea/wiki/Roadmap) <div></div>
-  [Mile Stone](https://www.notion.so/4add8d561e05403bbaa1f8d2b4e922f2?v=7127d824c7d84cf0b0507b3a23392e28) <div></div>
-  [Figma](https://www.figma.com/file/1PocJDvNJANyKxL8cMzof4/LAND-NFT?node-id=0%3A1)
+  [로드맵](https://github.com/codestates/BEB_02_pirea/wiki/Roadmap) <div></div>
+  
+  [마일스톤](https://www.notion.so/4add8d561e05403bbaa1f8d2b4e922f2?v=7127d824c7d84cf0b0507b3a23392e28) <div></div>
+  
+  [피그마](https://www.figma.com/file/1PocJDvNJANyKxL8cMzof4/LAND-NFT?node-id=0%3A1)
   
 </div>
 
-# :bulb: Getting Started
+# :bulb: 시작하기
 
 
 
@@ -66,45 +53,45 @@ npm run dev
 open http://localhost:3000/dashboard
 
 ```
-# :page_facing_up: Documentation
+# :page_facing_up: 문서
 
 |Audience|Link|
 |---|:---:|
-|Project Goals|https://github.com/codestates/BEB_02_pirea/wiki/Goals|
-|Structure|https://github.com/codestates/BEB_02_pirea/wiki/Structure|
-|Configuration|https://github.com/codestates/BEB_02_pirea/wiki/Configuration|
-|UI design|https://github.com/codestates/BEB_02_pirea/wiki/UI-design|
+|목표|https://github.com/codestates/BEB_02_pirea/wiki/Goals|
+|구조|https://github.com/codestates/BEB_02_pirea/wiki/Structure|
+|구성|https://github.com/codestates/BEB_02_pirea/wiki/Configuration|
+|UI 디자인|https://github.com/codestates/BEB_02_pirea/wiki/UI-design|
 |DFD|https://github.com/codestates/BEB_02_pirea/wiki/DFD|
-|DB Schema &nbsp|https://github.com/codestates/BEB_02_pirea/wiki/DB-Schema|
-|Output|https://github.com/codestates/BEB_02_pirea/wiki/Output|
-|Stack|https://github.com/codestates/BEB_02_pirea/wiki/Stack|
+|DB 구조|https://github.com/codestates/BEB_02_pirea/wiki/DB-Schema|
+|시연|https://github.com/codestates/BEB_02_pirea/wiki/Output|
+|기술 스택|https://github.com/codestates/BEB_02_pirea/wiki/Stack|
 
-# :thumbsup: Contributing
-Contributions are what make this open source project such an amazing thing to be learn, inspire, and create. Any contributions you make are greatly appreciated.
+# :thumbsup: 기여하기
+기여는 이 오픈 소스 프로젝트를 배우고 영감을 느끼며 창조를 할 수 있는 놀라운 행동입니다. 여러분의 기여에 감사합니다.
 
-1. Fork the Project
-2. Create your Feature Branch (git checkout -b dev/AwesomeFeature)
-3. Commit your Changes (git commit -m 'Add some AwesomeFeature')
-4. Push to the Branch (git push origin dev/AwesomeFeature)
-5. Open a Pull Request
+1. 프로젝트 포크하기
+2. 특정 브랜치 생성(git checkout -b dev/AwesomeFeature)
+3. 커밋 (git commit -m 'Add some AwesomeFeature')
+4. 생성한 브랜치로 푸쉬(git push origin dev/AwesomeFeature)
+5. Pull requests 생성
 
 <div align="center">
   
-  If you would like to contribute to the project, please read our Code of Conduct. <div></div>
+  프로젝트에 기여하고 싶으면 행동강령을 읽어주세요. <div></div>
   
   
   
- :heavy_check_mark: [Code of conduct](https://github.com/codestates/BEB_02_pirea-1/blob/main/CodeOfConduct.md) <div></div>
+ :heavy_check_mark: [행동강령](https://github.com/codestates/BEB_02_pirea-1/blob/main/CodeOfConduct.md) <div></div>
 
-:star2: [Contributor](https://github.com/codestates/BEB_02_pirea-1/blob/main/CodeOfConduct.md) <div></div>
+:star2: [기여자 목록](https://github.com/codestates/BEB_02_pirea-1/blob/main/CodeOfConduct.md) <div></div>
 
 </div>
 
-# :mag_right: Looking for more Pirea details 
-Please click the our :point_right: [wiki](https://github.com/codestates/BEB_02_pirea/wiki) :point_left:
+# :mag_right: Pirea 프로젝트 세부사항
+프로젝트 세부사항은 위키에서 확인 가능 합니다. :point_right: [wiki](https://github.com/codestates/BEB_02_pirea/wiki) :point_left:
   
   
-# :busts_in_silhouette: Team Contact
+# :busts_in_silhouette: 팀 연락처
 
   <div></div>
   
@@ -115,7 +102,7 @@ Please click the our :point_right: [wiki](https://github.com/codestates/BEB_02_p
   
   <div></div>
   
-  ***If you want*** : :point_right: [Team Members Details](https://github.com/codestates/BEB_02_pirea/wiki/Members) :point_left:
+  ***If you want*** : :point_right: [멤버 세부사항](https://github.com/codestates/BEB_02_pirea/wiki/Members) :point_left:
   
-# :key: License
-[License](https://github.com/codestates/BEB_02_pirea/blob/main/LICENSE)
+# :key: 라이센스
+[라이센스](https://github.com/codestates/BEB_02_pirea/blob/main/LICENSE)
