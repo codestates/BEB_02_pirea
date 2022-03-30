@@ -11,6 +11,27 @@
   word-break:break-all;
 }
 
+.load_left_button_main {
+  display: flex;
+  margin: 1vh;
+}
+
+.load_left_approve_btn_main {
+  padding: 1vw;
+  background: #2393B0;
+  color: #fff;
+  margin: 0.2vh;
+  border-radius: 12px;
+}
+
+.load_left_accept_btn_main {
+  padding: 1vw;
+  color: #fff;
+  margin: 0.2vh;
+  background: #2393B0;
+  border-radius: 12px;
+}
+
 .load_right_main {
   width: 45%;
   word-break:break-all;
@@ -26,6 +47,7 @@
 .load_type_main {
   padding: 0.3vh;
 }
+
 .load_type_header {
   font-size: 1.2 rem;
 }
