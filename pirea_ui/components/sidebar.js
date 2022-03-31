@@ -113,7 +113,7 @@ export default function Sidebar() {
             `}
               >
                 <div>
-                  <Icon height="2.2rem" icon="ant-design:swap-outlined" />
+                  <Icon icon="akar-icons:check-box-fill" height="2.2rem" />
                 </div>
                 <div className={sidebar_styles.sidebar_div_text}>
                   <a className={sidebar_styles.sidebar_link_a}>Load</a>

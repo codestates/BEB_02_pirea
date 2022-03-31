@@ -17,11 +17,11 @@ async def get_create_abi(db: Session, cont_address: str):
         return db.query(SmarContractorAbi).filter(SmarContractorAbi.contractAddress == cont_address).first()
     else:
         request_url = f"https://api-rinkeby.etherscan.io/api?module=contract&action=getabi&address={cont_address}&apikey={SECRET_FILE_WEB3['ETHER_SCAN_API_TOKEN']}"
+        print(abi)
         res = await urlopen(request_url)
         res_utf = res.read().decode("utf-8")
         json_res_utf = json.loads(res_utf)
         abi = json_res_utf.get('result')
-        print(abi)
 
         if (abi =="Contract source code not verified") :
             print("hello")
