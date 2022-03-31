@@ -10,6 +10,7 @@ import { useDropzone } from "react-dropzone";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import abi from "./lib/abi"
+import config from "./lib/config.json"
 import Web3 from "web3"
 import axios from "axios"
 
@@ -94,7 +95,7 @@ export default function Dashboard() {
   const [tokenId, setTokenId] = useState();
   const [web3, setWeb3] = useState();
   const [tokenContract, setTokenContract] = useState();
-  const smartContractAddr = "0x13E5a6e5F9241e1FB7eceecC86A9b94B10471611";
+  const smartContractAddr = config["WEB3"]["CONTRACT_ADDRESS"];
   const client = create("https://ipfs.infura.io:5001/api/v0");
 
   async function onChange(e) {

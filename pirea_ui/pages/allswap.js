@@ -6,8 +6,10 @@ import allswapStyles from "./styles/allswap.module.css"
 import AllSwapCart from "../components/all_swap_cart"
 import { Icon } from '@iconify/react';
 import { useRouter } from "next/router"
+import config from "./lib/config.json"
 
 export default function AllSwap() {
+  console.log("API", config)
   const [moreMake, setMoreMake] = useState(false);
   const [moreTake, setMoreTake] = useState(false);
   const router = useRouter();
