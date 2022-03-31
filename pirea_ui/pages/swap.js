@@ -21,6 +21,7 @@ import Toast from 'light-toast';
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import abi from "./lib/abi"
+import config from "./lib/config.json"
 import Web3 from "web3"
 
 
@@ -42,6 +43,7 @@ export default function swap() {
   const { library, chainId, activate, active, deactivate } = useWeb3React();
   const [swapSdk, setSwapSdk] = useState(null);
   const [web3, setWeb3] = useState('');
+  const smartContAddr = config["WEB3"]["CONTRACT_ADDRESS"];
 
 
   const [tmpHave, setTMPHave] = useState({
@@ -105,7 +107,7 @@ export default function swap() {
       const web = new Web3(window.ethereum);  // 새로운 web3 객체를 만든다
       const tokenContract = new web.eth.Contract(
         abi,
-        "0x13E5a6e5F9241e1FB7eceecC86A9b94B10471611"
+        smartContAddr
       );
       const tokenCallId = await tokenContract.methods.getTokenId(axis['x'], axis['y']).call();
       const ownerAddr = await tokenContract.methods.ownerOf(tokenCallId).call();
@@ -116,7 +118,7 @@ export default function swap() {
       if (typeTrans == 1) {
         setTMPHave({
           type: haveModalNum,
-          address: "0x13E5a6e5F9241e1FB7eceecC86A9b94B10471611",
+          address: smartContAddr,
           tokenId: tokenCallId,
           amount: erc20Amount,
           ownerAddr: ownerAddr
@@ -125,7 +127,8 @@ export default function swap() {
       } else {
         setTMPWant({
           type: wantModalNum,
-          address: "0x13E5a6e5F9241e1FB7eceecC86A9b94B10471611",
+          address: smartContAddr,
+          tokenId: tokenCallId,
           tokenId: tokenCallId,
           amount: erc20Amount,
           ownerAddr: ownerAddr

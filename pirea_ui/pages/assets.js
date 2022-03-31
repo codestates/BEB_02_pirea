@@ -6,8 +6,46 @@ import Image from "next/image";
 import profile from "../assets/test_item.png";
 import { Icon } from "@iconify/react";
 import Map from "../components/map";
+import { useEffect, useState } from "react"
+import Web3 from "web3"
+import abi from "./lib/abi"
+import config from "./lib/config.json"
 
 export default function Assets() {
+  if (typeof window == "undefined") {
+    return <> loading </>;
+  }
+
+  const [account, setAccount] = useState(window.localStorage.getItem("account"));
+  const [web3, setWeb3] = useState();
+  const [tokenContract, setTokenContract] = useState();
+  const [data, setData] = useState();
+
+
+  useEffect(() => {
+    if (typeof window.ethereum !== "undefined" && account !== '') {
+      try {
+        console.log("before", config["WEB3"]["CONTRACT_ADDRESS"])
+        const web = new Web3(window.ethereum);
+        setWeb3(web);
+        const tokenContract = new web.eth.Contract(
+          abi,
+          config["WEB3"]["CONTRACT_ADDRESS"]
+        )
+        setTokenContract(tokenContract);
+
+        const getData = async () => {
+          const axisArray = await tokenContract.methods.getTokenAllByAddress(window.localStorage.getItem("account")).call();
+          console.log("array", axisArray);
+        }
+        getData();
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  }, [account]);
+
+
   return (
     <>
       {/* //? dashboard와 겹치는 스타일 컴포넌트화 하는게 좋을까? */}

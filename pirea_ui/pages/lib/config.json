@@ -1,4 +1,8 @@
 {
-  "API_SERVER_BASE": "http://www.pirea.kro.kr/api/v0.1",
-  "CONTRACT_ADDRESS": "0xcc204BCbf58D3d12990515161F1AaA422525ab69"
+  "API": {
+    "SERVER_BASE": "http://www.pirea.kro.kr/api/v0.1"
+  },
+  "WEB3": {
+    "CONTRACT_ADDRESS": "0x6dA31E4564dd219BE58E9a3F7f97eb8d5aB88BA9"
+  }
 }
