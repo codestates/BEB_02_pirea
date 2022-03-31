@@ -73,7 +73,6 @@ open http://localhost:3000/dashboard
 
 |Audience|Link|
 |---|:---:|
-|Project Goals|https://github.com/codestates/BEB_02_pirea/wiki/Goals|
 |Structure|https://github.com/codestates/BEB_02_pirea/wiki/Structure|
 |Configuration|https://github.com/codestates/BEB_02_pirea/wiki/Configuration|
 |UI design|https://github.com/codestates/BEB_02_pirea/wiki/UI-design|

@@ -57,7 +57,6 @@ open http://localhost:3000/dashboard
 
 |Audience|Link|
 |---|:---:|
-|목표|https://github.com/codestates/BEB_02_pirea/wiki/Goals|
 |구조|https://github.com/codestates/BEB_02_pirea/wiki/Structure|
 |구성|https://github.com/codestates/BEB_02_pirea/wiki/Configuration|
 |UI 디자인|https://github.com/codestates/BEB_02_pirea/wiki/UI-design|
