@@ -102,7 +102,7 @@ export default function Assets() {
                   Owner address:
                 </div>
                 <div className={commonStyles.common_profile_address_text}>
-                  0x8772901ea06D450C18A92a53927Ba63EFcC97Dbe
+        {window.localStorage.getItem("account")}
                 </div>
               </div>
               <div></div>

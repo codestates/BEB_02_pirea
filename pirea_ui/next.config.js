@@ -2,6 +2,9 @@
 
 const nextConfig = {
   // reactStrictMode: true,
+  images: {
+    domains: ['ipfs.infura.io'],
+  },
   webpack: config => {
     // 아래를 추가합니다.
     config.module.rules.push({
