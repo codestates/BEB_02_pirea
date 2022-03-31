@@ -25,8 +25,8 @@ export const Navbar = () => {
         <div className={navStyles.nav_position}>
           <Link href="/">
             <div className={navStyles.nav_logo_text}>
-              <Logo className={navStyles.nav_logo} />
-              <span className={navStyles.nav_title}>pirea</span>
+              <div className={navStyles.nav_logo}></div>
+              <span className={navStyles.nav_title}>Pirea</span>
             </div>
           </Link>
           <div className={navStyles.nav_link_box}>
@@ -55,7 +55,7 @@ export const Navbar = () => {
             >
               <Link href="/dashboard">
                 <a className={navStyles.nav_link}>
-                  <Icon height="2.5rem"></Icon>
+                  <Icon height="2rem" icon="ic:outline-space-dashboard"></Icon>
                 </a>
               </Link>
             </motion.div>

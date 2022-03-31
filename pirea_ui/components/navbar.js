@@ -1,7 +1,8 @@
 import Link from "next/link";
 import navStyles from "./styles-component/navbar.module.css";
-import Logo from "../assets/Logo_img.svg";
+// import Logo from "../assets/Logo_img.png";
 import { motion } from "framer-motion";
+import { Icon } from "@iconify/react";
 
 export const Navbar = () => {
   return (
@@ -24,8 +25,9 @@ export const Navbar = () => {
         <div className={navStyles.nav_position}>
           <Link href="/">
             <div className={navStyles.nav_logo_text}>
-              <Logo className={navStyles.nav_logo} />
-              <span className={navStyles.nav_title}>pirea</span>
+              {/* <Logo className={navStyles.nav_logo} /> */}
+              <div className={navStyles.nav_logo}></div>
+              <span className={navStyles.nav_title}>Pirea</span>
             </div>
           </Link>
           <div className={navStyles.nav_link_box}>
@@ -53,7 +55,9 @@ export const Navbar = () => {
               }}
             >
               <Link href="/dashboard">
-                <a className={navStyles.nav_link}>Dashboard</a>
+                <a className={navStyles.nav_link}>
+                  <Icon height="2rem" icon="ic:outline-space-dashboard"></Icon>
+                </a>
               </Link>
             </motion.div>
           </div>
