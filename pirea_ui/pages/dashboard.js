@@ -94,6 +94,8 @@ export default function Dashboard() {
   const [ownerAddr, setOwnerAddr] = useState({});
   const [tokenId, setTokenId] = useState();
   const [web3, setWeb3] = useState();
+  const [tokenURI, setTokenURI] = useState();
+  const [metadataJson, setMetadataJson] = useState();
   const [tokenContract, setTokenContract] = useState();
   const smartContractAddr = config["WEB3"]["CONTRACT_ADDRESS"];
   const client = create("https://ipfs.infura.io:5001/api/v0");
@@ -104,6 +106,7 @@ export default function Dashboard() {
   }
 
   const onDescChange = (e) => {
+    console.log(e.target.value);
     setUserFileDesc(e.target.value);
   }
 
@@ -116,15 +119,37 @@ export default function Dashboard() {
   const handleCreate = async (data) => {
     if (data["x"] !== axis["x"] || data["y"] !== axis["y"]) {
       setAxis(data);
+      const id = toast.loading("find ....");
 
       const tokenIdtmp = await tokenContract.methods.getTokenId(data["x"], data["y"]).call();
       setTokenId(tokenIdtmp)
       if (tokenIdtmp == 0) {
         setT(false);
+        setMetadataJson();
+        toast.update(id, {
+          render: `no owner `,
+          type: "success",
+          isLoading: false,
+          autoClose: 3000,
+        });
       } else {
         const ownerAddr = await tokenContract.methods.ownerOf(tokenIdtmp).call();
+        const tokenURItmp = await tokenContract.methods.tokenURI(tokenIdtmp).call();
+        const response = await axios.get(tokenURItmp);
+
+        const json = await response.data;
+        console.log(json);
+
+        setMetadataJson(json);
+        setTokenURI(tokenURItmp);
         setOwnerAddr(ownerAddr);
         setT(true);
+        toast.update(id, {
+          render: `find `,
+          type: "success",
+          isLoading: false,
+          autoClose: 3000,
+        });
       }
     }
   };
@@ -140,10 +165,13 @@ export default function Dashboard() {
     const cid = await client.add(file);
     const image_url = `https://ipfs.infura.io/ipfs/${cid.path}`;
     let metadata = {
+      name: "pirea",
       image: image_url,
-      axis: axis['x'],
-      axis: axis['y'],
-      description: userFileDesc
+      description: userFileDesc,
+      properties: {
+        axis_x: axis['x'],
+        axis_y: axis['y'],
+      }
     };
 
     let cid2;
@@ -222,18 +250,21 @@ export default function Dashboard() {
               <div className={dashStyles.dashboard_description_content_header}>
                 Description
               </div>
+              <div className={dashStyles.dashboard_description_content_text}>
+                {metadataJson ? metadataJson.description : null}
+              </div>
             </div>
           </div>
           {/*right*/}
           {t ? (
-            <div>
+            <div className={dashStyles.dashboard_right_main}>
               <div>
                 <div className={dashStyles.dashboard_profile_header}>
                   Map Analytics
                 </div>
                 <div className={dashStyles.dashboard_profile_img_main}>
                   <div className={dashStyles.dashboard_profile_img}>
-                    <Image src={profile} alt="test" />
+                    <Image src={metadataJson.image} width={50} height={50} alt="test" layout="responsive" />
                   </div>
                 </div>
                 <div className={dashStyles.dashboard_profile_address_main}>
@@ -267,7 +298,7 @@ export default function Dashboard() {
               </div>
             </div>
           ) : (
-            <div>
+            <div className={dashStyles.dashboard_right_main}>
               <div className={dashStyles.dashboard_profile_header}>
                 Map Analytics
               </div>

@@ -8,6 +8,10 @@
   width: 50%;
   height: 100%;
 }
+.dashboard_right_main {
+  width: 45%;
+  height: 100%;
+}
 
 .dashboard_map {
   background-color: #fff;
@@ -41,6 +45,9 @@
 }
 
 .dashboard_description_content_header {
+  padding: 2vh;
+}
+.dashboard_description_content_text {
   padding: 2vh;
 }
 
