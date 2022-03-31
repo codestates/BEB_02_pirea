@@ -7,7 +7,7 @@ import { a as three } from "@react-spring/three";
 import { a as web } from "@react-spring/web";
 import laptopStyles from "./styles-component/laptop.module.css";
 import { Navbar } from "../components/navbar";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 // import flbfile from "../public/mac-draco.glb"
 import InnerLaptop from "./innerLaptop";
@@ -117,6 +117,38 @@ export default function Laptop() {
   //     sethello(false);
   //   }, 4000);
   // };
+  const titleVariants = {
+    // hidden: {
+    //   opacity: 0,
+    //   y: "100vh",
+    // },
+    // visible: {
+    //   opacity: 1,
+    //   x: 0,
+    //   transition: {
+    //     type: "spring",
+    //     mess: 0.4,
+    //     damping: 8,
+    //   },
+    // },
+
+    hidden: {
+      scale: 1,
+      opacity: 0,
+    },
+    visible: {
+      scale: 1.3,
+      opacity: 1,
+      transition: {
+        delay: 1,
+      },
+    },
+  };
+
+  const [showTitle, setShowTitle] = useState(true);
+  setInterval(() => {
+    setShowTitle(false);
+  }, 3000);
 
   return (
     <web.main
@@ -134,23 +166,28 @@ export default function Laptop() {
       >
         <motion.div
           className={laptopStyles.laptop_title}
+          // initial="hidden"
+          // animate="visible"
+          // variants={{
+          //   hidden: {
+          //     scale: 1,
+          //     opacity: 0,
+          //   },
+          //   visible: {
+          //     scale: 1.3,
+          //     opacity: 1,
+          //     transition: {
+          //       delay: 1,
+          //     },
+          //   },
+          // }}
+          variants={titleVariants}
           initial="hidden"
           animate="visible"
-          variants={{
-            hidden: {
-              scale: 1,
-              opacity: 0,
-            },
-            visible: {
-              scale: 1.3,
-              opacity: 1,
-              transition: {
-                delay: 1,
-              },
-            },
-          }}
         >
-          hello
+          <AnimatePresence>
+            {showTitle && <motion.div exit={{ y: -1000 }}>hello</motion.div>}
+          </AnimatePresence>
         </motion.div>
       </web.h1>
 
