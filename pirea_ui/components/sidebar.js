@@ -16,7 +16,7 @@ export default function Sidebar() {
 
           <div className={sidebar_styles.sidebar_header_text}>
             <Link href="/">
-              <div>Pirea</div>
+              <div className={sidebar_styles.sidebar_header_text}>Pirea</div>
             </Link>
           </div>
         </div>
