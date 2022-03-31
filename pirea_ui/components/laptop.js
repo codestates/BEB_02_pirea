@@ -117,43 +117,30 @@ export default function Laptop() {
   //     sethello(false);
   //   }, 4000);
   // };
-  const titleVariants = {
-    // hidden: {
-    //   opacity: 0,
-    //   y: "100vh",
-    // },
-    // visible: {
-    //   opacity: 1,
-    //   x: 0,
-    //   transition: {
-    //     type: "spring",
-    //     mess: 0.4,
-    //     damping: 8,
-    //   },
-    // },
+  // const titleVariants = {
 
-    hidden: {
-      scale: 1,
-      opacity: 0,
-    },
-    visible: {
-      scale: 1.3,
-      opacity: 1,
-      transition: {
-        delay: 1,
-      },
-    },
-  };
+  //   hidden: {
+  //     scale: 1,
+  //     opacity: 0,
+  //   },
+  //   visible: {
+  //     scale: 1.3,
+  //     opacity: 1,
+  //     transition: {
+  //       delay: 1,
+  //     },
+  //   },
+  // };
 
-  const [showTitle, setShowTitle] = useState(true);
-  setInterval(() => {
-    setShowTitle(false);
-  }, 3000);
+  // const [showTitle, setShowTitle] = useState(true);
+  // setInterval(() => {
+  //   setShowTitle(false);
+  // }, 3000);
 
   return (
     <web.main
       className={laptopStyles.laptop_main}
-      style={{ background: props.open.to([0, 1], ["#f0f0f0", "#2a93d4"]) }}
+      style={{ background: props.open.to([0, 1], ["#f0f0f0", "#7ebc59"]) }}
     >
       <Navbar />
       <web.h1
@@ -166,28 +153,29 @@ export default function Laptop() {
       >
         <motion.div
           className={laptopStyles.laptop_title}
-          // initial="hidden"
-          // animate="visible"
-          // variants={{
-          //   hidden: {
-          //     scale: 1,
-          //     opacity: 0,
-          //   },
-          //   visible: {
-          //     scale: 1.3,
-          //     opacity: 1,
-          //     transition: {
-          //       delay: 1,
-          //     },
-          //   },
-          // }}
-          variants={titleVariants}
           initial="hidden"
           animate="visible"
+          variants={{
+            hidden: {
+              scale: 1,
+              opacity: 0,
+            },
+            visible: {
+              scale: 1.3,
+              opacity: 1,
+              transition: {
+                delay: 1,
+              },
+            },
+          }}
+          // variants={titleVariants}
+          // initial="hidden"
+          // animate="visible"
         >
-          <AnimatePresence>
+          hello
+          {/* <AnimatePresence>
             {showTitle && <motion.div exit={{ y: -1000 }}>hello</motion.div>}
-          </AnimatePresence>
+          </AnimatePresence> */}
         </motion.div>
       </web.h1>
 
@@ -195,7 +183,7 @@ export default function Laptop() {
         <three.pointLight
           position={[10, 10, 10]}
           intensity={1.5}
-          color={props.open.to([0, 1], ["#f0f0f0", "#2a93d4"])}
+          color={props.open.to([0, 1], ["#f0f0f0", "#7ebc59"])}
         />
         <Suspense fallback={null}>
           <group

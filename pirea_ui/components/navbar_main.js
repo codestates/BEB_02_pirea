@@ -2,6 +2,7 @@ import Link from "next/link";
 import navStyles from "./styles-component/navbar.module.css";
 import Logo from "../assets/Logo_img.svg";
 import { motion } from "framer-motion";
+import { Icon } from "@iconify/react";
 
 export const Navbar = () => {
   return (
@@ -53,7 +54,9 @@ export const Navbar = () => {
               }}
             >
               <Link href="/dashboard">
-                <a className={navStyles.nav_link}>Dashboard</a>
+                <a className={navStyles.nav_link}>
+                  <Icon height="2.5rem"></Icon>
+                </a>
               </Link>
             </motion.div>
           </div>
