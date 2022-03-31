@@ -2,6 +2,7 @@ import Layout from "../components/layout";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import commonStyles from "./styles/common.module.css";
+import assetsStyles from "./styles/assets.module.css"
 import Image from "next/image";
 import profile from "../assets/test_item.png";
 import { Icon } from "@iconify/react";
@@ -10,6 +11,7 @@ import { useEffect, useState } from "react"
 import Web3 from "web3"
 import abi from "./lib/abi"
 import config from "./lib/config.json"
+
 
 export default function Assets() {
   if (typeof window == "undefined") {
@@ -21,6 +23,14 @@ export default function Assets() {
   const [tokenContract, setTokenContract] = useState();
   const [data, setData] = useState();
 
+  const [axis, setAxis] = useState({});
+
+
+  const handleCreate = async (data) => {
+    if (data["x"] !== axis["x"] || data["y"] !== axis["y"]) {
+      setAxis(data);
+    };
+  }
 
   useEffect(() => {
     if (typeof window.ethereum !== "undefined" && account !== '') {
@@ -37,6 +47,7 @@ export default function Assets() {
         const getData = async () => {
           const axisArray = await tokenContract.methods.getTokenAllByAddress(window.localStorage.getItem("account")).call();
           console.log("array", axisArray);
+          setData(axisArray);
         }
         getData();
       } catch (e) {
@@ -54,7 +65,7 @@ export default function Assets() {
           {/*left*/}
           <div className={commonStyles.common_left_main}>
             <div className={commonStyles.common_map}>
-              <Map className={commonStyles.common_map_canvas} />
+              <Map onChange={handleCreate} className={commonStyles.common_map_canvas} />
             </div>
             <div className={commonStyles.common_search_main}>
               <input
@@ -76,7 +87,7 @@ export default function Assets() {
             </div>
           </div>
           {/*right*/}
-          <div>
+          <div className={assetsStyles.assets_right_main}>
             <div>
               <div className={commonStyles.common_profile_header}>
                 Map Analytics
@@ -99,11 +110,50 @@ export default function Assets() {
             <div className={commonStyles.common_offers_main}>
               <div className={commonStyles.common_offers_header}>Offer</div>
             </div>
+
+            <div className={commonStyles.common_offers_main}>
+              <div className={commonStyles.common_offers_header}>
+                Asset
+              </div>
+
+              <div className={assetsStyles.assets_content_header_main}>
+                <div classname={assetsStyles.assets_content_header_id}>
+                  id
+                </div>
+                <div classname={assetsStyles.assets_content_header_type_x}>
+                  x
+                </div>
+                <div classname={assetsStyles.assets_content_header_type_y}>
+                  y
+                </div>
+              </div>
+
+              {data ?
+                data.map((e) => (
+                  e.id != 0 ? (
+                    <div className={assetsStyles.assets_content_main}>
+                      <div>
+                        {e.id}
+                      </div>
+                      <div>
+                        {e.x}
+                      </div>
+                      <div>
+                        {e.y}
+                      </div>
+                    </div>)
+                    : null
+                ))
+                : "test"
+              }
+            </div>
             {/* <div className={commonStyles.common_price_history_main}>
               <div className={commonStyles.common_price_history_header}>
                 Price History
               </div>
             </div> */}
+            <div>
+            </div>
           </div>
         </div>
       </Layout>

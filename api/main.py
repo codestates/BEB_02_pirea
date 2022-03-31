@@ -20,10 +20,13 @@ app = FastAPI(
 )
 
 origins = [
+    "http://localhost.tiangolo.com",
+    "https://localhost.tiangolo.com",
+    "http://localhost:3000",
     "http://192.168.0.1:3000",
     "http://192.168.0.1:3001",
     "http://192.168.0.3:3000",
-    "http:/192.168.0.3:8000",
+    "http:/192.168.0.3:8000"
 ]
 
 app.add_middleware(
@@ -33,6 +36,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
 
 # app.include_router(items.router)
 app.include_router(user.router)

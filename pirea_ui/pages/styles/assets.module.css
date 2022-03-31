@@ -7,6 +7,11 @@
   width: 50%;
   height: 100%;
 }
+.assets_right_main {
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
 .assets_map {
   background-color: #fff;
@@ -73,3 +78,29 @@
   padding: 1vw;
   color: #535353;
 }
+
+.assets_content_header_main {
+  display: flex;
+  padding: 1vh 1vh 1vh 2vh;
+  font-size: 1rem;
+  border-bottom: 1px solid #BDBDBD;
+}
+.assets_content_main {
+  display: flex;
+  padding: 1vh 1vh 1vh 2vh;
+  color: #8A8A8A;
+
+  font-size: 0.9rem;
+}
+
+
+
+
+.assets_content_main > div {
+  flex-grow: 1;
+}
+.assets_content_header_main > div {
+  flex-grow: 1;
+}
+
+
