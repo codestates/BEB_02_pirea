@@ -26,6 +26,7 @@ export default function Assets() {
   const [data, setData] = useState();
   const [metadataJson, setMetadataJson] = useState();
   const [tokenId, setTokenId] = useState();
+  const [selectedOwner, setSelectedOwner] = useState();
 
   const [axis, setAxis] = useState({});
 
@@ -47,6 +48,9 @@ export default function Assets() {
         });
         return;
       }
+      const ownerAddr = await tokenContract.methods.ownerOf(tokenIdtmp).call();
+      setSelectedOwner(ownerAddr);
+
       const tokenURI = await tokenContract.methods.tokenURI(tokenIdtmp).call();
 
       const res = await axios.get(tokenURI);
@@ -151,6 +155,13 @@ export default function Assets() {
                 <div className={commonStyles.common_profile_address_text}>
                   {window.localStorage.getItem("account")}
                 </div>
+              </div>
+
+              <div>
+                selectedOwner {selectedOwner ? selectedOwner : null}
+              </div>
+              <div>
+                selectedTokenId {tokenId ? tokenId : null}
               </div>
               <div>
                 <div>
