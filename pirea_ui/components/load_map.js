@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom'
 import React, { useRef, useMemo, useState, useEffect } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import niceColors from 'nice-color-palettes'
+import GridLoader from "react-spinners/GridLoader";
+import mapStyles from "./styles-component/map.module.css"
 
 const tempObject = new THREE.Object3D()
 const tempColor = new THREE.Color()
@@ -86,8 +88,10 @@ export default function LoadMap({ onChange, axisArray }) {
   if (!axisArray) {
     return (
       <>
-        loading
-    </>
+        <div className={mapStyles.map_loading_main}>
+          <GridLoader color={"#087592"} />
+        </div>
+      </>
     )
   }
 
