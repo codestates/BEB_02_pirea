@@ -136,7 +136,6 @@ export default function Dashboard() {
         const ownerAddr = await tokenContract.methods.ownerOf(tokenIdtmp).call();
         const tokenURItmp = await tokenContract.methods.tokenURI(tokenIdtmp).call();
         const response = await axios.get(tokenURItmp);
-
         const json = await response.data;
 
         setMetadataJson(json);

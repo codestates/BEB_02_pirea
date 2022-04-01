@@ -7,6 +7,7 @@ import Image from "next/image";
 import profile from "../assets/test_item.png";
 import { Icon } from "@iconify/react";
 import Map from "../components/map";
+import axios from "axios"
 import { useEffect, useState } from "react"
 import Web3 from "web3"
 import abi from "./lib/abi"
@@ -23,6 +24,8 @@ export default function Assets() {
   const [web3, setWeb3] = useState();
   const [tokenContract, setTokenContract] = useState();
   const [data, setData] = useState();
+  const [metadataJson, setMetadataJson] = useState();
+  const [tokenId, setTokenId] = useState();
 
   const [axis, setAxis] = useState({});
 
@@ -30,6 +33,34 @@ export default function Assets() {
   const handleCreate = async (data) => {
     if (data["x"] !== axis["x"] || data["y"] !== axis["y"]) {
       setAxis(data);
+      const id = toast.loading("find ....");
+
+      const tokenIdtmp = await tokenContract.methods.getTokenId(data["x"], data["y"]).call();
+
+      if (tokenIdtmp == 0) {
+
+        toast.update(id, {
+          render: `no owner `,
+          type: "success",
+          isLoading: false,
+          autoClose: 3000,
+        });
+        return;
+      }
+      const tokenURI = await tokenContract.methods.tokenURI(tokenIdtmp).call();
+
+      const res = await axios.get(tokenURI);
+      const metaTmp = res.data;
+
+      setTokenId(tokenIdtmp);
+      setMetadataJson(metaTmp);
+      toast.update(id, {
+        render: `find `,
+        type: "success",
+        isLoading: false,
+        autoClose: 3000,
+      });
+
     };
   }
 
@@ -60,6 +91,12 @@ export default function Assets() {
   }, [account]);
 
 
+
+
+
+
+
+
   return (
     <>
       {/* //? dashboard와 겹치는 스타일 컴포넌트화 하는게 좋을까? */}
@@ -87,6 +124,9 @@ export default function Assets() {
               <div className={commonStyles.common_description_content_header}>
                 Description
               </div>
+              <div className={commonStyles.common_description_content_text}>
+                {metadataJson ? metadataJson.description : null}
+              </div>
             </div>
           </div>
           {/*right*/}
@@ -97,7 +137,11 @@ export default function Assets() {
               </div>
               <div className={commonStyles.common_profile_img_main}>
                 <div className={commonStyles.common_profile_img}>
-                  <Image src={profile} alt="test" />
+                  {
+                    metadataJson
+                      ? <Image src={metadataJson.image} alt="text" width={50} height={50} />
+                      : <Image src={profile} alt="test" />
+                  }
                 </div>
               </div>
               <div className={commonStyles.common_profile_address_main}>
@@ -106,6 +150,14 @@ export default function Assets() {
                 </div>
                 <div className={commonStyles.common_profile_address_text}>
                   {window.localStorage.getItem("account")}
+                </div>
+              </div>
+              <div>
+                <div>
+                  x: {axis['x'] ? axis['x'] : null}
+                </div>
+                <div>
+                  y: {axis['y'] ? axis['y'] : null}
                 </div>
               </div>
               <div></div>
