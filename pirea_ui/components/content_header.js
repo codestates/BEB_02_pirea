@@ -133,6 +133,7 @@ export default function Content_header() {
         className={classNames({
           [c_content_styles.c_content_header_main]: true,
           ["dark:bg-black"]: true,
+          ["dark:border-[#475569]"]: true,
         })}
       >
         {/* light, dark modal*/}
@@ -148,7 +149,12 @@ export default function Content_header() {
         </div>
 
         {/* message box*/}
-        <div className={c_content_styles.content_header_input}>
+        <div
+          className={classNames({
+            [c_content_styles.content_header_input]: true,
+            ["dark:border-[#475569]"]: true,
+          })}
+        >
           <input
             className={c_content_styles.content_header_input_wright}
             placeholder="swap code search"

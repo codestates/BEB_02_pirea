@@ -33,6 +33,7 @@
 .dashboard_search_input {
   width: 100%;
   border: none;
+  background-color: inherit;
 }
 
 .dashboard_description_main {
@@ -46,9 +47,11 @@
 
 .dashboard_description_content_header {
   padding: 2vh;
+  color: #535353;
 }
 .dashboard_description_content_text {
   padding: 2vh;
+  background-color: inherit;
 }
 
 .dashboard_profile_header {
@@ -129,6 +132,7 @@
 .dashboard_none_profile_input_des_text {
   width: 100%;
   border: 2px solid #949494;
+  background-color: inherit;
 }
 .dashboard_none_profile_button_main {
   height: 4vh;
