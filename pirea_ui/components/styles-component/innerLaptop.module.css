@@ -6,6 +6,7 @@
   background-size: cover;
   width: 145px;
   height: 145px;
+  margin-top: -0.1vh;
 }
 
 .inner_container {
