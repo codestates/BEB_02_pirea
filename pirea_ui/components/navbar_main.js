@@ -1,6 +1,6 @@
 import Link from "next/link";
 import navStyles from "./styles-component/navbar.module.css";
-import Logo from "../assets/Logo_img.svg";
+// import Logo from "../assets/Logo_img.png";
 import { motion } from "framer-motion";
 import { Icon } from "@iconify/react";
 
@@ -25,6 +25,7 @@ export const Navbar = () => {
         <div className={navStyles.nav_position}>
           <Link href="/">
             <div className={navStyles.nav_logo_text}>
+              {/* <Logo className={navStyles.nav_logo} /> */}
               <div className={navStyles.nav_logo}></div>
               <span className={navStyles.nav_title}>Pirea</span>
             </div>
@@ -54,9 +55,13 @@ export const Navbar = () => {
               }}
             >
               <Link href="/dashboard">
-                <a className={navStyles.nav_link}>
-                  <Icon height="2rem" icon="ic:outline-space-dashboard"></Icon>
-                </a>
+                {/* <a className={navStyles.nav_link}> */}
+                <Icon
+                  height="2rem"
+                  icon="ic:outline-space-dashboard"
+                  color="#4a4a4a"
+                ></Icon>
+                {/* </a> */}
               </Link>
             </motion.div>
           </div>

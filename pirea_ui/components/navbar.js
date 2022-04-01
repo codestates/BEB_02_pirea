@@ -55,9 +55,13 @@ export const Navbar = () => {
               }}
             >
               <Link href="/dashboard">
-                <a className={navStyles.nav_link}>
-                  <Icon height="2rem" icon="ic:outline-space-dashboard"></Icon>
-                </a>
+                {/* <a className={navStyles.nav_link}> */}
+                <Icon
+                  height="2rem"
+                  icon="ic:outline-space-dashboard"
+                  color="#4a4a4a"
+                ></Icon>
+                {/* </a> */}
               </Link>
             </motion.div>
           </div>
