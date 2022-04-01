@@ -2,7 +2,14 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 80%;
+  border-bottom: 2px solid #f1f6fc;
+  border-left: 1px solid #f1f6fc;
+  height: 10%;
+  background-color: #fff;
 }
 .c_content_header_mode {
   width: 25px;
