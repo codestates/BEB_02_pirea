@@ -109,8 +109,8 @@
   height: 15%;
   border-radius: 10px;
   display: flex;
-  justify-content: center;
-  background: #f0f0f0;
+  justify-content:center;
+  background: #F0F0F0;
 }
 
 .swap_right_type_select_hw_div {
