@@ -43,6 +43,7 @@ export default function swap() {
   const { library, chainId, activate, active, deactivate } = useWeb3React();
   const [swapSdk, setSwapSdk] = useState(null);
   const [web3, setWeb3] = useState('');
+  const [metaJson, setMetaJson] = useState();
   const smartContAddr = config["WEB3"]["CONTRACT_ADDRESS"];
 
 
@@ -91,6 +92,7 @@ export default function swap() {
   };
 
   const inputHaveClick = async () => {
+    const id = toast.loading("find ....");
     // openPopup();
     var a = 0;
 
@@ -100,16 +102,44 @@ export default function swap() {
     });
 
 
-
-
     if (commonModalNum == 1) {
+
+      if (!axis['x']) {
+        console.log("hello")
+        toast.update(id, {
+          render: `input data`,
+          type: "error",
+          isLoading: false,
+          autoClose: 3000,
+        });
+        return
+      }
+
       const web = new Web3(window.ethereum);  // 새로운 web3 객체를 만든다
       const tokenContract = new web.eth.Contract(
         abi,
         smartContAddr
       );
       const tokenCallId = await tokenContract.methods.getTokenId(axis['x'], axis['y']).call();
+
+      if (tokenCallId == 0) {
+        toast.update(id, {
+          render: `no owner `,
+          type: "success",
+          isLoading: false,
+          autoClose: 3000,
+        });
+        return
+      }
+
       const ownerAddr = await tokenContract.methods.ownerOf(tokenCallId).call();
+      const uri = await tokenContract.methods.tokenURI(tokenCallId).call();
+      const res = await axios.get(uri);
+      const json = await res.data;
+      console.log(json);
+
+      setMetaJson(json);
+
       console.log(ownerAddr);
 
       console.log("tokenid", a);
@@ -154,7 +184,12 @@ export default function swap() {
       }
     }
 
-
+    toast.update(id, {
+      render: `find `,
+      type: "success",
+      isLoading: false,
+      autoClose: 3000,
+    });
 
 
   }
@@ -304,11 +339,11 @@ export default function swap() {
     <>
       {/* //? dashboard와 겹치는 스타일 컴포넌트화 하는게 좋을까? */}
       <Layout setWeb3={setWeb3}>
-        <div className={commonStyles.common_main}>
-          <div className={commonStyles.common_left_main}>
+        <div className={swapStyles.swap_main}>
+          <div className={swapStyles.swap_left_main}>
             <div className={swapStyles.swap_left_map_main}>
               <Map
-                className={commonStyles.dashboard_map_canvas}
+                className={swapStyles.swap_map}
                 onChange={handleCreate}
               />
             </div>
@@ -326,12 +361,20 @@ export default function swap() {
               </div>
             </div>
           </div>
-          <div className={commonStyles.common_right_main}>
+          <div className={swapStyles.swap_right_main}>
             <div className={swapStyles.swap_right_header}>
               create swap
             </div>
             <div className={swapStyles.swap_right_profile_image_main}>
-              <Image src={profile} alt="test" />
+              {metaJson ?
+                <div className={swapStyles.swap_right_profile_image}>
+                  <Image src={metaJson.image} className={swapStyles.swap_profile_image_content} width={100} height={100} alt="test" />
+                </div>
+                :
+                <div className={swapStyles.swap_right_profile_image}>
+                  <Image src={profile} width={100} height={100} alt="test" />
+                </div>
+              }
             </div>
             <div className={swapStyles.swap_right_description_main}>
               <SwapModalButton typeTrans={typeTrans} typeErcClick={typeErcClick} typeTransClick={typeTransClick} commonModalNum={commonModalNum} haveModalNum={haveModalNum} wantModalNum={wantModalNum} />
