@@ -102,6 +102,8 @@ export default function swap() {
     });
 
 
+
+
     if (commonModalNum == 1) {
 
       if (!axis['x']) {
