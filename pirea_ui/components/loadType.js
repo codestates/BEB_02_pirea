@@ -1,11 +1,39 @@
 import loadStyles from "./styles-component/load.module.css"
+import { useEffect, useState } from "react"
+import { useWeb3React } from "@web3-react/core";
+import { injected } from "../pages/lib/connectors";
+import { NftSwap } from '@traderxyz/nft-swap-sdk';
+import statusOrderJson from "../pages/lib/order_status.json"
 
-export default function LoadType({ form, tokenUrl, approve }) {
+export default function LoadType({ sign, form, tokenUrl, approve }) {
+  const { library, chainId, activate, active, deactivate } = useWeb3React();
+  const { statusOrder, setStatusOrder } = useState();
+
+
+  useEffect(() => {
+    activate(injected, (error) => {
+      console.log(error);
+    });
+
+
+    if (active) {
+      const sdk = new NftSwap(library, library.getSigner(), chainId);
+      const getOrderStatus = async () => {
+        const statusTmp = await sdk.getOrderStatus(sign);
+        console.log("import", statusTmp);
+        setStatusOrder(statusTmp);
+      }
+      getOrderStatus();
+    }
+  }, []);
 
   if (form['type'] === "ERC721") {
     return (
       <>
-        <div className={loadStyles.load_type_form_main}>
+        <div>
+          {statusOrderJson[statusOrder]}
+        </div>
+        <div className={`${statusOrder == 3 ? loadStyles.load_type_form_main_start : loadStyles.load_type_form_main_end}`}>
           <div className={loadStyles.load_type_main}>
             <div className={loadStyles.load_type_header}>
               swapping token metadata url

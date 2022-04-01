@@ -1,34 +1,50 @@
 import Layout from "../components/layout";
 import axios from "axios";
 import useSWR from "swr";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import allswapStyles from "./styles/allswap.module.css"
 import AllSwapCart from "../components/all_swap_cart"
+import AllSwapCard from "../components/all_swap.card"
+import { NftSwap } from '@traderxyz/nft-swap-sdk';
 import { Icon } from '@iconify/react';
 import { useRouter } from "next/router"
+import { useWeb3React } from "@web3-react/core";
 import config from "./lib/config.json"
+import { injected } from "./lib/connectors";
+
+
+
+
+/*
+  0: 'Invalid',
+  1: 'InvalidMakerAssetAmount',
+  2: 'InvalidTakerAssetAmount',
+  3: 'Fillable',
+  4: 'Expired',
+  5: 'FullyFilled',
+  6: 'Cancelled',
+*/
+
 
 export default function AllSwap() {
-  console.log("API", config)
+
+
   const [moreMake, setMoreMake] = useState(false);
   const [moreTake, setMoreTake] = useState(false);
+  const { library, chainId, activate, active, deactivate } = useWeb3React();
   const router = useRouter();
 
   const apiEndPoint = "http://www.pirea.kro.kr/api/v0.1/swap/get/all";
   const fetcher = async (url) =>
     await axios
       .get(url, {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-        },
         params: {
           more: "1",
         },
       })
       .then((res) => res.data);
-
-  const { data, error } = useSWR(apiEndPoint, fetcher);
-  console.log(`data`, typeof data);
+  const { data, error } = useSWR(apiEndPoint, fetcher, { refreshInterval: 15000 });
+  // console.log(`data`, typeof data);
 
   if (error) {
     return (
@@ -84,18 +100,29 @@ export default function AllSwap() {
       </Alert>
     );
   }
+
+
+
   const load_swap = (e) => {
     console.log("Data", e);
     router.push(`/load?swap_code=${e}`)
   }
+  activate(injected, (error) => {
+    if (isNoEthereumObject(error))
+      window.open("https://metamask.io/download.html");
+  });
 
-  console.log(data);
+
+
+
+
+
   return (
     <>
       <Layout>
         <div className={allswapStyles.all_swap_main}>
           {data.map((e) => (
-            <div className={allswapStyles.all_swap_cart_main} onClick={() => load_swap(e.swapcode)}>
+            <AllSwapCard sign={e.sign} load_swap={load_swap} swap_code={e.swapcode}>
               <div className={allswapStyles.all_swap_cart_left_main}>
                 <AllSwapCart header={"token Address"} content={e.wantForm.tokenAddress} />
                 <AllSwapCart header={"token id"} content={e.wantForm.tokenId} />
@@ -112,7 +139,7 @@ export default function AllSwap() {
                   <AllSwapCart header={"maker address"} content={e.makerAddress} />
                 </div>
               </div>
-            </div>
+            </AllSwapCard>
           ))}
         </div>
       </Layout>

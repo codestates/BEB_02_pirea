@@ -164,7 +164,6 @@ export default function swap() {
 
     const approveId = toast.loading("Approve loading...");
     var orderForm = approveOrder(tmpHave);
-    console.log(orderForm);
 
 
     try {
@@ -177,7 +176,6 @@ export default function swap() {
         const approvalTx = await swapSdk.approveTokenOrNftByAsset(orderForm, window.localStorage.getItem("account"));
         const approvalReceipt = await approvalTx.wait();
         // console.log(orderForm.tokenAddress, approvalReceipt);
-        console.log(approvalReceipt);
         toast.update(approveId, {
           render: `${approvalReceipt} sucess approve`,
           type: "success",
@@ -228,7 +226,7 @@ export default function swap() {
       // openPopup(response.data);
       console.log(response.data);
       toast.update(createSwapId, {
-        render: `${response.data} sucess approve`,
+        render: `${response.data} success swap`,
         type: "success",
         isLoading: false,
         autoClose: 4000,
@@ -334,7 +332,7 @@ export default function swap() {
             <div className={swapStyles.swap_right_header}>
               create swap
             </div>
-            <div className={dashStyles.dashboard_profile_img}>
+            <div className={swapStyles.swap_right_profile_image_main}>
               <Image src={profile} alt="test" />
             </div>
             <div className={swapStyles.swap_right_description_main}>

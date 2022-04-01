@@ -198,7 +198,7 @@ export default function Main() {
                     opacity: 1,
                     transition: { duration: 1, delay: 0.2 },
                   }}
-                  // whileInView={{ x: 100, delay: 2, duration: 2 }}
+                // whileInView={{ x: 100, delay: 2, duration: 2 }}
                 >
                   <div className={mainStyles.main_section1_contents}>
                     <div className={mainStyles.main_section1_subtitle}>
