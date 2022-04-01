@@ -13,10 +13,6 @@
   width: 45%;
 }
 
-
-
-
-
 .swap_left_map_main {
   width: 100%;
   height: 60%;
@@ -33,9 +29,7 @@
   justify-content: space-between;
 }
 
-.swap_right_type_select_main {
-  display: flex;
-}
+
 .swap_right_profile_image_main {
   display: flex;
   justify-content: center;
@@ -94,7 +88,44 @@
   display: flex;
   padding: 4vh 1vh 1vh 0;
 }
+
+.swap_right_type_select_hw_main {
+  display: flex;
+  width: 35%;
+  height: 15%;
+  border-radius: 10px;
+  display: flex;
+  justify-content:center;
+  background: #F0F0F0;
+}
+
+.swap_right_type_select_hw_div {
+  height: 100%;
+  width: 50%;
+  background: #F0F0F0;
+  border-radius: 10px;
+  font-size: 0.8em;
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.swap_right_type_select_hw_div_selected {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  background: #E3E3E3;
+  height: 100%;
+  font-size: 0.8em;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+}
+
 .swap_right_type_select_main {
+  display: flex;
   width: 45%;
   height: 15%;
   border-radius: 10px;

@@ -1,13 +1,13 @@
 import swapStyles from "../pages/styles/swap.module.css"
 
-export default function ErcForm({typeTrans, type, axis, setErc20Amount, setErc721Id, setErcContract }) {
+export default function ErcForm({ smartContAddr, typeTrans, type, axis, setErc20Amount, setErc721Id, setErcContract }) {
 
 
   if (type == 1) {
     return (
       <div className={swapStyles.swap_right_type_description_main}>
         <div>
-          Smart Contract Address:
+          Smart Contract Address: {smartContAddr}
         </div>
         <div>
           X axis: &nbsp; {axis['x']}
