@@ -143,7 +143,7 @@ export default function Sidebar() {
             </div>
           </Link>
         </div>
-        <div className={sidebar_styles.sidebar_footer}>footer</div>
+        <div className={sidebar_styles.sidebar_footer}></div>
       </div>
     </>
   );

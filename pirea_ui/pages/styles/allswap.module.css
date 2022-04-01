@@ -2,13 +2,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-y:scroll;
+  overflow-y: scroll;
   height: 100%;
+  margin-top: 11vh;
 }
 .all_swap_card_main_start {
   width: 70%;
   border-radius: 20px;
-  background-color: #EDFFEF;
+  background-color: #edffef;
   box-shadow: 0px 5px 26px rgba(109, 141, 173, 0.25);
   margin: 1vh;
   padding: 2vw;
@@ -17,7 +18,7 @@
 .all_swap_card_main_end {
   width: 70%;
   border-radius: 20px;
-  background-color: #FFEAEA;
+  background-color: #ffeaea;
   box-shadow: 0px 5px 26px rgba(109, 141, 173, 0.25);
   margin: 1vh;
   padding: 2vw;
@@ -29,8 +30,6 @@
   font-size: 1.2rem;
 }
 
-
-
 .all_swap_cart_main_end {
   display: flex;
   justify-content: space-between;
@@ -38,19 +37,16 @@
 }
 
 .all_swap_cart_left_main {
-
 }
 
-.all_swap_cart_right_main{
-
+.all_swap_cart_right_main {
 }
 
 .all_swap_type_header {
   font-size: 1vw;
-
 }
 .all_swap_type_content {
-  color: #7C7C7C;
+  color: #7c7c7c;
   font-size: 0.7vw;
 }
 
@@ -59,4 +55,3 @@
   justify-content: center;
   align-items: center;
 }
-
