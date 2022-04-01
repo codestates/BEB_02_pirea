@@ -38,15 +38,13 @@
   justify-content: center;
 }
 
-
 .swap_right_profile_image_main {
   display: flex;
   height: 10%;
   border-radius: 20px;
 }
-.swap_right_profile_image{
+.swap_right_profile_image {
   padding: 0 0 0 4vh;
-
 }
 .swap_profile_image_content {
   width: 10%;
@@ -71,13 +69,12 @@
   border-radius: 10px;
   cursor: pointer;
   color: #fff;
-  background-color: #2393B0;
+  background-color: #2393b0;
 }
 
 .swap_right_header {
   font-size: 1.5em;
 }
-
 
 .swap_right_want_main {
   display: flex;
@@ -98,7 +95,7 @@
   border-radius: 10px;
   cursor: pointer;
   color: #fff;
-  background-color: #2393B0;
+  background-color: #2393b0;
 }
 
 .swap_right_button_main {
@@ -112,14 +109,14 @@
   height: 15%;
   border-radius: 10px;
   display: flex;
-  justify-content:center;
-  background: #F0F0F0;
+  justify-content: center;
+  background: #f0f0f0;
 }
 
 .swap_right_type_select_hw_div {
   height: 100%;
   width: 50%;
-  background: #F0F0F0;
+  background: #f0f0f0;
   border-radius: 10px;
   font-size: 0.8em;
   cursor: pointer;
@@ -133,7 +130,7 @@
   justify-content: center;
   align-items: center;
   width: 50%;
-  background: #E3E3E3;
+  background: #e3e3e3;
   height: 100%;
   font-size: 0.8em;
   border-radius: 10px;
@@ -147,14 +144,14 @@
   height: 15%;
   border-radius: 10px;
   display: flex;
-  justify-content:center;
-  background: #F0F0F0;
+  justify-content: center;
+  background: #f0f0f0;
 }
 
 .swap_right_type_select_div {
   height: 100%;
   width: 33%;
-  background: #F0F0F0;
+  background: #f0f0f0;
   border-radius: 10px;
   font-size: 0.8em;
   cursor: pointer;
@@ -168,7 +165,7 @@
   justify-content: center;
   align-items: center;
   width: 33%;
-  background: #E3E3E3;
+  background: #e3e3e3;
   height: 100%;
   font-size: 0.8em;
   border-radius: 10px;
@@ -179,7 +176,7 @@
   cursor: pointer;
   margin: 0 2vh 0 0;
   border-radius: 5px;
-  background: #2393B0;
+  background: #2393b0;
   color: #fff;
   padding: 1vh;
 }
@@ -198,11 +195,11 @@
   display: flex;
 }
 .swap_right_form_main > input:focus {
- outline: none;
+  outline: none;
 }
 .swap_right_form_main > input {
   border: none;
-  border-bottom: 1px solid #81D0DF;
+  border-bottom: 1px solid #81d0df;
   margin: 0 0 0 2vh;
+  background: inherit;
 }
-
