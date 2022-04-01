@@ -138,7 +138,6 @@ export default function Dashboard() {
         const response = await axios.get(tokenURItmp);
 
         const json = await response.data;
-        console.log(json);
 
         setMetadataJson(json);
         setTokenURI(tokenURItmp);
