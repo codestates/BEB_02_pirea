@@ -38,11 +38,10 @@ export default function Assets() {
       setAxis(data);
       const id = toast.loading("find ....");
 
-      const tokenIdtmp = await tokenContract.methods
-        .getTokenId(data["x"], data["y"])
-        .call();
+      const tokenIdtmp = await tokenContract.methods.getTokenId(data["x"], data["y"]).call();
 
       if (tokenIdtmp == 0) {
+
         toast.update(id, {
           render: `no owner `,
           type: "success",
@@ -67,8 +66,9 @@ export default function Assets() {
         isLoading: false,
         autoClose: 3000,
       });
-    }
-  };
+
+    };
+  }
 
   useEffect(() => {
     if (typeof window.ethereum !== "undefined" && account !== "") {
@@ -146,16 +146,11 @@ export default function Assets() {
               </div>
               <div className={commonStyles.common_profile_img_main}>
                 <div className={commonStyles.common_profile_img}>
-                  {metadataJson ? (
-                    <Image
-                      src={metadataJson.image}
-                      alt="text"
-                      width={50}
-                      height={50}
-                    />
-                  ) : (
-                    <Image src={profile} alt="test" />
-                  )}
+                  {
+                    metadataJson
+                      ? <Image src={metadataJson.image} alt="text" width={50} height={50} />
+                      : <Image src={profile} alt="test" />
+                  }
                 </div>
               </div>
               <div className={commonStyles.common_profile_address_main}>
