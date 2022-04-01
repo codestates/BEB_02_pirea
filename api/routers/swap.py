@@ -32,6 +32,7 @@ async def get_swap_code(db: Session=Depends(get_db), swapcode: str=""):
 
         abi = await get_create_abi(db, cont_address=contractAddress)
         dictret = dict(abi.__dict__)
+        print(abi)
 
         abi_json_load = json.loads(dictret['abijson'])
         w3 = Web3(Web3.HTTPProvider(SECRET_FILE_WEB3['RINKEBY_END_POINT']))
@@ -45,8 +46,9 @@ async def get_swap_code(db: Session=Depends(get_db), swapcode: str=""):
             tokenURI = contract_obj.functions.tokenURI(1).call()
             return tokenURI
 
-    signcode = get_swapcode_sign(db, swapcode=swapcode)
-    signcode_dict = dict(signcode.__dict__)
+    signcode_dict = get_swapcode_sign(db, swapcode=swapcode).__dict__
+    
+    
 
     
     if signcode_dict["wantForm"]["type"] == "ERC721" :
@@ -58,6 +60,8 @@ async def get_swap_code(db: Session=Depends(get_db), swapcode: str=""):
     if signcode_dict["haveForm"]["type"] == "ERC721" :
         have_token_url = await get_swap_url(contractAddress=signcode_dict["haveForm"]["tokenAddress"], tokenId= int(signcode_dict["haveForm"]["tokenId"]))
         signcode_dict["have_token_url"] = have_token_url
+
+    print(signcode_dict)
 
     return signcode_dict
 

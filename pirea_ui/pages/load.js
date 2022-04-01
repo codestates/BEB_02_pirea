@@ -15,26 +15,27 @@ import axios from "axios";
 import useSWR from "swr";
 
 export default function Load() {
-  const apiEndPoint = "http://192.168.0.3:8000/api/v0.1/swap/get";
+  const apiEndPoint = "http://www.pirea.kro.kr/api/v0.1/swap/get";
   const router = useRouter();
   const { swap_code } = router.query;
+  const [data, setData] = useState();
   const { library, chainId, activate, active, deactivate } = useWeb3React();
   const [swapSdk, setSwapSdk] = useState(null);
   const [statusOrder, setStatusOrder] = useState('');
 
-  const fetcher = async (url) =>
+  const fetcher = async (url) => {
     await axios
       .get(url, {
-        headers: {
-          "Access-Control-Allow-Origin": "*"
-        },
+
         params: {
           swapcode: swap_code,
         },
       })
-      .then((res) => res.data);
+      .then((res) => setData(res.data));
+  }
 
-  const { data, error } = useSWR(apiEndPoint, fetcher, { refreshInterval: 1500 });
+
+  const { datas, error } = useSWR(apiEndPoint, fetcher);
 
   console.log(data);
   useEffect(() => {
