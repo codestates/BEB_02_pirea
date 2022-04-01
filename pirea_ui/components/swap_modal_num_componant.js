@@ -5,19 +5,19 @@ export default function SwapModalButton({ type, typeTrans, haveModalNum, commonM
   if (typeTrans == 1) {
     return (
       <>
-        <div className={swapStyles.swap_right_type_select_main}>
+        <div className={swapStyles.swap_right_type_select_hw_main}>
           <div onClick={() => typeTransClick(1)} className={`
 ${typeTrans == 1
-              ? swapStyles.swap_right_type_select_div_selected
-              : swapStyles.swap_right_type_select_div
+              ? swapStyles.swap_right_type_select_hw_div_selected
+              : swapStyles.swap_right_type_select_hw_div
             }
                 `}>
             HAVE
           </div>
           <div onClick={() => typeTransClick(2)} className={`
 ${typeTrans == 2
-              ? swapStyles.swap_right_type_select_div_selected
-              : swapStyles.swap_right_type_select_div
+              ? swapStyles.swap_right_type_select_hw_div_selected
+              : swapStyles.swap_right_type_select_hw_div
             }
                 `}>
             WANT
@@ -59,19 +59,19 @@ ${haveModalNum == 3
   } else {
     return (
       <>
-        <div className={swapStyles.swap_right_type_select_main}>
+        <div className={swapStyles.swap_right_type_select_hw_main}>
           <div onClick={() => typeTransClick(1)} className={`
 ${typeTrans == 1
-              ? swapStyles.swap_right_type_select_div_selected
-              : swapStyles.swap_right_type_select_div
+              ? swapStyles.swap_right_type_select_hw_div_selected
+              : swapStyles.swap_right_type_select_hw_div
             }
                 `}>
             HAVE
           </div>
           <div onClick={() => typeTransClick(2)} className={`
 ${typeTrans == 2
-              ? swapStyles.swap_right_type_select_div_selected
-              : swapStyles.swap_right_type_select_div
+              ? swapStyles.swap_right_type_select_hw_div_selected
+              : swapStyles.swap_right_type_select_hw_div
             }
                 `}>
             WANT
