@@ -1,0 +1,9 @@
+{
+  "0": "Invalid",
+  "1": "InvalidMakerAssetAmount",
+  "2": "InvalidTakerAssetAmount",
+  "3": "Fillable",
+  "4": "Expired",
+  "5": "FullyFilled",
+  "6": "Cancelled"
+}

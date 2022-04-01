@@ -5,16 +5,36 @@
   overflow-y:scroll;
   height: 100%;
 }
-
-.all_swap_cart_main {
+.all_swap_card_main_start {
+  width: 70%;
+  border-radius: 20px;
+  background-color: #EDFFEF;
+  box-shadow: 0px 5px 26px rgba(109, 141, 173, 0.25);
+  margin: 1vh;
+  padding: 2vw;
   cursor: pointer;
+}
+.all_swap_card_main_end {
+  width: 70%;
+  border-radius: 20px;
+  background-color: #FFEAEA;
+  box-shadow: 0px 5px 26px rgba(109, 141, 173, 0.25);
+  margin: 1vh;
+  padding: 2vw;
+  cursor: pointer;
+}
+.all_swap_card_header {
+  padding: 0 0 1vh 0;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+
+
+.all_swap_cart_main_end {
   display: flex;
   justify-content: space-between;
-  margin: 1vh;
-  width: 70%;
-  box-shadow: 0px 5px 26px rgba(109, 141, 173, 0.25);
-  padding: 2vw;
-  border-radius: 20px;
+  width: 100%;
 }
 
 .all_swap_cart_left_main {

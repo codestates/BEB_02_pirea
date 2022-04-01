@@ -37,11 +37,20 @@
   word-break:break-all;
 }
 
-.load_type_form_main {
+.load_type_form_main_start {
   box-shadow: 0px 5px 26px rgba(109, 141, 173, 0.25);
   border-radius: 20px;
   margin: 1vh;
   padding: 1vh;
+  background: #EDFFEF;
+}
+
+.load_type_form_main_end {
+  box-shadow: 0px 5px 26px rgba(109, 141, 173, 0.25);
+  border-radius: 20px;
+  margin: 1vh;
+  padding: 1vh;
+  background: #FFEAEA;
 }
 
 .load_type_main {

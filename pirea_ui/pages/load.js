@@ -8,41 +8,43 @@ import { useWeb3React } from "@web3-react/core";
 import { injected } from "./lib/connectors";
 import { NftSwap } from '@traderxyz/nft-swap-sdk';
 import { ToastContainer, toast } from "react-toastify";
+import statusOrderJson from "./lib/order_status.json"
 import axios from "axios";
 
 export default function Load() {
+  console.log(statusOrderJson);
 
   const url = 'http://www.pirea.kro.kr/api/v0.1/swap/get';
   const [data, setData] = useState(false);
-  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const { swap_code } = router.query;
   const { library, chainId, activate, active, deactivate } = useWeb3React();
   const [swapSdk, setSwapSdk] = useState(null);
 
   useEffect(() => {
+
     if (active) {
       const sdk = new NftSwap(library, library.getSigner(), chainId);
+      // const statusTmp = await sdk.getOrderStatus(data.sign);
       setSwapSdk(sdk);
-      console.log(sdk);
     }
     const getData = async () => {
-      try {
-        await axios.get(url, {
-          params: {
-            swapcode: swap_code
-          }
-        }).then((res) => {
-          setData(res.data)
-          setLoading(false)
-        });
-      } catch (e) {
-        console.log(e);
-      }
+
+      await axios.get(url, {
+        params: {
+          swapcode: swap_code
+        }
+      }).then((res) => {
+        setData(res.data)
+      });
+
+
     }
+
     if (swap_code !== null) {
       getData();
     }
+
 
   }, [swap_code, library, chainId]);
 
@@ -71,13 +73,18 @@ export default function Load() {
 
 
   const approve = async () => {
-    const id = toast.loading("approve ....");
     activate(injected, (error) => {
-      if (isNoEthereumObject(error))
-        window.open("https://metamask.io/download.html");
+      console.log(error);
     });
+    const id = toast.loading("approve ....");
+
     if (active) {
       const sdk = new NftSwap(library, library.getSigner(), chainId);
+
+      const stat = await sdk.getOrderStatus(data['sign']);
+      console.log("stat", stat)
+
+
       setSwapSdk(sdk);
       console.log(sdk);
     }
@@ -100,10 +107,13 @@ export default function Load() {
     }
   }
 
+
   const accept = async () => {
 
     const id = toast.loading("accept ....");
+
     try {
+
       const fillTx = await swapSdk.fillSignedOrder(data['sign']);
       console.log("fill", fillTx);
       const fillTxReceipt = await swapSdk.awaitTransactionHash(fillTx.hash);
@@ -116,9 +126,10 @@ export default function Load() {
         autoClose: 3000,
       });
 
+
     } catch (e) {
       toast.update(id, {
-        render: "can't mint",
+        render: "can't swap",
         type: "error",
         isLoading: false,
         autoClose: 2000,
@@ -132,7 +143,9 @@ export default function Load() {
       <Layout>
         <div className={loadStyles.load_main}>
           <div className={loadStyles.load_left_main} >
-            <LoadType form={data['wantForm']} tokenUrl={data['want_token_url']} approve={approve} />
+            <LoadType sign={data.sign} form={data['wantForm']} tokenUrl={data['want_token_url']} approve={approve} />
+
+
             <div className={loadStyles.load_left_button_main}>
               <div onClick={approve} className={loadStyles.load_left_approve_btn_main}>
                 approve
@@ -140,12 +153,17 @@ export default function Load() {
               <div onClick={accept} className={loadStyles.load_left_accept_btn_main}>
                 accept swap
               </div>
+
             </div>
+
+
+
           </div>
           <div className={loadStyles.load_right_main}>
             <LoadType form={data['haveForm']} tokenUrl={data['have_token_url']} />
           </div>
         </div>
+
       </Layout>
     </>
   )

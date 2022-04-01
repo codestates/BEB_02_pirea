@@ -36,6 +36,11 @@
 .swap_right_type_select_main {
   display: flex;
 }
+.swap_right_profile_image_main {
+  display: flex;
+  justify-content: center;
+  border-radius: 20px;
+}
 
 .swap_left_have_header {
   padding: 2vh;
