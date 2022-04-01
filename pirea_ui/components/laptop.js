@@ -7,7 +7,7 @@ import { a as three } from "@react-spring/three";
 import { a as web } from "@react-spring/web";
 import laptopStyles from "./styles-component/laptop.module.css";
 import { Navbar } from "../components/navbar";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 // import flbfile from "../public/mac-draco.glb"
 import InnerLaptop from "./innerLaptop";
@@ -117,11 +117,30 @@ export default function Laptop() {
   //     sethello(false);
   //   }, 4000);
   // };
+  // const titleVariants = {
+
+  //   hidden: {
+  //     scale: 1,
+  //     opacity: 0,
+  //   },
+  //   visible: {
+  //     scale: 1.3,
+  //     opacity: 1,
+  //     transition: {
+  //       delay: 1,
+  //     },
+  //   },
+  // };
+
+  // const [showTitle, setShowTitle] = useState(true);
+  // setInterval(() => {
+  //   setShowTitle(false);
+  // }, 3000);
 
   return (
     <web.main
       className={laptopStyles.laptop_main}
-      style={{ background: props.open.to([0, 1], ["#f0f0f0", "#2a93d4"]) }}
+      style={{ background: props.open.to([0, 1], ["#f0f0f0", "#7ebc59"]) }}
     >
       <Navbar />
       <web.h1
@@ -149,8 +168,14 @@ export default function Laptop() {
               },
             },
           }}
+          // variants={titleVariants}
+          // initial="hidden"
+          // animate="visible"
         >
           hello
+          {/* <AnimatePresence>
+            {showTitle && <motion.div exit={{ y: -1000 }}>hello</motion.div>}
+          </AnimatePresence> */}
         </motion.div>
       </web.h1>
 
@@ -158,7 +183,7 @@ export default function Laptop() {
         <three.pointLight
           position={[10, 10, 10]}
           intensity={1.5}
-          color={props.open.to([0, 1], ["#f0f0f0", "#2a93d4"])}
+          color={props.open.to([0, 1], ["#f0f0f0", "#7ebc59"])}
         />
         <Suspense fallback={null}>
           <group

@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gamja+Flower&family=Poppins&family=Press+Start+2P&family=Raleway:wght@600&family=Roboto+Mono:wght@400;500&family=Sunflower:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gamja+Flower&family=Poppins&family=Sunflower:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gamja+Flower&family=Poppins&family=Roboto+Mono:wght@400;500&family=Sunflower:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gamja+Flower&family=Poppins&family=Sunflower:wght@500&display=swap");
 
 .nav_position {
   display: flex;
@@ -10,16 +11,18 @@
   background-color: rgba(255, 247, 247, 0.6);
 }
 .nav_logo_text {
-  margin-top: 1vh;
-  margin-left: 2vh;
+  display: flex;
+  margin: 1vh 0 1vh 2vh;
   align-items: center;
+  justify-content: center;
 }
 
 .nav_logo {
-  width: auto;
-  height: auto;
-  max-width: 50px;
-  max-height: 50px;
+  background-size: cover;
+  width: 5vh;
+  height: 5vh;
+  background-image: url("../../assets/Logo_img.png");
+  border-radius: 5px;
 }
 
 .nav_title {
@@ -27,6 +30,7 @@
   vertical-align: middle;
   font-size: 3.5vh;
   margin-left: 3vh;
+  font-family: "Poppins", sans-serif;
 }
 
 .nav_link_box {
