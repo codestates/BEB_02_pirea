@@ -4,6 +4,7 @@
   display: flex;
   justify-content: center;
   height: 100%;
+  margin-top: 1vh;
 }
 .common_left_main {
   width: 50%;
@@ -16,7 +17,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-
 }
 
 .common_map {
