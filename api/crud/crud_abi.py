@@ -29,5 +29,3 @@ async def get_create_abi(db: Session, cont_address: str):
             db.commit()
             db.refresh(abi_row)
             return  abi_row
-
-

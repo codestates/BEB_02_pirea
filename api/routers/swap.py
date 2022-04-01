@@ -21,18 +21,17 @@ async def get_swap_recent(info: Request, db: Session =Depends(get_db)):
     req_info = await info.json()
     print(req_info['order'])
 
-    swap_code = create_swap(db, str(req_info['address']), req_info['order'], req_info["haveForm"], req_info["wantForm"])
+    swap_code = create_swap(db, req_info['order'], req_info["haveForm"], req_info["wantForm"])
 
     return swap_code
 
 @router.get("/get", tags=["swap"]) 
-async def get_swap_code(swapcode: str, db: Session=Depends(get_db)):
-    async def get_swap_url(db: Session, contractAddress: str = "", tokenId: int = 0): 
+async def get_swap_code(db: Session=Depends(get_db), swapcode: str=""):
+
+    async def get_swap_url(db: Session=db, contractAddress: str = "", tokenId: int = 0): 
 
         abi = await get_create_abi(db, cont_address=contractAddress)
-        print("Abi!!!", abi)
         dictret = dict(abi.__dict__)
-        print("Abi!!", dictret)
 
         abi_json_load = json.loads(dictret['abijson'])
         w3 = Web3(Web3.HTTPProvider(SECRET_FILE_WEB3['RINKEBY_END_POINT']))
@@ -45,19 +44,19 @@ async def get_swap_code(swapcode: str, db: Session=Depends(get_db)):
         if (tokenId >= 1):
             tokenURI = contract_obj.functions.tokenURI(1).call()
             return tokenURI
-        db.close()
 
     signcode = get_swapcode_sign(db, swapcode=swapcode)
     signcode_dict = dict(signcode.__dict__)
+
     
     if signcode_dict["wantForm"]["type"] == "ERC721" :
-        want_token_url = await get_swap_url(db, contractAddress=signcode_dict["wantForm"]["tokenAddress"], tokenId=int(signcode_dict["wantForm"]["tokenId"]))
+        want_token_url = await get_swap_url(contractAddress=signcode_dict["wantForm"]["tokenAddress"], tokenId=int(signcode_dict["wantForm"]["tokenId"]))
         print(want_token_url)
         signcode_dict["want_token_url"] = want_token_url
 
     
     if signcode_dict["haveForm"]["type"] == "ERC721" :
-        have_token_url = await get_swap_url(db, contractAddress=signcode_dict["haveForm"]["tokenAddress"], tokenId= int(signcode_dict["haveForm"]["tokenId"]))
+        have_token_url = await get_swap_url(contractAddress=signcode_dict["haveForm"]["tokenAddress"], tokenId= int(signcode_dict["haveForm"]["tokenId"]))
         signcode_dict["have_token_url"] = have_token_url
 
     return signcode_dict
