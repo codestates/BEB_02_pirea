@@ -6,8 +6,7 @@
   top: 0;
   right: 0;
   width: 80%;
-  border-bottom: 2px solid #f1f6fc;
-  border-left: 1px solid #f1f6fc;
+  border-bottom: 1px solid #f1f6fc;
   height: 10%;
   background-color: #fff;
 }
@@ -51,20 +50,24 @@
 .content_header_noti_message_icon {
   background: rgba(197, 197, 197, 15%);
   border-radius: 10px;
-  width: 2vw;
+  width: 2.5vw;
+  height: 2.5vw;
   padding: 0.5vw;
   margin-right: 1vw;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .content_header_noti_bell_icon {
   background: rgba(197, 197, 197, 15%);
   border-radius: 10px;
-  width: 2vw;
+  width: 2.5vw;
+  height: 2.5vw;
   padding: 0.5vw;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .header_profile_login_main {

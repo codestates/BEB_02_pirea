@@ -3,6 +3,8 @@ import sidebar_styles from "./styles-component/sidebar.module.css";
 import Logo from "../assets/Logo_img.svg";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import classNames from "classnames";
+import "tailwindcss/tailwind.css";
 
 // TODO: 반응형 웹
 export default function Sidebar() {
@@ -10,7 +12,12 @@ export default function Sidebar() {
 
   return (
     <>
-      <div className={sidebar_styles.main_sidebar}>
+      <div
+        className={classNames({
+          [sidebar_styles.main_sidebar]: true,
+          ["dark:border-[#475569]"]: true,
+        })}
+      >
         <div className={sidebar_styles.sidebar_header}>
           <div className={sidebar_styles.sidebar_header_logo}></div>
 
@@ -37,7 +44,14 @@ export default function Sidebar() {
                   <Icon height="2.5rem" icon="ic:twotone-space-dashboard" />
                 </div>
                 <div className={sidebar_styles.sidebar_div_text}>
-                  <a className={sidebar_styles.sidebar_link_a}>Dashboard</a>
+                  <a
+                    className={classNames({
+                      [sidebar_styles.sidebar_link_a]: true,
+                      ["dark:text-[#cbd5e1]"]: true,
+                    })}
+                  >
+                    Dashboard
+                  </a>
                 </div>
               </div>
             </div>
@@ -57,7 +71,14 @@ export default function Sidebar() {
                   <Icon height="2.2rem" icon="carbon:text-link-analysis" />
                 </div>
                 <div className={sidebar_styles.sidebar_div_text}>
-                  <a className={sidebar_styles.sidebar_link_a}>Analytics</a>
+                  <a
+                    className={classNames({
+                      [sidebar_styles.sidebar_link_a]: true,
+                      ["dark:text-[#cbd5e1]"]: true,
+                    })}
+                  >
+                    Analytics
+                  </a>
                 </div>
               </div>
             </div>
@@ -77,7 +98,14 @@ export default function Sidebar() {
                   <Icon height="2.2rem" icon="fluent:wallet-24-regular" />
                 </div>
                 <div className={sidebar_styles.sidebar_div_text}>
-                  <a className={sidebar_styles.sidebar_link_a}>Assets</a>
+                  <a
+                    className={classNames({
+                      [sidebar_styles.sidebar_link_a]: true,
+                      ["dark:text-[#cbd5e1]"]: true,
+                    })}
+                  >
+                    Assets
+                  </a>
                 </div>
               </div>
             </div>
@@ -97,7 +125,14 @@ export default function Sidebar() {
                   <Icon height="2.2rem" icon="ant-design:swap-outlined" />
                 </div>
                 <div className={sidebar_styles.sidebar_div_text}>
-                  <a className={sidebar_styles.sidebar_link_a}>Swap</a>
+                  <a
+                    className={classNames({
+                      [sidebar_styles.sidebar_link_a]: true,
+                      ["dark:text-[#cbd5e1]"]: true,
+                    })}
+                  >
+                    Swap
+                  </a>
                 </div>
               </div>
             </div>
@@ -117,7 +152,14 @@ export default function Sidebar() {
                   <Icon icon="akar-icons:check-box-fill" height="2.2rem" />
                 </div>
                 <div className={sidebar_styles.sidebar_div_text}>
-                  <a className={sidebar_styles.sidebar_link_a}>Load</a>
+                  <a
+                    className={classNames({
+                      [sidebar_styles.sidebar_link_a]: true,
+                      ["dark:text-[#cbd5e1]"]: true,
+                    })}
+                  >
+                    Load
+                  </a>
                 </div>
               </div>
             </div>
@@ -137,7 +179,14 @@ export default function Sidebar() {
                   <Icon height="2.2rem" icon="fluent:cloud-swap-20-regular" />
                 </div>
                 <div className={sidebar_styles.sidebar_div_text}>
-                  <a className={sidebar_styles.sidebar_link_a}>All_swap</a>
+                  <a
+                    className={classNames({
+                      [sidebar_styles.sidebar_link_a]: true,
+                      ["dark:text-[#cbd5e1]"]: true,
+                    })}
+                  >
+                    All_swap
+                  </a>
                 </div>
               </div>
             </div>
