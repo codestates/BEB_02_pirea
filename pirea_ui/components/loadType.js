@@ -5,9 +5,9 @@ import { injected } from "../pages/lib/connectors";
 import { NftSwap } from '@traderxyz/nft-swap-sdk';
 import statusOrderJson from "../pages/lib/order_status.json"
 
-export default function LoadType({ sign, form, tokenUrl, approve }) {
+export default function LoadType({ sign, form, tokenUrl, approve, typeForm, setStatusOrder }) {
   const { library, chainId, activate, active, deactivate } = useWeb3React();
-  const { statusOrder, setStatusOrder } = useState();
+  const [statusOrder, setStatusOrderType] = useState();
 
 
   useEffect(() => {
@@ -16,23 +16,21 @@ export default function LoadType({ sign, form, tokenUrl, approve }) {
     });
 
 
-    if (active) {
-      const sdk = new NftSwap(library, library.getSigner(), chainId);
-      const getOrderStatus = async () => {
+    const getOrderStatus = async () => {
+      if (active && sign) {
+        const sdk = new NftSwap(library, library.getSigner(), chainId);
         const statusTmp = await sdk.getOrderStatus(sign);
         console.log("import", statusTmp);
         setStatusOrder(statusTmp);
+        setStatusOrderType(statusTmp);
       }
-      getOrderStatus();
     }
-  }, []);
+    getOrderStatus();
+  }, [library, chainId]);
 
   if (form['type'] === "ERC721") {
     return (
       <>
-        <div>
-          {statusOrderJson[statusOrder]}
-        </div>
         <div className={`${statusOrder == 3 ? loadStyles.load_type_form_main_start : loadStyles.load_type_form_main_end}`}>
           <div className={loadStyles.load_type_main}>
             <div className={loadStyles.load_type_header}>

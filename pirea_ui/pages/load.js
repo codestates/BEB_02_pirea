@@ -8,41 +8,41 @@ import { useWeb3React } from "@web3-react/core";
 import { injected } from "./lib/connectors";
 import { NftSwap } from '@traderxyz/nft-swap-sdk';
 import { ToastContainer, toast } from "react-toastify";
+import LoadSwapImage from "../components/loadSwapImage"
+import Image from "next/image";
 import statusOrderJson from "./lib/order_status.json"
 import axios from "axios";
+import useSWR from "swr";
 
 export default function Load() {
-  console.log(statusOrderJson);
-
-  const url = 'http://www.pirea.kro.kr/api/v0.1/swap/get';
-  const [data, setData] = useState(false);
+  const apiEndPoint = "http://192.168.0.3:8000/api/v0.1/swap/get";
   const router = useRouter();
   const { swap_code } = router.query;
   const { library, chainId, activate, active, deactivate } = useWeb3React();
   const [swapSdk, setSwapSdk] = useState(null);
+  const [statusOrder, setStatusOrder] = useState('');
 
+  const fetcher = async (url) =>
+    await axios
+      .get(url, {
+        headers: {
+          "Access-Control-Allow-Origin": "*"
+        },
+        params: {
+          swapcode: swap_code,
+        },
+      })
+      .then((res) => res.data);
+
+  const { data, error } = useSWR(apiEndPoint, fetcher, { refreshInterval: 1500 });
+
+  console.log(data);
   useEffect(() => {
 
     if (active) {
       const sdk = new NftSwap(library, library.getSigner(), chainId);
       // const statusTmp = await sdk.getOrderStatus(data.sign);
       setSwapSdk(sdk);
-    }
-    const getData = async () => {
-
-      await axios.get(url, {
-        params: {
-          swapcode: swap_code
-        }
-      }).then((res) => {
-        setData(res.data)
-      });
-
-
-    }
-
-    if (swap_code !== null) {
-      getData();
     }
 
 
@@ -69,7 +69,6 @@ export default function Load() {
       </Layout>
     </>
   )
-  console.log(data);
 
 
   const approve = async () => {
@@ -78,16 +77,7 @@ export default function Load() {
     });
     const id = toast.loading("approve ....");
 
-    if (active) {
-      const sdk = new NftSwap(library, library.getSigner(), chainId);
 
-      const stat = await sdk.getOrderStatus(data['sign']);
-      console.log("stat", stat)
-
-
-      setSwapSdk(sdk);
-      console.log(sdk);
-    }
     try {
       await swapSdk.approveTokenOrNftByAsset(data['wantForm'], window.localStorage.getItem("account"))
 
@@ -111,9 +101,7 @@ export default function Load() {
   const accept = async () => {
 
     const id = toast.loading("accept ....");
-
     try {
-
       const fillTx = await swapSdk.fillSignedOrder(data['sign']);
       console.log("fill", fillTx);
       const fillTxReceipt = await swapSdk.awaitTransactionHash(fillTx.hash);
@@ -137,33 +125,38 @@ export default function Load() {
     }
   }
 
-
   return (
     <>
       <Layout>
         <div className={loadStyles.load_main}>
-          <div className={loadStyles.load_left_main} >
-            <LoadType sign={data.sign} form={data['wantForm']} tokenUrl={data['want_token_url']} approve={approve} />
-
-
-            <div className={loadStyles.load_left_button_main}>
-              <div onClick={approve} className={loadStyles.load_left_approve_btn_main}>
-                approve
-              </div>
-              <div onClick={accept} className={loadStyles.load_left_accept_btn_main}>
-                accept swap
-              </div>
-
+          <div className={loadStyles.load_metadata_image_main}>
+            <div className={loadStyles.metadata_image_sup_main}>
+              <LoadSwapImage url={data['have_token_url']} />
             </div>
-
-
-
+            <div className={loadStyles.metadata_image_sup_main}>
+              <LoadSwapImage url={data['want_token_url']} />
+            </div>
           </div>
-          <div className={loadStyles.load_right_main}>
-            <LoadType form={data['haveForm']} tokenUrl={data['have_token_url']} />
+          <div className={loadStyles.load_status_main}>
+            {statusOrder ? "status: " + statusOrderJson[statusOrder] : null}
+          </div>
+          <div className={loadStyles.load_form_main}>
+            <div className={loadStyles.load_left_form_main} >
+              <LoadType sign={data.sign} typeForm="want" form={data['wantForm']} tokenUrl={data['want_token_url']} approve={approve} setStatusOrder={setStatusOrder} />
+            </div>
+            <div className={loadStyles.load_right_main}>
+              <LoadType setStatusOrder={setStatusOrder} typeForm="have" sign={data.sign} form={data['haveForm']} tokenUrl={data['have_token_url']} />
+            </div>
+          </div>
+          <div className={loadStyles.load_button_main}>
+            <div onClick={approve} className={loadStyles.load_left_approve_btn_main}>
+              approve
+            </div>
+            <div onClick={accept} className={loadStyles.load_left_accept_btn_main}>
+              accept swap
+            </div>
           </div>
         </div>
-
       </Layout>
     </>
   )

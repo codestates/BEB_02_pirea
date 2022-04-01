@@ -136,7 +136,7 @@ export default function AllSwap() {
                   <AllSwapCart header={"token address"} content={e.haveForm.tokenAddress} />
                   <AllSwapCart header={"token id"} content={e.haveForm.tokenId} />
                   <AllSwapCart header={"token type"} content={e.haveForm.type} />
-                  <AllSwapCart header={"maker address"} content={e.makerAddress} />
+                  <AllSwapCart header={"maker address"} content={e.sign.makerAddress} />
                 </div>
               </div>
             </AllSwapCard>
