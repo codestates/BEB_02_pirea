@@ -11,6 +11,7 @@ import { useEffect, useState } from "react"
 import Web3 from "web3"
 import abi from "./lib/abi"
 import config from "./lib/config.json"
+import LoadMap from "../components/load_map.js"
 
 
 export default function Assets() {
@@ -46,7 +47,9 @@ export default function Assets() {
 
         const getData = async () => {
           const axisArray = await tokenContract.methods.getTokenAllByAddress(window.localStorage.getItem("account")).call();
-          console.log("array", axisArray);
+          /* console.log("array", axisArray.some(function(el) {
+            return el.x == '5' && el.y == '10';
+          })); */
           setData(axisArray);
         }
         getData();
@@ -65,7 +68,7 @@ export default function Assets() {
           {/*left*/}
           <div className={commonStyles.common_left_main}>
             <div className={commonStyles.common_map}>
-              <Map onChange={handleCreate} className={commonStyles.common_map_canvas} />
+              <LoadMap axisArray={data} onChange={handleCreate} className={commonStyles.common_map_canvas} />
             </div>
             <div className={commonStyles.common_search_main}>
               <input
@@ -102,7 +105,7 @@ export default function Assets() {
                   Owner address:
                 </div>
                 <div className={commonStyles.common_profile_address_text}>
-        {window.localStorage.getItem("account")}
+                  {window.localStorage.getItem("account")}
                 </div>
               </div>
               <div></div>
