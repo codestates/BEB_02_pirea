@@ -13,6 +13,8 @@ import Image from "next/image";
 import statusOrderJson from "./lib/order_status.json"
 import axios from "axios";
 import useSWR from "swr";
+import { Bars } from 'react-loading-icons'
+import GridLoader from "react-spinners/GridLoader";
 
 export default function Load() {
   const apiEndPoint = "http://www.pirea.kro.kr/api/v0.1/swap/get";
@@ -65,7 +67,9 @@ export default function Load() {
     <>
       <Layout>
         <div className={commonStyles.common_main}>
-          loading
+          <GridLoader color={"#087592"} />
+
+          loading...
         </div>
       </Layout>
     </>

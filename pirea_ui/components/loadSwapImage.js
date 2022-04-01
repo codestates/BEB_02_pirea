@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react"
 import loadStyles from "./styles-component/load.module.css"
 import axios from "axios"
+import SquareLoader from "react-spinners/SquareLoader";
 
 export default function LoadSwapImage({ url }) {
 
@@ -25,13 +26,13 @@ export default function LoadSwapImage({ url }) {
           <div className={loadStyles.metadata_image_content_main}>
             <Image src={imageUri.image} width={50} height={50} alt={imageUri.image} layout="responsive" />
             <div className={loadStyles.metadata_image_content_text}>
-{imageUri.description}
+              {imageUri.description}
             </div>
           </div>
         )
         :
         <>
-          loading
+          <SquareLoader color={"#087592"} />
         </>
       }
     </>
