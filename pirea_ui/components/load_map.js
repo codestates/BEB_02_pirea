@@ -22,7 +22,6 @@ function Boxes({ onChange, axisArray }) {
       }
     }
   }
-
   const [hovered, set] = useState()
   const colorArray = useMemo(() => Float32Array.from(new Array(1000).fill().flatMap((_, i) => {
     let datas = {}
@@ -83,6 +82,14 @@ function Boxes({ onChange, axisArray }) {
 export default function LoadMap({ onChange, axisArray }) {
   // This reference gives us direct access to the THREE.Mesh object
   const ref = useRef()
+
+  if (!axisArray) {
+    return (
+      <>
+        loading
+    </>
+    )
+  }
 
   return (
     <>
