@@ -83,9 +83,7 @@ export default function Assets() {
         setTokenContract(tokenContract);
 
         const getData = async () => {
-          const axisArray = await tokenContract.methods
-            .getTokenAllByAddress(window.localStorage.getItem("account"))
-            .call();
+          const axisArray = await tokenContract.methods.getTokenAllByAddress(window.localStorage.getItem("account")).call();
           /* console.log("array", axisArray.some(function(el) {
             return el.x == '5' && el.y == '10';
           })); */
@@ -106,11 +104,7 @@ export default function Assets() {
           {/*left*/}
           <div className={commonStyles.common_left_main}>
             <div className={commonStyles.common_map}>
-              <LoadMap
-                axisArray={data}
-                onChange={handleCreate}
-                className={commonStyles.common_map_canvas}
-              />
+              <LoadMap axisArray={data} onChange={handleCreate} className={commonStyles.common_map_canvas} />
             </div>
             <div className={commonStyles.common_search_main}>
               <input
