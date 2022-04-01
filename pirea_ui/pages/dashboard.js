@@ -276,7 +276,6 @@ export default function Dashboard() {
             <div className={dashStyles.dashboard_right_main}>
               <div>
                 <div
-                  className={dashStyles.dashboard_profile_header}
                   className={classNames({
                     [dashStyles.dashboard_profile_header]: true,
                     ["dark:text-[#f3f4f6]"]: true,

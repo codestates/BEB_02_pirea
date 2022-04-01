@@ -132,7 +132,7 @@ export default function Content_header() {
       <div
         className={classNames({
           [c_content_styles.c_content_header_main]: true,
-          ["dark:bg-black"]: true,
+          ["dark:bg-[#121212]"]: true,
           ["dark:border-[#475569]"]: true,
         })}
       >
