@@ -43,7 +43,7 @@ async def get_swap_code(db: Session=Depends(get_db), swapcode: str=""):
         print(cont_address_checksum)
 
         if (tokenId >= 1):
-            tokenURI = contract_obj.functions.tokenURI(1).call()
+            tokenURI = contract_obj.functions.tokenURI(tokenId).call()
             return tokenURI
 
     signcode_dict = get_swapcode_sign(db, swapcode=swapcode).__dict__

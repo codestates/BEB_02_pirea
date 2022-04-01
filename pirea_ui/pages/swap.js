@@ -102,7 +102,6 @@ export default function swap() {
 
 
 
-    console.log(commonModalNum);
     if (commonModalNum == 1) {
       const web = new Web3(window.ethereum);  // 새로운 web3 객체를 만든다
       const tokenContract = new web.eth.Contract(
@@ -337,7 +336,7 @@ export default function swap() {
             <div className={swapStyles.swap_right_description_main}>
               <SwapModalButton typeTrans={typeTrans} typeErcClick={typeErcClick} typeTransClick={typeTransClick} commonModalNum={commonModalNum} haveModalNum={haveModalNum} wantModalNum={wantModalNum} />
               {/* 여기는 type form */}
-              <ErcForm typeTrans={typeTrans} type={`${typeTrans == 1
+              <ErcForm smartContAddr={smartContAddr} typeTrans={typeTrans} type={`${typeTrans == 1
                 ? haveModalNum
                 : wantModalNum
                 }`} axis={axis} setErc20Amount={setErc20Amount} setErc721Id={setErc721Id} setErcContract={setErcContract} />

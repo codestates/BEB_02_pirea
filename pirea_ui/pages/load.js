@@ -132,10 +132,10 @@ export default function Load() {
         <div className={loadStyles.load_main}>
           <div className={loadStyles.load_metadata_image_main}>
             <div className={loadStyles.metadata_image_sup_main}>
-              <LoadSwapImage url={data['have_token_url']} />
+              <LoadSwapImage url={data['want_token_url']} />
             </div>
             <div className={loadStyles.metadata_image_sup_main}>
-              <LoadSwapImage url={data['want_token_url']} />
+              <LoadSwapImage url={data['have_token_url']} />
             </div>
           </div>
           <div className={loadStyles.load_status_main}>
