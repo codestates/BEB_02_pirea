@@ -15,7 +15,7 @@ import axios from "axios";
 import useSWR from "swr";
 
 export default function Load() {
-  const apiEndPoint = "http://192.168.0.3:8000/api/v0.1/swap/get";
+  const apiEndPoint = "http://www.pirea.kro.kr/api/v0.1/swap/get";
   const router = useRouter();
   const { swap_code } = router.query;
   const { library, chainId, activate, active, deactivate } = useWeb3React();
