@@ -380,7 +380,7 @@ export default function Dashboard() {
                   {
                     transacoh ? transacoh.map((e) =>
                       e.haveForm.type == "ERC721" ?
-                        <OfferList transacof={transacoh} tokenId={e.haveForm.tokenId} type={e.haveForm.type} swapcode={e.swapcode} sign={e.sign} sdk={swapSdk} />
+                        <OfferList transacof={transacoh} tokenId={e.wantForm.tokenId} type={e.wantForm.type} swapcode={e.swapcode} sign={e.sign} sdk={swapSdk} />
                         : null
                     )
                       : null
@@ -411,7 +411,7 @@ export default function Dashboard() {
                     {
                       transacoh ? transacoh.map((e) =>
                         e.haveForm.type == "ERC721" ?
-                          <HistoryLoad transacof={transacoh} tokenId={e.haveForm.tokenId} type={e.haveForm.type} swapcode={e.swapcode} sign={e.sign} sdk={swapSdk} />
+                          <HistoryLoad transacof={transacoh} tokenId={e.wantForm.tokenId} type={e.wantForm.type} swapcode={e.swapcode} sign={e.sign} sdk={swapSdk} />
                           : null
                       )
                         : null
