@@ -13,6 +13,8 @@ class Users(Base):
 class SwapSign(Base):
     __tablename__ = "swapsign"
     id = Column(Integer, primary_key=True, index=True)
+    haveTokenId = Column(Integer, nullable=False)
+    wantTokenId = Column(Integer, nullable=False)
     swapcode = Column(String(255), nullable=False)
     haveForm = Column(JSON, nullable=False)
     wantForm = Column(JSON, nullable=False)
@@ -23,7 +25,6 @@ class SwapSignNum(Base):
     id = Column(Integer, primary_key=True, index=True)
     address = Column(String(255), nullable=False)
     num = Column(Integer, nullable=False)
-    
 
 class RecentSwapCode(Base):
     __tablename__ = "recentswap"
