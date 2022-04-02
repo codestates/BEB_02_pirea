@@ -18,6 +18,10 @@ import KoreaMap from "../components/korea_map.js";
 import classNames from "classnames";
 import "tailwindcss/tailwind.css";
 import { motion } from "framer-motion";
+import OfferList from "../components/offer_load"
+import { useWeb3React } from "@web3-react/core";
+import { NftSwap } from "@traderxyz/nft-swap-sdk";
+import { injected } from "./lib/connectors";
 
 // TODO: 스마트컨트랙트와 연동
 // TODO: map click 동작구현
@@ -105,13 +109,15 @@ export default function Dashboard() {
   const smartContractAddr = config["WEB3"]["CONTRACT_ADDRESS"];
   const [transacoh, setTransacoh] = useState();
   const client = create("https://ipfs.infura.io:5001/api/v0");
-
-  console.log(
-    "ttt",
-    korea.some(function(el) {
-      return el.x == 1 && el.y == 2;
-    })
-  );
+  const { library, chainId, activate, active, deactivate } = useWeb3React();
+  const [swapSdk, setSwapSdk] = useState();
+  /*
+    console.log(
+      "ttt",
+      korea.some(function(el) {
+        return el.x == 1 && el.y == 2;
+      })
+    ); */
 
   async function onChange(e) {
     const file = e.target.files[0];
@@ -154,6 +160,7 @@ export default function Dashboard() {
             tokenid: tokenIdtmp
           }
         });
+        setTransacoh(res.data);
         console.log("res", res.data);
         console.log(tokenIdtmp);
 
@@ -165,7 +172,6 @@ export default function Dashboard() {
           .call();
         const response = await axios.get(tokenURItmp);
         const json = await response.data;
-        setTransacoh(json);
 
         setMetadataJson(json);
         setTokenURI(tokenURItmp);
@@ -236,12 +242,23 @@ export default function Dashboard() {
   };
 
   useEffect(() => {
+    activate(injected, (error) => {
+      console.log(error);
+    });
     console.log(axis);
     const web = new Web3(window.ethereum); // 새로운 web3 객체를 만든다
     setWeb3(web);
     const tokenContract = new web.eth.Contract(abi, smartContractAddr);
     setTokenContract(tokenContract);
-  }, [axis]);
+
+    if (active) {
+      const sdk = new NftSwap(library, library.getSigner(), chainId);
+      setSwapSdk(sdk);
+      console.log(sdk.chainId, "chainge")
+    }
+
+
+  }, [axis, chainId, library]);
 
   return (
     <>
@@ -349,7 +366,24 @@ export default function Dashboard() {
                   Offer
                 </div>
                 <div>
-                  content
+                  <div className={dashStyles.dashboard_offers_content_main_type}>
+                    <div className={dashStyles.dashboard_offers_content_div}>
+                      id
+                    </div>
+                    <div className={dashStyles.dashboard_offers_content_div}>
+                      type
+                    </div>
+                    <div className={dashStyles.dashboard_offers_content_div}>
+                    </div>
+                  </div>
+                  {
+                    transacoh ? transacoh.map((e) =>
+                      e.haveForm.type == "ERC721" ?
+                        <OfferList transacof={transacoh} tokenId={e.haveForm.tokenId} type={e.haveForm.type} swapcode={e.swapcode} sign={e.sign} sdk={swapSdk} />
+                        : null
+                    )
+                      : null
+                  }
                 </div>
               </div>
               <div className={dashStyles.dashboard_price_history_main}>
@@ -362,12 +396,7 @@ export default function Dashboard() {
                   Price History
                 </div>
                 <div>
-                  {
-                    transacoh
-                      ? "hello"
-                      : "null"
-                  }
-                  content
+
                 </div>
               </div>
             </div>
