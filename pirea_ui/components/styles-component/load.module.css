@@ -7,6 +7,21 @@
   justify-content: center;
   overflow-x: hidden;
 }
+
+.load_loading_main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  widht: 100%;
+}
+.load_loading_main_text {
+  padding: 2vh 0;
+}
+.load_loading_main_icon {
+  display:flex;
+}
+
 .load_form_main {
   display: flex;
   justify-content: center;
@@ -16,6 +31,11 @@
   
   width: 45%;
   word-break:break-all;
+}
+
+.load_status_main {
+  width: 85%;
+  padding: 8vh 0 1vh 4vh;
 }
 
 .load_status_main {
@@ -69,6 +89,7 @@
   height: 100%;
 }
 .metadata_image_content_text {
+  padding: 1vh 0;
 }
 
 .metadata_image_sup_main {
