@@ -19,6 +19,7 @@ import GridLoader from "react-spinners/GridLoader";
 import classNames from "classnames";
 import "tailwindcss/tailwind.css";
 import { motion } from "framer-motion";
+import { Icon } from "@iconify/react";
 
 export default function Load() {
   const apiEndPoint = "http://www.pirea.kro.kr/api/v0.1/swap/get";
@@ -137,44 +138,67 @@ export default function Load() {
           <div className={loadStyles.load_status_main}>
             {statusOrder ? "Status: " + statusOrderJson[statusOrder] : null}
           </div>
-
-          <div className={loadStyles.load_metadata_image_main}>
-            <div className={loadStyles.metadata_image_sup_main}>
-              <LoadSwapImage url={data["want_token_url"]} />
+          <div className={loadStyles.card_container}>
+            <div
+              className={classNames({
+                [loadStyles.card_left]: true,
+                ["dark:bg-[#0c4a6e]"]: true,
+              })}
+            >
+              <div className={loadStyles.metadata_image_sup_main}>
+                <LoadSwapImage url={data["want_token_url"]} />
+              </div>
+              <div
+                className={classNames({
+                  [loadStyles.load_left_form_main]: true,
+                  // ["dark:bg-[#0c4a6e]"]: true,
+                })}
+              >
+                <LoadType
+                  sign={data.sign}
+                  typeForm="want"
+                  form={data["wantForm"]}
+                  tokenUrl={data["want_token_url"]}
+                  approve={approve}
+                  setStatusOrder={setStatusOrder}
+                />
+              </div>
             </div>
-            <div className={loadStyles.metadata_image_sup_main}>
-              <LoadSwapImage url={data["have_token_url"]} />
+            <Icon
+              icon="fluent:arrow-swap-24-filled"
+              color="gray"
+              height="4vw"
+            />
+            <div
+              className={classNames({
+                [loadStyles.card_right]: true,
+                ["dark:bg-[#52525b]"]: true,
+              })}
+            >
+              <div className={loadStyles.metadata_image_sup_main}>
+                <LoadSwapImage url={data["have_token_url"]} />
+              </div>
+              <div className={loadStyles.load_right_main}>
+                <LoadType
+                  setStatusOrder={setStatusOrder}
+                  typeForm="have"
+                  sign={data.sign}
+                  form={data["haveForm"]}
+                  tokenUrl={data["have_token_url"]}
+                />
+              </div>
             </div>
           </div>
 
-          <div className={loadStyles.load_form_main}>
-            <div className={loadStyles.load_left_form_main}>
-              <LoadType
-                sign={data.sign}
-                typeForm="want"
-                form={data["wantForm"]}
-                tokenUrl={data["want_token_url"]}
-                approve={approve}
-                setStatusOrder={setStatusOrder}
-              />
-            </div>
-            <div className={loadStyles.load_right_main}>
-              <LoadType
-                setStatusOrder={setStatusOrder}
-                typeForm="have"
-                sign={data.sign}
-                form={data["haveForm"]}
-                tokenUrl={data["have_token_url"]}
-              />
-            </div>
-          </div>
           <div className={loadStyles.load_button_main}>
             <div className={loadStyles.button_container}>
               <motion.div
                 onClick={approve}
-                className={loadStyles.load_left_approve_btn_main}
+                className={classNames({
+                  [loadStyles.load_left_approve_btn_main]: true,
+                })}
                 whileTap={{ scale: 0.9 }}
-                whileHover={{ backgroundColor: "#16a34a" }}
+                whileHover={{ backgroundColor: "#27a0be", color: "#fff" }}
               >
                 Approve
               </motion.div>
@@ -182,7 +206,7 @@ export default function Load() {
                 onClick={accept}
                 className={loadStyles.load_left_accept_btn_main}
                 whileTap={{ scale: 0.9 }}
-                whileHover={{ backgroundColor: "#16a34a" }}
+                whileHover={{ backgroundColor: "#27a0be", color: "#fff" }}
               >
                 Accept swap
               </motion.div>

@@ -36,7 +36,10 @@ export default function Sidebar() {
                 className={`
               ${
                 router.pathname === "/dashboard"
-                  ? sidebar_styles.sidebar_div_active
+                  ? classNames({
+                      [sidebar_styles.sidebar_div_active]: true,
+                      ["md: border-right-color:rgb(14 116 144)"]: true,
+                    })
                   : sidebar_styles.sidebar_div_deactive
               }
             `}
@@ -49,7 +52,7 @@ export default function Sidebar() {
                     className={classNames({
                       [sidebar_styles.sidebar_link_a]: true,
                       ["dark:text-[#cbd5e1]"]: true,
-                      ["hidden md:flex"]: true,
+                      ["hidden lg:flex"]: true,
                     })}
                   >
                     Dashboard
@@ -105,7 +108,7 @@ export default function Sidebar() {
                     className={classNames({
                       [sidebar_styles.sidebar_link_a]: true,
                       ["dark:text-[#cbd5e1]"]: true,
-                      ["hidden md:flex"]: true,
+                      ["hidden lg:flex"]: true,
                     })}
                   >
                     Assets
@@ -133,7 +136,7 @@ export default function Sidebar() {
                     className={classNames({
                       [sidebar_styles.sidebar_link_a]: true,
                       ["dark:text-[#cbd5e1]"]: true,
-                      ["hidden md:flex"]: true,
+                      ["hidden lg:flex"]: true,
                     })}
                   >
                     Swap
@@ -161,7 +164,7 @@ export default function Sidebar() {
                     className={classNames({
                       [sidebar_styles.sidebar_link_a]: true,
                       ["dark:text-[#cbd5e1]"]: true,
-                      ["hidden md:flex"]: true,
+                      ["hidden lg:flex"]: true,
                     })}
                   >
                     Load
@@ -189,7 +192,7 @@ export default function Sidebar() {
                     className={classNames({
                       [sidebar_styles.sidebar_link_a]: true,
                       ["dark:text-[#cbd5e1]"]: true,
-                      ["hidden md:flex"]: true,
+                      ["hidden lg:flex"]: true,
                     })}
                   >
                     All_swap

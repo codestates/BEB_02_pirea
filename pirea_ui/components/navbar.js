@@ -41,7 +41,7 @@ export const Navbar = () => {
               }}
             >
               <Link href="/main">
-                <a className={navStyles.nav_link}>AboutUs</a>
+                <a className={navStyles.nav_link}>about</a>
               </Link>
             </motion.div>
             <motion.div
