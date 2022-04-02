@@ -161,7 +161,7 @@ export default function Main() {
                             color="#8A8B8C"
                             height="30"
                           />
-                          <span className={mainStyles.go_github}>GITHUB</span>
+                          <div className={mainStyles.go_github}>GITHUB</div>
                         </motion.div>
                       </Link>
                     </motion.div>
@@ -198,7 +198,7 @@ export default function Main() {
                     opacity: 1,
                     transition: { duration: 1, delay: 0.2 },
                   }}
-                // whileInView={{ x: 100, delay: 2, duration: 2 }}
+                  // whileInView={{ x: 100, delay: 2, duration: 2 }}
                 >
                   <div className={mainStyles.main_section1_contents}>
                     <div className={mainStyles.main_section1_subtitle}>
