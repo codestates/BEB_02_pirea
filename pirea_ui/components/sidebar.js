@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import classNames from "classnames";
 import "tailwindcss/tailwind.css";
+import { motion } from "framer-motion";
 
 // TODO: 반응형 웹
 export default function Sidebar() {
@@ -48,6 +49,7 @@ export default function Sidebar() {
                     className={classNames({
                       [sidebar_styles.sidebar_link_a]: true,
                       ["dark:text-[#cbd5e1]"]: true,
+                      ["hidden md:flex"]: true,
                     })}
                   >
                     Dashboard
@@ -56,7 +58,8 @@ export default function Sidebar() {
               </div>
             </div>
           </Link>
-          <Link href="/analytics">
+
+          {/* <Link href="/analytics">
             <div className={sidebar_styles.sidebar_div_main}>
               <div
                 className={`
@@ -82,7 +85,7 @@ export default function Sidebar() {
                 </div>
               </div>
             </div>
-          </Link>
+          </Link> */}
           <Link href="/assets">
             <div className={sidebar_styles.sidebar_div_main}>
               <div
@@ -102,6 +105,7 @@ export default function Sidebar() {
                     className={classNames({
                       [sidebar_styles.sidebar_link_a]: true,
                       ["dark:text-[#cbd5e1]"]: true,
+                      ["hidden md:flex"]: true,
                     })}
                   >
                     Assets
@@ -129,6 +133,7 @@ export default function Sidebar() {
                     className={classNames({
                       [sidebar_styles.sidebar_link_a]: true,
                       ["dark:text-[#cbd5e1]"]: true,
+                      ["hidden md:flex"]: true,
                     })}
                   >
                     Swap
@@ -156,6 +161,7 @@ export default function Sidebar() {
                     className={classNames({
                       [sidebar_styles.sidebar_link_a]: true,
                       ["dark:text-[#cbd5e1]"]: true,
+                      ["hidden md:flex"]: true,
                     })}
                   >
                     Load
@@ -183,6 +189,7 @@ export default function Sidebar() {
                     className={classNames({
                       [sidebar_styles.sidebar_link_a]: true,
                       ["dark:text-[#cbd5e1]"]: true,
+                      ["hidden md:flex"]: true,
                     })}
                   >
                     All_swap

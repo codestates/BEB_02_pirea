@@ -134,7 +134,9 @@
 
 .main_section0_git {
   padding-top: 10vh;
-  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
 }
 
 .main_go_dashboard {
