@@ -16,7 +16,6 @@ import axios from "axios";
 import useSWR from "swr";
 import { Bars } from "react-loading-icons";
 import GridLoader from "react-spinners/GridLoader";
-import classNames from "classnames";
 import "tailwindcss/tailwind.css";
 import { motion } from "framer-motion";
 
