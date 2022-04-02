@@ -140,6 +140,11 @@ export default function Load() {
     <>
       <Layout>
         <div className={loadStyles.load_main}>
+    <div className={loadStyles.load_status_main}>
+            {statusOrder ? "status: " + statusOrderJson[statusOrder] : null}
+          </div>
+
+
           <div className={loadStyles.load_metadata_image_main}>
             <div className={loadStyles.metadata_image_sup_main}>
               <LoadSwapImage url={data['want_token_url']} />
@@ -148,9 +153,7 @@ export default function Load() {
               <LoadSwapImage url={data['have_token_url']} />
             </div>
           </div>
-          <div className={loadStyles.load_status_main}>
-            {statusOrder ? "status: " + statusOrderJson[statusOrder] : null}
-          </div>
+      
           <div className={loadStyles.load_form_main}>
             <div className={loadStyles.load_left_form_main} >
               <LoadType sign={data.sign} typeForm="want" form={data['wantForm']} tokenUrl={data['want_token_url']} approve={approve} setStatusOrder={setStatusOrder} />
