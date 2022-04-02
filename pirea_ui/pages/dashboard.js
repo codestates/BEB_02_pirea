@@ -19,6 +19,7 @@ import classNames from "classnames";
 import "tailwindcss/tailwind.css";
 import { motion } from "framer-motion";
 import OfferList from "../components/offer_load"
+import HistoryLoad from "../components/history_load"
 import { useWeb3React } from "@web3-react/core";
 import { NftSwap } from "@traderxyz/nft-swap-sdk";
 import { injected } from "./lib/connectors";
@@ -396,7 +397,26 @@ export default function Dashboard() {
                   Price History
                 </div>
                 <div>
-
+                  <div>
+                    <div className={dashStyles.dashboard_offers_content_main_type}>
+                      <div className={dashStyles.dashboard_offers_content_div}>
+                        id
+                      </div>
+                      <div className={dashStyles.dashboard_offers_content_div}>
+                        type
+                      </div>
+                      <div className={dashStyles.dashboard_offers_content_div}>
+                      </div>
+                    </div>
+                    {
+                      transacoh ? transacoh.map((e) =>
+                        e.haveForm.type == "ERC721" ?
+                          <HistoryLoad transacof={transacoh} tokenId={e.haveForm.tokenId} type={e.haveForm.type} swapcode={e.swapcode} sign={e.sign} sdk={swapSdk} />
+                          : null
+                      )
+                        : null
+                    }
+                  </div>
                 </div>
               </div>
             </div>
