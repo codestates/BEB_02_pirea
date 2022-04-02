@@ -17,6 +17,7 @@ import axios from "axios";
 import KoreaMap from "../components/korea_map.js";
 import classNames from "classnames";
 import "tailwindcss/tailwind.css";
+import { motion } from "framer-motion";
 
 // TODO: 스마트컨트랙트와 연동
 // TODO: map click 동작구현
@@ -424,8 +425,10 @@ export default function Dashboard() {
                   onClick={mintHandleClick}
                   className={dashStyles.dashboard_none_profile_button_main}
                 >
-                  <div
+                  <motion.div
                     className={dashStyles.dashboard_none_profile_button_mint}
+                    whileTap={{ scale: 0.9 }}
+                    whileHover={{ backgroundColor: "#06b6d4" }}
                   >
                     <Icon
                       icon="akar-icons:circle-check-fill"
@@ -434,7 +437,7 @@ export default function Dashboard() {
                       // hFlip={true}
                     />
                     <div>Mint</div>
-                  </div>
+                  </motion.div>
                 </div>
               </div>
               <div className={dashStyles.dashboard_price_history_main}>
