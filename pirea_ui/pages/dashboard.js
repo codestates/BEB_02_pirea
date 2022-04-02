@@ -9,12 +9,14 @@ import { create } from "ipfs-http-client";
 import { useDropzone } from "react-dropzone";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import abi from "./lib/abi"
-import korea from "./lib/korea"
-import config from "./lib/config.json"
-import Web3 from "web3"
-import axios from "axios"
-import KoreaMap from "../components/korea_map.js"
+import abi from "./lib/abi";
+import korea from "./lib/korea";
+import config from "./lib/config.json";
+import Web3 from "web3";
+import axios from "axios";
+import KoreaMap from "../components/korea_map.js";
+import classNames from "classnames";
+import "tailwindcss/tailwind.css";
 
 // TODO: 스마트컨트랙트와 연동
 // TODO: map click 동작구현
@@ -27,9 +29,9 @@ const baseStyle = {
   padding: "20px",
   borderWidth: 2,
   borderRadius: 2,
-  borderColor: "#eeeeee",
+  borderColor: "#9ca3af",
   borderStyle: "dashed",
-  backgroundColor: "#fafafa",
+  // backgroundColor: "#fafafa",
   color: "#bdbdbd",
   outline: "none",
   transition: "border .24s ease-in-out",
@@ -102,10 +104,12 @@ export default function Dashboard() {
   const smartContractAddr = config["WEB3"]["CONTRACT_ADDRESS"];
   const client = create("https://ipfs.infura.io:5001/api/v0");
 
-
-  console.log("ttt", korea.some(function(el) {
-    return el.x == 1 && el.y == 2
-  }))
+  console.log(
+    "ttt",
+    korea.some(function (el) {
+      return el.x == 1 && el.y == 2;
+    })
+  );
 
   async function onChange(e) {
     const file = e.target.files[0];
@@ -115,7 +119,7 @@ export default function Dashboard() {
   const onDescChange = (e) => {
     console.log(e.target.value);
     setUserFileDesc(e.target.value);
-  }
+  };
 
   const onDrop = useCallback((acceptedFiles) => {
     // setUserFileUrl(acceptedFiles[0]);
@@ -128,8 +132,10 @@ export default function Dashboard() {
       setAxis(data);
       const id = toast.loading("find ....");
 
-      const tokenIdtmp = await tokenContract.methods.getTokenId(data["x"], data["y"]).call();
-      setTokenId(tokenIdtmp)
+      const tokenIdtmp = await tokenContract.methods
+        .getTokenId(data["x"], data["y"])
+        .call();
+      setTokenId(tokenIdtmp);
       if (tokenIdtmp == 0) {
         setT(false);
         setMetadataJson();
@@ -140,8 +146,12 @@ export default function Dashboard() {
           autoClose: 3000,
         });
       } else {
-        const ownerAddr = await tokenContract.methods.ownerOf(tokenIdtmp).call();
-        const tokenURItmp = await tokenContract.methods.tokenURI(tokenIdtmp).call();
+        const ownerAddr = await tokenContract.methods
+          .ownerOf(tokenIdtmp)
+          .call();
+        const tokenURItmp = await tokenContract.methods
+          .tokenURI(tokenIdtmp)
+          .call();
         const response = await axios.get(tokenURItmp);
         const json = await response.data;
 
@@ -160,11 +170,10 @@ export default function Dashboard() {
   };
 
   const mintHandleClick = async () => {
-
     const id = toast.loading("mint ....");
     const file = await axios
       .get(userFileUrl, { responseType: "blob" })
-      .then(response => {
+      .then((response) => {
         return response.data;
       });
     const cid = await client.add(file);
@@ -174,9 +183,9 @@ export default function Dashboard() {
       image: image_url,
       description: userFileDesc,
       properties: {
-        axis_x: axis['x'],
-        axis_y: axis['y'],
-      }
+        axis_x: axis["x"],
+        axis_y: axis["y"],
+      },
     };
 
     let cid2;
@@ -186,15 +195,17 @@ export default function Dashboard() {
 
     try {
       // 최종적으로 주문서를 만들어 mint를 발생 시킵니다.
-      let account = window.localStorage.getItem("account")
-      var result = await tokenContract.methods.mintNFT(account, metadata_url, axis['x'], axis['y']).send({
-        from: account,
-        gasLimit: 5000000,
-        value: 0,
-      });
+      let account = window.localStorage.getItem("account");
+      var result = await tokenContract.methods
+        .mintNFT(account, metadata_url, axis["x"], axis["y"])
+        .send({
+          from: account,
+          gasLimit: 5000000,
+          value: 0,
+        });
       console.log(result);
       toast.update(id, {
-        render: `result \n\n ${result['transactionHash']}`,
+        render: `result \n\n ${result["transactionHash"]}`,
         type: "success",
         isLoading: false,
         autoClose: 3000,
@@ -210,21 +221,15 @@ export default function Dashboard() {
         autoClose: 2000,
       });
     }
-  }
-
+  };
 
   useEffect(() => {
     console.log(axis);
-    const web = new Web3(window.ethereum);  // 새로운 web3 객체를 만든다
+    const web = new Web3(window.ethereum); // 새로운 web3 객체를 만든다
     setWeb3(web);
-    const tokenContract = new web.eth.Contract(
-      abi,
-      smartContractAddr
-    );
+    const tokenContract = new web.eth.Contract(abi, smartContractAddr);
     setTokenContract(tokenContract);
   }, [axis]);
-
-
 
   return (
     <>
@@ -253,7 +258,12 @@ export default function Dashboard() {
               />
             </div>
             <div className={dashStyles.dashboard_description_main}>
-              <div className={dashStyles.dashboard_description_content_header}>
+              <div
+                className={classNames({
+                  [dashStyles.dashboard_description_content_header]: true,
+                  ["dark:text-[#9ca3af]"]: true,
+                })}
+              >
                 Description
               </div>
               <div className={dashStyles.dashboard_description_content_text}>
@@ -265,68 +275,124 @@ export default function Dashboard() {
           {t ? (
             <div className={dashStyles.dashboard_right_main}>
               <div>
-                <div className={dashStyles.dashboard_profile_header}>
+                <div
+                  className={classNames({
+                    [dashStyles.dashboard_profile_header]: true,
+                    ["dark:text-[#f3f4f6]"]: true,
+                  })}
+                >
                   Map Analytics
                 </div>
                 <div className={dashStyles.dashboard_profile_img_main}>
                   <div className={dashStyles.dashboard_profile_img}>
-                    <Image src={metadataJson.image} width={50} height={50} alt="test" layout="responsive" />
+                    <Image
+                      src={metadataJson.image}
+                      width={50}
+                      height={50}
+                      alt="test"
+                      layout="responsive"
+                    />
                   </div>
                 </div>
                 <div className={dashStyles.dashboard_profile_address_main}>
-                  <div className={dashStyles.dashboard_profile_address_header}>
-                    Owner address
+                  <div
+                    className={classNames({
+                      [dashStyles.dashboard_profile_address_header]: true,
+                      ["dark:text-[#9ca3af]"]: true,
+                    })}
+                  >
+                    Owner address :
                   </div>
                   <div className={dashStyles.dashboard_profile_address_text}>
                     {ownerAddr}
                   </div>
                 </div>
                 <div className={dashStyles.dashboard_profile_address_main}>
-                  <div className={dashStyles.dashboard_profile_address_header}>
-                    token id
+                  <div
+                    className={classNames({
+                      [dashStyles.dashboard_profile_address_header]: true,
+                      ["dark:text-[#9ca3af]"]: true,
+                    })}
+                  >
+                    token id :
                   </div>
                   <div className={dashStyles.dashboard_profile_address_text}>
                     {tokenId}
                   </div>
                 </div>
                 <div className={dashStyles.dashboard_profile_axis_main}>
-                  <div>x: {axis['x']} </div>
-                  <div className={dashStyles.dashboard_profile_axis_y_ex}>y: {axis['y']}</div>
+                  <div>x: {axis["x"]} </div>
+                  <div className={dashStyles.dashboard_profile_axis_y_ex}>
+                    y: {axis["y"]}
+                  </div>
                 </div>
               </div>
               <div className={dashStyles.dashboard_offers_main}>
-                <div className={dashStyles.dashboard_offers_header}>Offer</div>
+                <div
+                  className={classNames({
+                    [dashStyles.dashboard_offers_header]: true,
+                    ["dark:text-[#9ca3af]"]: true,
+                  })}
+                >
+                  Offer
+                </div>
               </div>
               <div className={dashStyles.dashboard_price_history_main}>
-                <div className={dashStyles.dashboard_price_history_header}>
+                <div
+                  className={classNames({
+                    [dashStyles.dashboard_price_history_header]: true,
+                    ["dark:text-[#9ca3af]"]: true,
+                  })}
+                >
                   Price History
                 </div>
               </div>
             </div>
           ) : (
             <div className={dashStyles.dashboard_right_main}>
-              <div className={dashStyles.dashboard_profile_header}>
+              <div
+                className={classNames({
+                  [dashStyles.dashboard_profile_header]: true,
+                  ["dark:text-[#f3f4f6]"]: true,
+                })}
+              >
                 Map Analytics
               </div>
-              <div className={dashStyles.dashboard_none_profile_address}>
+              <div
+                className={classNames({
+                  [dashStyles.dashboard_none_profile_address]: true,
+                  ["dark:text-[#9ca3af]"]: true,
+                })}
+              >
                 OwnerAddress: None
               </div>
               <div className={dashStyles.dashboard_none_profile_axis_main}>
-                <div className={dashStyles.dashboard_none_profile_axis_x}>
-                  x: {axis['x']}
+                <div
+                  className={classNames({
+                    [dashStyles.dashboard_none_profile_axis_x]: true,
+                    ["dark:text-[#9ca3af]"]: true,
+                  })}
+                >
+                  x: {axis["x"]}
                 </div>
-                <div>
-                  y: {axis['y']}
+                <div
+                  className={classNames({
+                    [dashStyles.dashboard_none_profile_axis_x]: true,
+                    ["dark:text-[#9ca3af]"]: true,
+                  })}
+                >
+                  y: {axis["y"]}
                 </div>
               </div>
               <div>
-                <div>
-
-                </div>
+                <div></div>
               </div>
               <div className={dashStyles.dashboard_none_profile_input_des_main}>
                 <div
-                  className={dashStyles.dashboard_none_profile_input_des_header}
+                  className={classNames({
+                    [dashStyles.dashboard_none_profile_input_des_header]: true,
+                    ["dark:text-[#9ca3af]"]: true,
+                  })}
                 >
                   Description
                 </div>
@@ -340,18 +406,24 @@ export default function Dashboard() {
                 className={dashStyles.dashboard_none_profile_image_drop_main}
               >
                 <div
-                  className={
-                    dashStyles.dashboard_none_profile_image_drop_header
-                  }
+                  className={classNames({
+                    [dashStyles.dashboard_none_profile_image_drop_header]: true,
+                    ["dark:text-[#9ca3af]"]: true,
+                  })}
                 >
                   Image
                 </div>
+
                 <MyDropzone
                   onChange={onChange}
                   onDrop={onDrop}
                   previewFile={previewFile}
                 />
-                <div onClick={mintHandleClick} className={dashStyles.dashboard_none_profile_button_main}>
+
+                <div
+                  onClick={mintHandleClick}
+                  className={dashStyles.dashboard_none_profile_button_main}
+                >
                   <div
                     className={dashStyles.dashboard_none_profile_button_mint}
                   >
@@ -359,14 +431,19 @@ export default function Dashboard() {
                       icon="akar-icons:circle-check-fill"
                       color="white"
                       height="17"
-                    // hFlip={true}
+                      // hFlip={true}
                     />
                     <div>Mint</div>
                   </div>
                 </div>
               </div>
               <div className={dashStyles.dashboard_price_history_main}>
-                <div className={dashStyles.dashboard_price_history_header}>
+                <div
+                  className={classNames({
+                    [dashStyles.dashboard_price_history_header]: true,
+                    ["dark:text-[#9ca3af]"]: true,
+                  })}
+                >
                   Price History
                 </div>
               </div>

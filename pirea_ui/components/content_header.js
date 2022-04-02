@@ -6,12 +6,14 @@ import { MoonIcon, SunIcon } from "@heroicons/react/solid";
 import Web3 from "web3";
 import Router from "next/router";
 import Avatar from "react-nice-avatar";
-import Avvvatars from 'avvvatars-react'
+import Avvvatars from "avvvatars-react";
 import axios from "axios";
 import Web3Token from "web3-token";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
+import classNames from "classnames";
+import "tailwindcss/tailwind.css";
 
 //? darkMode1
 // const StyledApp = styled.div`
@@ -27,8 +29,6 @@ export default function Content_header() {
   const { systemTheme, theme, setTheme } = useTheme();
   const router = useRouter();
 
-
-
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -36,9 +36,9 @@ export default function Content_header() {
   const searchBarKeyDown = (e) => {
     if (e.key == "Enter") {
       console.log(e.target.value);
-      router.push(`/load?swap_code=${e.target.value}`)
+      router.push(`/load?swap_code=${e.target.value}`);
     }
-  }
+  };
 
   const renderThemeChanger = () => {
     if (!mounted) return null;
@@ -54,7 +54,6 @@ export default function Content_header() {
   useEffect(() => {
     setAccount(window.localStorage.getItem("account"));
   }, []);
-
 
   const login = async () => {
     const id = toast.loading("Login ....");
@@ -123,8 +122,6 @@ export default function Content_header() {
     Router.reload();
   };
 
-
-
   // const themeToggler = () => {
   //   theme === "light" ? setTheme("dark") : setTheme("light");
   // };
@@ -132,7 +129,13 @@ export default function Content_header() {
   return (
     <>
       <ToastContainer />
-      <div className={c_content_styles.c_content_header_main}>
+      <div
+        className={classNames({
+          [c_content_styles.c_content_header_main]: true,
+          ["dark:bg-[#121212]"]: true,
+          ["dark:border-[#475569]"]: true,
+        })}
+      >
         {/* light, dark modal*/}
         {/* <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
           <GlobalStyles />
@@ -146,7 +149,12 @@ export default function Content_header() {
         </div>
 
         {/* message box*/}
-        <div className={c_content_styles.content_header_input}>
+        <div
+          className={classNames({
+            [c_content_styles.content_header_input]: true,
+            ["dark:border-[#475569]"]: true,
+          })}
+        >
           <input
             className={c_content_styles.content_header_input_wright}
             placeholder="swap code search"
@@ -179,7 +187,8 @@ export default function Content_header() {
             className={c_content_styles.header_profile_login_main}
           >
             <div>
-              <Avvvatars value={window.localStorage.getItem("account")}
+              <Avvvatars
+                value={window.localStorage.getItem("account")}
                 className={c_content_styles.header_profile_login_avatar}
                 size={32}
                 style="shape"
@@ -200,10 +209,11 @@ export default function Content_header() {
 
             <div
               className={`
-${isShow
-                  ? c_content_styles.header_profile_login_popup
-                  : c_content_styles.header_profile_login_no_popup
-                }
+${
+  isShow
+    ? c_content_styles.header_profile_login_popup
+    : c_content_styles.header_profile_login_no_popup
+}
 
 `}
             >
