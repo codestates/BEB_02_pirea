@@ -46,6 +46,7 @@ export default function swap() {
   const [web3, setWeb3] = useState("");
   const [metaJson, setMetaJson] = useState();
   const smartContAddr = config["WEB3"]["CONTRACT_ADDRESS"];
+  const baseApi = config["API"]["SERVER_BASE"];
 
   const [tmpHave, setTMPHave] = useState({
     type: "",
@@ -248,7 +249,7 @@ export default function swap() {
         window.localStorage.getItem("account")
       );
       const response = await axios.post(
-        "http://www.pirea.kro.kr/api/v0.1/swap/create",
+        baseApi + "/swap/create",
         {
           order: signedOrder,
           haveForm: haveForm,
