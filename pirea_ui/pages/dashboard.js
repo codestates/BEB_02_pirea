@@ -103,11 +103,12 @@ export default function Dashboard() {
   const [metadataJson, setMetadataJson] = useState();
   const [tokenContract, setTokenContract] = useState();
   const smartContractAddr = config["WEB3"]["CONTRACT_ADDRESS"];
+  const [transacoh, setTransacoh] = useState();
   const client = create("https://ipfs.infura.io:5001/api/v0");
 
   console.log(
     "ttt",
-    korea.some(function (el) {
+    korea.some(function(el) {
       return el.x == 1 && el.y == 2;
     })
   );
@@ -147,6 +148,15 @@ export default function Dashboard() {
           autoClose: 3000,
         });
       } else {
+        const url = "http://www.pirea.kro.kr/api/v0.1/swap/get/tokenid"
+        const res = await axios.get(url, {
+          params: {
+            tokenid: tokenIdtmp
+          }
+        });
+        console.log("res", res.data);
+        console.log(tokenIdtmp);
+
         const ownerAddr = await tokenContract.methods
           .ownerOf(tokenIdtmp)
           .call();
@@ -155,6 +165,7 @@ export default function Dashboard() {
           .call();
         const response = await axios.get(tokenURItmp);
         const json = await response.data;
+        setTransacoh(json);
 
         setMetadataJson(json);
         setTokenURI(tokenURItmp);
@@ -337,6 +348,9 @@ export default function Dashboard() {
                 >
                   Offer
                 </div>
+                <div>
+                  content
+                </div>
               </div>
               <div className={dashStyles.dashboard_price_history_main}>
                 <div
@@ -346,6 +360,14 @@ export default function Dashboard() {
                   })}
                 >
                   Price History
+                </div>
+                <div>
+                  {
+                    transacoh
+                      ? "hello"
+                      : "null"
+                  }
+                  content
                 </div>
               </div>
             </div>
@@ -434,7 +456,7 @@ export default function Dashboard() {
                       icon="akar-icons:circle-check-fill"
                       color="white"
                       height="17"
-                      // hFlip={true}
+                    // hFlip={true}
                     />
                     <div>Mint</div>
                   </motion.div>
