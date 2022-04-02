@@ -1,6 +1,6 @@
 .load_main {
   height: 100%;
-  widht: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,13 +13,13 @@
   justify-content: center;
   align-items: center;
   height: 100%;
-  widht: 100%;
+  width: 100%;
 }
 .load_loading_main_text {
   padding: 2vh 0;
 }
 .load_loading_main_icon {
-  display:flex;
+  display: flex;
 }
 
 .load_form_main {
@@ -33,8 +33,8 @@
 }
 
 .load_status_main {
-  width: 85%;
-  padding: 8vh 0 1vh 4vh;
+  width: 60%;
+  padding: 8vh 0 1vh 14vh;
 }
 
 .load_status_main {
@@ -50,22 +50,36 @@
   margin: 1vh;
 }
 
+.button_container {
+  display: flex;
+  margin-right: 3vw;
+  justify-content: flex-end;
+  flex-direction: row;
+  width: 100%;
+}
+
 .load_left_approve_btn_main {
+  display: flex;
   padding: 1vw;
   background: #2393b0;
   color: #fff;
-  margin: 0.2vh;
+  margin-right: 1vw;
   border-radius: 12px;
   cursor: pointer;
+  height: 5vh;
+  align-items: center;
 }
 
 .load_left_accept_btn_main {
+  display: flex;
   padding: 1vw;
   color: #fff;
-  margin: 0.2vh;
+
   background: #2393b0;
   border-radius: 12px;
   cursor: pointer;
+  height: 5vh;
+  align-items: center;
 }
 
 .load_right_main {
@@ -74,7 +88,7 @@
 }
 
 .load_metadata_image_main {
-  width: 100%;
+  width: 80%;
   height: 30%;
   display: flex;
   justify-content: center;
@@ -84,11 +98,15 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 50%;
-  height: 100%;
+
+  /* width: 50%;
+  height: 100%; */
+  width: 12vw;
+  height: 12vw;
 }
 .metadata_image_content_text {
   padding: 1vh 0;
+  text-align: center;
 }
 
 .metadata_image_sup_main {
