@@ -38,10 +38,11 @@ export default function Assets() {
       setAxis(data);
       const id = toast.loading("find ....");
 
-      const tokenIdtmp = await tokenContract.methods.getTokenId(data["x"], data["y"]).call();
+      const tokenIdtmp = await tokenContract.methods
+        .getTokenId(data["x"], data["y"])
+        .call();
 
       if (tokenIdtmp == 0) {
-
         toast.update(id, {
           render: `no owner `,
           type: "success",
@@ -66,9 +67,8 @@ export default function Assets() {
         isLoading: false,
         autoClose: 3000,
       });
-
-    };
-  }
+    }
+  };
 
   useEffect(() => {
     if (typeof window.ethereum !== "undefined" && account !== "") {
@@ -83,7 +83,9 @@ export default function Assets() {
         setTokenContract(tokenContract);
 
         const getData = async () => {
-          const axisArray = await tokenContract.methods.getTokenAllByAddress(window.localStorage.getItem("account")).call();
+          const axisArray = await tokenContract.methods
+            .getTokenAllByAddress(window.localStorage.getItem("account"))
+            .call();
           /* console.log("array", axisArray.some(function(el) {
             return el.x == '5' && el.y == '10';
           })); */
@@ -104,7 +106,11 @@ export default function Assets() {
           {/*left*/}
           <div className={commonStyles.common_left_main}>
             <div className={commonStyles.common_map}>
-              <LoadMap axisArray={data} onChange={handleCreate} className={commonStyles.common_map_canvas} />
+              <LoadMap
+                axisArray={data}
+                onChange={handleCreate}
+                className={commonStyles.common_map_canvas}
+              />
             </div>
             <div className={commonStyles.common_search_main}>
               <input
@@ -146,17 +152,23 @@ export default function Assets() {
               </div>
               <div className={commonStyles.common_profile_img_main}>
                 <div className={commonStyles.common_profile_img}>
-                  {
-                    metadataJson
-                      ? <Image src={metadataJson.image} alt="text" width={50} height={50} />
-                      : <Image src={profile} alt="test" />
-                  }
+                  {metadataJson ? (
+                    <Image
+                      src={metadataJson.image}
+                      alt="text"
+                      width={50}
+                      height={50}
+                    />
+                  ) : (
+                    <Image src={profile} alt="test" />
+                  )}
                 </div>
               </div>
               <div className={commonStyles.common_profile_address_main}>
                 <div
                   className={classNames({
                     [commonStyles.common_profile_address_header]: true,
+                    ["text-[#828282]"]: true,
                     ["dark:text-[#9ca3af]"]: true,
                   })}
                 >
@@ -209,8 +221,13 @@ export default function Assets() {
                 Asset
               </div>
 
-              <div className={assetsStyles.assets_content_header_main}>
-                <div classname={assetsStyles.assets_content_header_id}>id</div>
+              <div
+                className={classNames({
+                  [assetsStyles.assets_content_header_main]: true,
+                  ["dark:border-[#18181b]"]: true,
+                })}
+              >
+                <div classname={assetsStyles.assets_content_header_id}>ID</div>
                 <div classname={assetsStyles.assets_content_header_type_x}>
                   x
                 </div>

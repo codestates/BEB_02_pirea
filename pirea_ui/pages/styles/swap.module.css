@@ -1,8 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gamja+Flower&family=Poppins&family=Sunflower:wght@500&display=swap");
+
 .swap_main {
   display: flex;
   justify-content: space-evenly;
   margin-top: 1vh;
   height: 100%;
+  font-family: "Poppins", sans-serif;
 }
 .swap_left_main {
   width: 40%;
@@ -53,10 +56,11 @@
 
 .swap_left_have_header {
   padding: 2vh;
+  font-size: 1.2em;
 }
 .swap_left_have_content {
   height: 50%;
-  padding: 1vh;
+  padding: 2vh;
 }
 
 .swap_left_have_footer {
@@ -66,10 +70,14 @@
 .swap_left_have_footer_button {
   margin: 2vh;
   padding: 1vh;
-  border-radius: 10px;
+  border-radius: 50%;
   cursor: pointer;
   color: #fff;
-  background-color: #2393b0;
+  background-color: #febc2e;
+  opacity: 80%;
+  box-shadow: 1px 1px 7px #febc2e;
+  width: 5vh;
+  height: 5vh;
 }
 
 .swap_right_header {
@@ -90,17 +98,16 @@
   justify-content: flex-end;
 }
 .swap_right_want_footer_button {
-  margin: 2vh;
+  margin-right: 1vh;
   padding: 1vh;
-  border-radius: 10px;
+  border-radius: 50%;
+  width: 5vh;
+  height: 5vh;
   cursor: pointer;
   color: #fff;
-  background-color: #2393b0;
-}
-
-.swap_right_button_main {
-  display: flex;
-  padding: 4vh 1vh 1vh 0;
+  background-color: #febc2e;
+  opacity: 80%;
+  box-shadow: 1px 1px 7px #febc2e;
 }
 
 .swap_right_type_select_hw_main {
@@ -109,14 +116,14 @@
   height: 15%;
   border-radius: 10px;
   display: flex;
-  justify-content:center;
-  background: #F0F0F0;
+  justify-content: center;
+  background: #f0f0f0;
 }
 
 .swap_right_type_select_hw_div {
   height: 100%;
   width: 50%;
-  background: #F0F0F0;
+  background: #f0f0f0;
   border-radius: 10px;
   font-size: 0.8em;
   cursor: pointer;
@@ -130,7 +137,7 @@
   justify-content: center;
   align-items: center;
   width: 50%;
-  background: #E3E3E3;
+  background: #e3e3e3;
   height: 100%;
   font-size: 0.8em;
   border-radius: 10px;
@@ -144,14 +151,14 @@
   height: 15%;
   border-radius: 10px;
   display: flex;
-  justify-content:center;
-  background: #F0F0F0;
+  justify-content: center;
+  background: #f0f0f0;
 }
 
 .swap_right_type_select_hw_div {
   height: 100%;
   width: 50%;
-  background: #F0F0F0;
+  background: #f0f0f0;
   border-radius: 10px;
   font-size: 0.8em;
   cursor: pointer;
@@ -165,7 +172,7 @@
   justify-content: center;
   align-items: center;
   width: 50%;
-  background: #E3E3E3;
+  background: #e3e3e3;
   height: 100%;
   font-size: 0.8em;
   border-radius: 10px;
@@ -207,17 +214,28 @@
   cursor: pointer;
   text-align: center;
 }
+
+.swap_right_button_main {
+  display: flex;
+  padding: 4vh 1vh 1vh 0;
+  justify-content: flex-end;
+}
+
 .swap_right_button_div {
   cursor: pointer;
   margin: 0 2vh 0 0;
   border-radius: 5px;
-  background: #2393b0;
+  background: #999999;
   color: #fff;
   padding: 1vh;
+  width: 33%;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
 }
 
 .swap_right_want_header {
   padding: 2vh;
+  font-size: 1.2em;
 }
 
 .swap_right_description_main {
