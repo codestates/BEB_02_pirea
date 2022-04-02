@@ -10,9 +10,11 @@ import { useDropzone } from "react-dropzone";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import abi from "./lib/abi"
+import korea from "./lib/korea"
 import config from "./lib/config.json"
 import Web3 from "web3"
 import axios from "axios"
+import KoreaMap from "../components/korea_map.js"
 
 // TODO: 스마트컨트랙트와 연동
 // TODO: map click 동작구현
@@ -99,6 +101,11 @@ export default function Dashboard() {
   const [tokenContract, setTokenContract] = useState();
   const smartContractAddr = config["WEB3"]["CONTRACT_ADDRESS"];
   const client = create("https://ipfs.infura.io:5001/api/v0");
+
+
+  console.log("ttt", korea.some(function(el) {
+    return el.x == 1 && el.y == 2
+  }))
 
   async function onChange(e) {
     const file = e.target.files[0];
@@ -226,7 +233,8 @@ export default function Dashboard() {
           {/*left*/}
           <div className={dashStyles.dashboard_left_main}>
             <div className={dashStyles.dashboard_map}>
-              <Map
+              <KoreaMap
+                axisArray={korea}
                 className={dashStyles.dashboard_map_canvas}
                 onChange={handleCreate}
               />
