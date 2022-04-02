@@ -11,7 +11,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import abi from "./lib/abi";
 import korea from "./lib/korea";
-import config from "./lib/config.json";
 import Web3 from "web3";
 import axios from "axios";
 import KoreaMap from "../components/korea_map.js";
@@ -23,6 +22,7 @@ import HistoryLoad from "../components/history_load"
 import { useWeb3React } from "@web3-react/core";
 import { NftSwap } from "@traderxyz/nft-swap-sdk";
 import { injected } from "./lib/connectors";
+import config from "./lib/config.json";
 
 // TODO: 스마트컨트랙트와 연동
 // TODO: map click 동작구현
@@ -112,6 +112,7 @@ export default function Dashboard() {
   const client = create("https://ipfs.infura.io:5001/api/v0");
   const { library, chainId, activate, active, deactivate } = useWeb3React();
   const [swapSdk, setSwapSdk] = useState();
+  const baseApi = config["API"]["SERVER_BASE"];
   /*
     console.log(
       "ttt",
@@ -155,7 +156,7 @@ export default function Dashboard() {
           autoClose: 3000,
         });
       } else {
-        const url = "http://www.pirea.kro.kr/api/v0.1/swap/get/tokenid"
+        const url = baseApi + "/swap/get/tokenid"
         const res = await axios.get(url, {
           params: {
             tokenid: tokenIdtmp

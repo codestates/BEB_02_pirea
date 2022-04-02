@@ -33,8 +33,9 @@ export default function AllSwap() {
   const [moreTake, setMoreTake] = useState(false);
   const { library, chainId, activate, active, deactivate } = useWeb3React();
   const router = useRouter();
+  const baseApi = config["API"]["SERVER_BASE"];
 
-  const apiEndPoint = "http://www.pirea.kro.kr/api/v0.1/swap/get/all";
+  const apiEndPoint = baseApi  + "/swap/get/all";
   const fetcher = async (url) =>
     await axios
       .get(url, {

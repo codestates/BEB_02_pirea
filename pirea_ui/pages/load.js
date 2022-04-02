@@ -20,9 +20,11 @@ import classNames from "classnames";
 import "tailwindcss/tailwind.css";
 import { motion } from "framer-motion";
 import { Icon } from "@iconify/react";
+import config from "./lib/config.json"
 
 export default function Load() {
-  const apiEndPoint = "http://www.pirea.kro.kr/api/v0.1/swap/get";
+  const baseApi = config["API"]["SERVER_BASE"];
+  const apiEndPoint = baseApi + "/swap/get";
   const router = useRouter();
   const { swap_code } = router.query;
   const [data, setData] = useState();

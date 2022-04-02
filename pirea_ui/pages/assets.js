@@ -29,6 +29,7 @@ export default function Assets() {
   const [account, setAccount] = useState(
     window.localStorage.getItem("account")
   );
+
   const [web3, setWeb3] = useState();
   const [tokenContract, setTokenContract] = useState();
   const [data, setData] = useState();
@@ -36,7 +37,7 @@ export default function Assets() {
   const [tokenId, setTokenId] = useState();
   const [selectedOwner, setSelectedOwner] = useState();
   const [transacoh, setTransacoh] = useState();
-
+  const baseApi = config["API"]["SERVER_BASE"];
   const [axis, setAxis] = useState({});
   const { library, chainId, activate, active, deactivate } = useWeb3React();
   const [swapSdk, setSwapSdk] = useState();
@@ -67,7 +68,7 @@ export default function Assets() {
       const res = await axios.get(tokenURI);
       const metaTmp = res.data;
 
-      const url = "http://www.pirea.kro.kr/api/v0.1/swap/get/tokenid"
+      const url = baseApi+ "/swap/get/tokenid"
       const res2 = await axios.get(url, {
         params: {
           tokenid: tokenIdtmp
