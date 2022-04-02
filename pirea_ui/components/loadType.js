@@ -44,12 +44,12 @@ export default function LoadType({
               ? classNames({
                   [loadStyles.load_type_form_main_start]: true,
                   ["shadow-lg shadow-green-800/30"]: true,
-                  ["dark:bg-[#232323]"]: true,
+                  ["dark:bg-[#fff] text-[#000]"]: true,
                   ["shadow-lg shadow-gray-800/40"]: true,
                 })
               : classNames({
                   [loadStyles.load_type_form_main_end]: true,
-                  ["dark:bg-[#27272a]"]: true,
+                  ["dark:bg-[#fff] text-[#000]"]: true,
                 })
           }`}
         >

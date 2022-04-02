@@ -139,11 +139,21 @@ export default function Load() {
             {statusOrder ? "Status: " + statusOrderJson[statusOrder] : null}
           </div>
           <div className={loadStyles.card_container}>
-            <div className={loadStyles.card_left}>
+            <div
+              className={classNames({
+                [loadStyles.card_left]: true,
+                ["dark:bg-[#0c4a6e]"]: true,
+              })}
+            >
               <div className={loadStyles.metadata_image_sup_main}>
                 <LoadSwapImage url={data["want_token_url"]} />
               </div>
-              <div className={loadStyles.load_left_form_main}>
+              <div
+                className={classNames({
+                  [loadStyles.load_left_form_main]: true,
+                  // ["dark:bg-[#0c4a6e]"]: true,
+                })}
+              >
                 <LoadType
                   sign={data.sign}
                   typeForm="want"
@@ -159,7 +169,12 @@ export default function Load() {
               color="gray"
               height="4vw"
             />
-            <div className={loadStyles.card_right}>
+            <div
+              className={classNames({
+                [loadStyles.card_right]: true,
+                ["dark:bg-[#52525b]"]: true,
+              })}
+            >
               <div className={loadStyles.metadata_image_sup_main}>
                 <LoadSwapImage url={data["have_token_url"]} />
               </div>
