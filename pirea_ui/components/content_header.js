@@ -14,6 +14,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { useRouter } from "next/router";
 import classNames from "classnames";
 import "tailwindcss/tailwind.css";
+import { motion } from "framer-motion";
 
 //? darkMode1
 // const StyledApp = styled.div`
@@ -233,12 +234,18 @@ ${
             </div>
           </div>
         ) : (
-          <div
+          <motion.div
             onClick={login}
             className={c_content_styles.content_header_profile_no_login}
+            whileTap={{ scale: 0.9 }}
+            whileHover={{
+              backgroundColor: "#2393b0",
+              borderColor: "#2393b0",
+              color: "#fff",
+            }}
           >
             first login
-          </div>
+          </motion.div>
         )}
         <div></div>
       </div>
