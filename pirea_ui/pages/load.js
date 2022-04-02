@@ -1,6 +1,7 @@
 import Layout from "../components/layout";
 import LoadType from "../components/loadType";
 import commonStyles from "./styles/common.module.css"
+
 import loadStyles from "../components/styles-component/load.module.css"
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
@@ -66,10 +67,15 @@ export default function Load() {
   if (!data) return (
     <>
       <Layout>
-        <div className={commonStyles.common_main}>
-          <GridLoader color={"#087592"} />
-
-          loading...
+        <div className={loadStyles.load_loading_main}>
+          <div className={loadStyles.load_loading_content_main}>
+            <div className={loadStyles.load_loading_main_icon}>
+              <GridLoader color={"#087592"} />
+            </div>
+            <div className={loadStyles.load_loading_main_text}>
+              loading...
+            </div>
+          </div>
         </div>
       </Layout>
     </>

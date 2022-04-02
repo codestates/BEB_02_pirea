@@ -26,7 +26,7 @@ export default function LoadSwapImage({ url }) {
           <div className={loadStyles.metadata_image_content_main}>
             <Image src={imageUri.image} width={50} height={50} alt={imageUri.image} layout="responsive" />
             <div className={loadStyles.metadata_image_content_text}>
-              {imageUri.description}
+              description: {imageUri.description}
             </div>
           </div>
         )
