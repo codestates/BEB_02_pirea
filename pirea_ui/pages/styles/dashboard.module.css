@@ -168,7 +168,30 @@
   padding: 1vw;
   color: #535353;
 }
+.dashboard_offers_content_main_type {
+  border-bottom: 1px solid #535353;
+  display: flex;
+  padding: 1vh;
+  flex-grow: 1;
+}
+.dashboard_offers_content_type {
+  display: flex;
+  padding: 1vh;
+  flex-grow: 1;
+}
 
+.dashboard_offers_content_div {
+  flex-grow: 1;
+  display: flex;
+}
+
+.dashboard_offers_content_div_button {
+  background-color: #999999;
+  color: #fff;
+  padding: 0.5vh 1vh 0.5vh 1vh;
+  border-radius: 10px;
+  cursor: pointer;
+}
 .dashboard_price_history_main {
   height: 22vh;
   border-radius: 20px;
