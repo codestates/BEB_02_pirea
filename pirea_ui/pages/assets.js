@@ -2,7 +2,7 @@ import Layout from "../components/layout";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import commonStyles from "./styles/common.module.css";
-import dashStyles from "./styles/dashboard.module.css"
+import dashStyles from "./styles/dashboard.module.css";
 import assetsStyles from "./styles/assets.module.css";
 import Image from "next/image";
 import profile from "../assets/test_item.png";
@@ -16,7 +16,7 @@ import config from "./lib/config.json";
 import LoadMap from "../components/load_map.js";
 import classNames from "classnames";
 import "tailwindcss/tailwind.css";
-import OfferList from "../components/offer_load"
+import OfferList from "../components/offer_load";
 import { injected } from "./lib/connectors";
 import { useWeb3React } from "@web3-react/core";
 import { NftSwap } from "@traderxyz/nft-swap-sdk";
@@ -68,14 +68,13 @@ export default function Assets() {
       const res = await axios.get(tokenURI);
       const metaTmp = res.data;
 
-      const url = baseApi+ "/swap/get/tokenid"
+      const url = baseApi + "/swap/get/tokenid";
       const res2 = await axios.get(url, {
         params: {
-          tokenid: tokenIdtmp
-        }
+          tokenid: tokenIdtmp,
+        },
       });
       setTransacoh(res2.data);
-
 
       setTokenId(tokenIdtmp);
       setMetadataJson(metaTmp);
@@ -89,7 +88,6 @@ export default function Assets() {
   };
 
   useEffect(() => {
-
     activate(injected, (error) => {
       console.log(error);
     });
@@ -107,7 +105,6 @@ export default function Assets() {
 
         const sdk = new NftSwap(library, library.getSigner(), chainId);
         setSwapSdk(sdk);
-
 
         const getData = async () => {
           const axisArray = await tokenContract.methods
@@ -238,33 +235,39 @@ export default function Assets() {
               </div>
 
               <div>
-                <div className={dashStyles.dashboard_offers_content_main_type}>
+                <div
+                  className={classNames({
+                    [dashStyles.dashboard_offers_content_main_type]: true,
+                    ["dark:border-[#27272a]"]: true,
+                    ["dark:text-[#fff]"]: true,
+                  })}
+                >
                   <div className={dashStyles.dashboard_offers_content_div}>
                     id
                   </div>
                   <div className={dashStyles.dashboard_offers_content_div}>
                     type
                   </div>
-                  <div className={dashStyles.dashboard_offers_content_div}>
-                  </div>
+                  <div
+                    className={dashStyles.dashboard_offers_content_div}
+                  ></div>
                 </div>
-                {
-                  transacoh ? transacoh.map((e) =>
-                    e.haveForm.type == "ERC721" ?
-                      <OfferList transacof={transacoh} tokenId={e.haveForm.tokenId} type={e.haveForm.type} swapcode={e.swapcode} sign={e.sign} sdk={swapSdk} />
-                      : null
-                  )
-                    : null
-                }
+                {transacoh
+                  ? transacoh.map((e) =>
+                      e.haveForm.type == "ERC721" ? (
+                        <OfferList
+                          transacof={transacoh}
+                          tokenId={e.haveForm.tokenId}
+                          type={e.haveForm.type}
+                          swapcode={e.swapcode}
+                          sign={e.sign}
+                          sdk={swapSdk}
+                        />
+                      ) : null
+                    )
+                  : null}
               </div>
-
-
-
             </div>
-
-
-
-
 
             <div className={commonStyles.common_offers_main}>
               <div
@@ -279,7 +282,7 @@ export default function Assets() {
               <div
                 className={classNames({
                   [assetsStyles.assets_content_header_main]: true,
-                  ["dark:border-[#18181b]"]: true,
+                  ["dark:border-[#27272a]"]: true,
                 })}
               >
                 <div classname={assetsStyles.assets_content_header_id}>ID</div>
@@ -293,14 +296,14 @@ export default function Assets() {
 
               {data
                 ? data.map((e) =>
-                  e.id != 0 ? (
-                    <div className={assetsStyles.assets_content_main}>
-                      <div>{e.id}</div>
-                      <div>{e.x}</div>
-                      <div>{e.y}</div>
-                    </div>
-                  ) : null
-                )
+                    e.id != 0 ? (
+                      <div className={assetsStyles.assets_content_main}>
+                        <div>{e.id}</div>
+                        <div>{e.x}</div>
+                        <div>{e.y}</div>
+                      </div>
+                    ) : null
+                  )
                 : "test"}
             </div>
             {/* <div className={commonStyles.common_price_history_main}>

@@ -169,14 +169,15 @@
   color: #535353;
 }
 .dashboard_offers_content_main_type {
-  border-bottom: 1px solid #535353;
+  border-bottom: 2px solid #e0e0e0;
   display: flex;
-  padding: 1vh;
+  padding: 1vh 1vh 1vh 2vh;
   flex-grow: 1;
 }
 .dashboard_offers_content_type {
   display: flex;
-  padding: 1vh;
+  padding: 1vh 1vh 1vh 2vh;
+  color: #8a8a8a;
   flex-grow: 1;
 }
 
