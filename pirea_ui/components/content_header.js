@@ -236,7 +236,10 @@ ${
         ) : (
           <motion.div
             onClick={login}
-            className={c_content_styles.content_header_profile_no_login}
+            className={classNames({
+              [c_content_styles.content_header_profile_no_login]: true,
+              ["dark:text-[#fff]"]: true,
+            })}
             whileTap={{ scale: 0.9 }}
             whileHover={{
               backgroundColor: "#2393b0",
