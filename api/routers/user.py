@@ -46,23 +46,23 @@ async def login_wallet(token: str, address: str, wallet: str, nickname:str ,db: 
         raise HTTPException(status_code=404, detail="Fobbiden")
 
 
-@router.get("/test")
-async def test(db: Session = Depends(get_db), swapc = ""):
+# @router.get("/test")
+# async def test(db: Session = Depends(get_db), swapc = ""):
     # a = jsonable_encoder({'a': '1'})
     # create_swap(db, address="test", sign=a)
-    print(get_user(db, "test"))
-    print(type(get_user(db, "test")))
+    # print(get_user(db, "test"))
+    # print(type(get_user(db, "test")))
 
     # return  get_swapcode_sign(db, swapc)
 
-@router.get("/wallet/type/{model}", tags=["wallet"], description="get wallet type by address token")
-async def get_wallet_type(wallet: WalletType, token: str, address:str):
-    return {}
+# @router.get("/wallet/type/{model}", tags=["wallet"], description="get wallet type by address token")
+# async def get_wallet_type(wallet: WalletType, token: str, address:str):
+    # return {}
 
-@router.post("/wallet/type/add", tags=["wallet"]) 
-async def set_wallet(wallet: str,  toekn: str, address: str):
-    return {}
+# @router.post("/wallet/type/add", tags=["wallet"]) 
+# async def set_wallet(wallet: str,  toekn: str, address: str):
+    # return {}
 
-@router.put("/wallet/type/revise", tags=["wallet"])
-async def revise_wallet(wallet: WalletType, token: str, address: str):
-    return {}
+# @router.put("/wallet/type/revise", tags=["wallet"])
+# async def revise_wallet(wallet: WalletType, token: str, address: str):
+    # return {}

@@ -14,9 +14,39 @@ from fastapi.middleware.cors import CORSMiddleware
 
 Base.metadata.create_all(engine)
 
+
+
+tags_metadata = [
+    {
+        "name": "analytics",
+        "description": "user statistics"
+    },
+    {
+        "name": "swap",
+        "description": "When swapping, users exchange swapcode, register sign code, and receive API",
+    },
+    {
+        "name": "wallet",
+        "description": "If the user registers the wallet used by the user, the api to continuously send requests to the wallet"
+    }
+]
+
+
 app = FastAPI(
     title="pirea api",
-    version="0.1.0"
+    version="0.1.0",
+    terms_of_service="https://github.com/codestates/BEB_02_pirea/blob/main/CodeOfConduct.md",
+    contact= {
+        "name": "pirea",
+        "url": "https://github.com/codestates/BEB_02_pirea"
+    },
+    license_info={
+        "name": "MIT",
+        "url": "https://github.com/codestates/BEB_02_pirea/blob/main/LICENSE"
+    },
+    openapi_tags=tags_metadata,
+    docs_url="/docs",
+    redoc_url="/redoc"
 )
 
 origins = [
@@ -41,7 +71,7 @@ app.add_middleware(
 app.include_router(user.router)
 app.include_router(analytics.router)
 app.include_router(swap.router)
-app.include_router(nft_token.router)
+# app.include_router(nft_token.router)
 
 # TODO: divide the router path
 # TODO: Active Token, New Clients, Spent month, Recent Swap, Balance, Site User

@@ -6,7 +6,7 @@ router = APIRouter(
 )
 
 
-@router.get("/", description="test", tags=["analytics"])
+@router.get("/", description="return statistics", tags=["analytics"])
 async def get_analytics():
     """
     Active

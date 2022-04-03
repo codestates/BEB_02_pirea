@@ -16,15 +16,15 @@ class Data(BaseModel):
     order: str
     address: str
 
-@router.post("/create", tags=["swap"])
-async def get_swap_recent(info: Request, db: Session =Depends(get_db)):
+@router.post("/create", tags=["swap"], description="Save the swap sign and return the swap code.")
+async def get_swapcode_create(info: Request, db: Session =Depends(get_db)):
     req_info = await info.json()
 
     swap_code = create_swap(db, req_info['order'], req_info["haveForm"], req_info["wantForm"])
 
     return swap_code
 
-@router.get("/get", tags=["swap"]) 
+@router.get("/get", tags=["swap"], description="When it receives a swap code, it returns the corresponding swap sign.") 
 async def get_swap_code(db: Session=Depends(get_db), swapcode: str=""):
 
     async def get_swap_url(db: Session=db, contractAddress: str = "", tokenId: int = 0): 
@@ -61,17 +61,17 @@ async def get_swap_code(db: Session=Depends(get_db), swapcode: str=""):
 
 
     
-@router.get("/get/all", tags=["swap"])
+@router.get("/get/all", tags=["swap"], description="Returns 20 swap codes.")
 async def get_swap_all(db: Session=Depends(get_db), more: int = 1):
     sign_all = get_swapcode_recent_all(db, more)
     return sign_all
 
-@router.get("get/tokenid", tags=["swap"]) 
+@router.get("get/tokenid", tags=["swap"], description=" Returns the transaction details related to token id.") 
 async def get_swapcode_id_all(db: Session=Depends(get_db), tokenid: int = 0):
     selected_sign_all  = get_swap_selected_transaction(db, tokenid)
     return selected_sign_all
 
-@router.get("/get/tokenid/url", tags=["swap"])
+@router.get("/get/tokenid/url", tags=["swap"], description="Returns the token url associated with the token id.")
 async def get_swap(db: Session=Depends(get_db), contractAddress: str = "", tokenId: int = 0): 
     abi = await get_create_abi(db, cont_address=contractAddress)
     dictret = dict(abi.__dict__)
