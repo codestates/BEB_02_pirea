@@ -8,6 +8,8 @@ import { a as web } from "@react-spring/web";
 import laptopStyles from "./styles-component/laptop.module.css";
 import { Navbar } from "../components/navbar";
 import { motion, AnimatePresence } from "framer-motion";
+import classNames from "classnames";
+import "tailwindcss/tailwind.css";
 
 // import flbfile from "../public/mac-draco.glb"
 import InnerLaptop from "./innerLaptop";
@@ -139,7 +141,10 @@ export default function Laptop() {
 
   return (
     <web.main
-      className={laptopStyles.laptop_main}
+      className={classNames({
+        [laptopStyles.laptop_main]: true,
+        ["dark: bg-[#fff] text-[#000]"]: true,
+      })}
       style={{ background: props.open.to([0, 1], ["#f0f0f0", "#7ebc59"]) }}
     >
       <Navbar />

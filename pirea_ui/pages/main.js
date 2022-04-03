@@ -6,6 +6,8 @@ import mainStyles from "./styles/main.module.css";
 import { Color } from "three";
 import { Navbar } from "../components/navbar_main";
 import { Icon } from "@iconify/react";
+import classNames from "classnames";
+import "tailwindcss/tailwind.css";
 
 import {
   Animator,
@@ -70,7 +72,12 @@ export default function Main() {
       </div> */}
 
       {/* //? 여기다하면되겠다 */}
-      <div className={mainStyles.main_bg}>
+      <div
+        className={classNames({
+          [mainStyles.main_bg]: true,
+          ["dark: bg-[#fff] text-[#000]"]: true,
+        })}
+      >
         <Navbar />
 
         <ScrollContainer>
@@ -262,7 +269,12 @@ export default function Main() {
             //   MoveOut(-2000, 0)
             // )}
             >
-              <div className={mainStyles.main_section1_container}>
+              <div
+                className={classNames({
+                  [mainStyles.main_section1_container]: true,
+                  ["dark: bg-[#fff]"]: true,
+                })}
+              >
                 <motion.div
                   className={mainStyles.main_section1_contents_container}
                   initial={{ opacity: 0 }}
